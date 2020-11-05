@@ -1,0 +1,780 @@
+
+// Media breakpoints 
+ @mixin breakpoint($point) {
+  @if $point == desktop {
+     @media screen and (min-device-width: 1240px)  { @content ; }
+     @media screen and (min-width: 1240px) { @content ; }
+  }
+  @else if $point == huge {
+    @media screen and (max-device-width: 1577px)  { @content ; }
+    @media screen and (max-width: 1577px) { @content ;}
+  }
+  @else if $point == laptop {
+     @media screen and (max-device-width: 1239px)  { @content ; }
+     @media screen and (max-width: 1239px) { @content ; }
+  }
+  @else if $point == tablet {
+     @media screen and (max-device-width: 991px)  { @content ; }
+     @media screen and (max-width: 991px) { @content ; }
+  }
+  @else if $point == smallest {
+     @media screen and (max-width: 768px)  { @content ; }
+  }
+  @else if $point == formobile {
+      @media screen and (max-device-width: 508px)  { @content ; }
+  }
+  @else if $point == smallheightfix {
+      @media screen and (max-height: 750px) and (min-width: 977px) { @content ; }
+  }
+}
+
+html, body {
+    height: 100%;
+}
+
+.big-container {
+    flex: 1;
+}
+ 
+#app {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    padding-bottom: 9.5rem;
+
+    .main-about-text {
+        font-size: 3rem;
+        padding-bottom: 1.8rem;
+
+        @include breakpoint(formobile) {
+            font-size: 2.3rem;
+        }
+    }
+
+    .video-header {
+        color: white;
+    }
+}
+
+/////////////////////
+// HEADER + FOOTER //
+/////////////////////
+
+#app .navbar, #footer {
+    border-radius: 0;
+    background: linear-gradient(180deg, #2b77c4 0%, #2a5a8a 100%);
+    z-index: 10;
+
+    img {
+        max-width: 400px;
+        margin-left: -2.5rem;
+        margin-right: -2.5rem;
+        max-width: 245px;
+
+        @include breakpoint(desktop) {
+            margin: 1.3rem;
+        }
+        @include breakpoint(laptop) {
+            margin: 0;
+        }
+        @include breakpoint(smallest) {
+            max-width: 200px;
+        }
+    }
+
+    a {
+        color: white;
+        padding: 1rem;
+    }
+
+    > .menu {
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header {
+        text-align: center;
+        color: white;
+        margin-top: 0;
+        font-weight: 100;
+        font-size: 1.5rem;
+    }
+
+    .item > .content {
+        padding: 2rem;
+
+        @include breakpoint(laptop) {
+            padding: 0rem;
+            padding-bottom: 1rem;
+        }
+    }
+
+    .header-burger {
+        display: none;
+
+        @include breakpoint(laptop) {
+            display: block;
+        }
+
+
+        .item {
+            font-size: 1.5rem;
+            color: #2a5a8a;
+            padding: 2rem;
+
+            @include breakpoint(formobile) {
+                font-size: 1.2rem;
+                padding: 1.5rem;
+            }
+        }
+
+        .item:hover {
+            background: linear-gradient(180deg, #2b77c4 0%, #2a5a8a 100%);
+            color: white;
+            transition: .1s;
+        }
+    }
+
+    div.header-burger {
+        position: absolute;
+        right: 1rem;
+
+        .menu {
+            left: -11.3rem;
+            border: none;
+
+            @include breakpoint(formobile) {
+                left: -8.3rem;
+            };
+        }
+
+        i.icon {
+            font-size: 2rem;
+        }
+    }
+
+    .hide-header {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+
+        button {
+            position: absolute;
+            right: 2%;
+            top: 21%;
+            padding: 1.5rem;
+            font-size: 1.4rem;
+            background: linear-gradient(90deg, #50a5f9 0%, #6e8fae 100%);
+        }
+
+        button:hover {
+            background: linear-gradient(270deg, #8fc4f9 0%, #72aee6 100%);
+            transition: .2s;
+        }
+
+        @include breakpoint(laptop) {
+            display: none;
+        }
+        image {
+            @include breakpoint(laptop) {
+                display: inline-flex;
+            }
+        }
+    }
+}
+
+#footer {
+    margin-top: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 9.5rem; 
+
+    @include breakpoint(formobile) {
+        padding: 2rem;
+
+        i.icon {
+            font-size: 1.5rem;
+        }
+
+        .header {
+            font-size: 1.2rem;
+        }
+
+        .ui.horizontal.list > .item {
+            margin-left: 0;
+        }
+    }
+}
+
+//////////////
+// HOMEPAGE //
+//////////////
+
+#main-background {
+    background: url('/img/background1.jpg');
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-position-x: -19.9rem;
+
+    @include breakpoint(tablet) {
+        height: 100%;
+        background-position-x: 15rem;
+     }
+
+     @include breakpoint(formobile) {
+         background: transparent;
+     }
+
+    .main-about-text {
+        @include breakpoint(tablet) {
+            padding: 5rem;
+            background: #ffffffbd;
+        }
+        padding: 8rem;
+        padding-top: 11rem;
+
+        @include breakpoint(smallheightfix) {
+            padding: 2rem;
+            padding-top: 6rem;
+            padding-left: 7rem;
+            padding-right: 5.4rem;
+        }
+
+        .header {
+            font-size: 2.9rem;
+            line-height: 3.5rem;
+            widows: 2;
+
+            @include breakpoint(smallest) {
+                font-size: 3.2rem;
+                line-height: normal;
+            }
+
+            @include breakpoint(formobile) {
+                font-size: 2.3rem;
+                line-height: normal;
+            }
+        }
+        p {
+            font-size: 1.3rem;
+
+            @include breakpoint(smallest) {
+                font-size: 1.9rem;
+            }
+            @include breakpoint(formobile) {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    #about-me-front {
+        font-size: 3rem;
+        font-weight: 900;
+    }
+
+    button {
+        background: linear-gradient(180deg, #2b77c4 0%, #2a5a8a 100%);
+        font-size: 1.3rem;
+
+        @include breakpoint(formobile) {
+            font-size: 1rem;
+        }
+    }
+
+    button:hover {
+        background: linear-gradient(270deg, #8fc4f9 0%, #72aee6 100%);
+        transition: .2s;
+    }
+}
+
+#tutorial-videos {
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-bottom: 8rem;
+    padding-top: 6rem;
+    display: block;
+    text-align: center;
+    background: linear-gradient(180deg, #2b77c4 0%, #2a5a8a 100%);
+    @include breakpoint(tablet) {
+        padding: 4rem;
+    }
+
+    @include breakpoint(formobile) {
+        padding: 3rem;
+    }
+}
+
+#testimonials {
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-bottom: 8rem;
+    padding-top: 6rem;
+    display: block;
+    text-align: center;
+    background: linear-gradient(180deg, #2b77c4b5 0%, #2a5a8a8f 100%);
+
+    @include breakpoint(tablet) {
+        padding: 4rem;
+
+        h2 {
+            font-size: 1.2rem;
+        }
+        h3 {
+            font-size: 1rem;
+        }
+        .main-about-text {
+            font-size: 2.3rem;
+        }
+    }
+
+    @include breakpoint(formobile) {
+        padding: 2rem;
+        h2 {
+            font-size: 1.2rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+        }
+
+        .main-about-text {
+            padding: 0;
+        }
+    }
+
+    .ui.fluid.card {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        background: transparent;
+    }
+
+    .testimonials-text {
+        min-height: 231px;
+    }
+
+    .testimonials-header {
+        color: white;
+    }
+
+    .carousel-indicators a {
+        padding-right: 1rem;
+    }
+
+    .ui.empty.circular.label {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .testimonial-background-color {
+        max-width: 75%;
+        margin: 0 auto;
+        padding: 3rem;
+        color: white;
+        border-radius: 7px;
+
+        @include breakpoint(tablet) {
+            max-width: 90%;
+            padding: 2.3rem;
+        }
+    }
+
+    .ui.grey.label {
+        background-color: white !important;
+    }
+
+    .ui.black.label {
+        background-color: #2e528a !important;
+    }
+}
+
+/////////////////////
+// BOOKING LESSONS //
+/////////////////////
+
+#lesson-bundles, #book-lesson {
+    min-height: 717px;
+    height: 100%;
+
+    .booking-iframe-container {
+        width: 100%;
+        height: 100%;
+
+        iframe {
+            height: 1300px;
+            border: none;
+            width:100%;
+        }
+    }
+
+   
+
+   .booking-container {
+      padding: 5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      @include breakpoint(smallest) {
+          display: block;
+          padding: 1rem;
+      }
+      @include breakpoint(formobile) {
+          display: block;
+          padding: 1rem;
+      }
+
+      .column {
+          padding: 2rem;
+          transition: .3s;
+
+          @include breakpoint(smallest) {
+            padding-left: 5rem;
+            padding-right: 5rem; 
+          }
+      }
+      .column:hover {
+          transform: scale(1.05);
+      }
+   }
+}
+
+///////////
+// ABOUT //
+///////////
+
+#about-wrapper {
+    .about-vid-wrapper {
+        background: linear-gradient(180deg,#6e859b,#4d88c1);
+        width: 100%;
+    }
+
+    .about-vid {
+        padding: 10rem;
+        padding-top: 4rem;
+        padding-bottom: 6rem;
+
+        .header {
+            font-size: 2.9rem;
+            text-align: center;
+            padding-bottom: 2rem;
+            color: white;
+        }
+
+        @include breakpoint(smallest) {
+            padding: 3rem;
+        }
+
+        @include breakpoint(formobile) {
+            .header {
+                font-size: 2.2rem;
+            }
+        }
+    }
+
+    .header {
+        text-align: center;
+        font-size: 2.9rem;
+        flex-grow: 0;
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+        margin-top: 1.5rem;
+
+        @include breakpoint(smallest) {
+            font-size: 2.4rem;  
+        }
+    }
+}
+
+#about{
+    padding: 4rem;
+    padding-top: 3rem;
+    background: url("/img/about1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: -10px;
+    background-position-x: 15rem;
+
+    @include breakpoint(huge) {
+        background-position-x: 7rem;
+    }
+
+    @include breakpoint(laptop) {
+        background: url("/img/about1-faded.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        .about-text {
+            width: 100% !important;
+        }
+    }
+
+    @include breakpoint(tablet) {
+        padding: 3rem;
+        background-size: cover;
+    }
+    @include breakpoint(smallest) {
+        padding: 3rem;
+    }
+
+    .column.about-img {
+        padding: 0rem;
+    }
+
+    .about-text, .about-img {
+        padding-top: 0rem;
+    }
+
+    #about-card {
+        width: 100%;
+        padding: 0rem;
+
+        // /* Style only for Google Chrome/Opera */
+        // @media screen and (-webkit-min-device-pixel-ratio:0) {
+        //     @include breakpoint(huge) {
+        //         width: 50%;
+        //         display: inline-flex;
+        //     }
+
+        //     @include breakpoint(laptop) {
+        //         width: 50%;
+        //         display: inline-flex;
+        //     }
+        // }
+
+        /* Style only for Mozilla Firefox */
+        @-moz-document url-prefix() {
+        }
+
+        @include breakpoint(smallest) {
+            width: 100%;
+            display: block;
+        }
+
+        @include breakpoint(formobile) {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    p:nth-child(1) {
+        font-size: 1.3rem;
+        font-weight: 900;
+
+        @include breakpoint(smallest) {
+            font-size: 1rem;
+        }
+    }
+
+    p {
+        font-size: 1.1rem;
+        flex-grow: 0;
+        -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+
+        @include breakpoint(smallest) {
+            font-size: .9rem;
+        }
+    }
+}
+
+/////////////
+// CONTACT //
+/////////////
+
+#contact-wrapper {
+    background: url('/img/tali-drawing.png');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-x: 46rem;
+
+    @include breakpoint(laptop) {
+        background-position-x: 39rem;
+    }
+
+    @include breakpoint(tablet) {
+        background-position-x: 31rem;
+    }
+
+    @include breakpoint(smallest) {
+        background: #fff;
+    }
+
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 650px;
+
+        @include breakpoint(smallest) {
+            min-height: 730px;
+        }
+
+        @include breakpoint(laptop) {
+            min-height: 700px;
+        }
+
+        @include breakpoint(formobile) {
+            min-height: 740px;
+        }
+    }
+
+    #contact-form {
+        display: block;
+        padding: 6rem;
+        padding-top: 2rem;
+    }
+
+    .header {
+        text-align: center;
+        font-size: 2.9rem;
+        padding-top: 4rem;
+        padding-bottom: 0;
+    }
+
+    .field {
+        padding-top: 1rem;
+    }
+}
+///////////////
+// TUTORIALS //
+///////////////
+
+#tutorials {
+    padding: 5rem;
+
+    .header {
+        font-size: 2.9rem;
+        // text-align: center;
+
+        @include breakpoint(formobile) {
+            font-size: 1.3rem;
+        }
+    }
+    h3 {
+        padding-bottom: 4rem;
+        font-weight: 400;
+
+        @include breakpoint(formobile) {
+            font-size: 1rem;
+            padding-bottom: 2rem;
+        }
+    }
+
+    @include breakpoint(formobile) {
+        padding: 2.3rem;
+
+        h2 {
+            font-size: 1.2rem;
+        }
+    }
+
+    .row > .column:first-child {
+        padding-bottom: 2rem;
+    }
+}
+/////////////
+// BUNDLES //
+/////////////
+
+#lesson-bundles {
+    .ui.header {
+        font-size: 2.9rem;
+    }
+    p {
+        font-size: 1.3rem;
+        padding-bottom: 2rem;
+    }
+
+    padding: 3rem;
+}
+
+/////////////////////////
+// BOOK BUNDLE LESSONS //
+/////////////////////////
+
+#book-bundle-lesson-container {
+    padding: 3rem;
+    text-align: center;
+
+    button {
+        padding: 3rem;
+        margin: 1rem;
+        font-size: 2rem;
+    }
+
+    .ui.header {
+        font-size: 2.9rem;
+        margin-bottom: 3rem;
+    }
+}
+
+
+///////////
+// BLOGS //
+///////////
+
+#blog-wrapper {
+    @include breakpoint(tablet) {
+        padding: 3rem;
+    }
+
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin: 0 auto;
+    max-width: 800px;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        text-align: center;
+        display: block;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+// RESPONSIVE IFRAME
+
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+
+  @include breakpoint(tablet) {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  @include breakpoint(smallest) {
+    width: 100%;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+  }
+} 
+
+// HELPER CSS
+
+#main-background {
+    .tablet-display-none {
+        @include breakpoint(tablet) {
+            display: none;
+        }
+    }
+}
