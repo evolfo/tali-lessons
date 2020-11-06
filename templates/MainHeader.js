@@ -84,13 +84,13 @@ class MainHeader extends React.Component {
               </a>
             </Link>
             <Link 
-              href="/book-lesson"
-              name="lessons"
-              active={activeItem === "lessons"}
+              href="/book-bundle"
+              name="store"
+              active={activeItem === "store"}
               onClick={this.handleMenuItemClick}
             >
               <a>
-                Lessons
+                Store
               </a>
             </Link>
             <Link 
