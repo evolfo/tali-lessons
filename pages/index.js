@@ -18,6 +18,21 @@ const Home = () => {
         <meta property="og:description" content="Looking to learn the recorder? Tali Rubinstein teaches online recorder lessons to all skill levels and age groups, from beginners to advanced students." />
         <meta property="og:url" content="https://www.talirecorderlessons.com" />
         <meta property="og:image" content="/img/background1.jpg" />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=UA-162281626-1"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'UA-162281626-1');
+              `,
+          }}
+        />
       </Head>
       <HomePage />
     </>
