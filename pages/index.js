@@ -18,6 +18,9 @@ const Home = () => {
         <meta property="og:description" content="Looking to learn the recorder? Tali Rubinstein teaches online recorder lessons to all skill levels and age groups, from beginners to advanced students." />
         <meta property="og:url" content="https://www.talirecorderlessons.com" />
         <meta property="og:image" content="/img/background1.jpg" />
+        
+        <link rel="shortcut icon" href="/img/favicon.ico" />
+        <link rel="canonical" href="https://www.talirecorderlessons.com" />
 
         <script
           async
