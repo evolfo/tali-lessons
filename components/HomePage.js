@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import { Grid, GridColumn, Header, Embed} from "semantic-ui-react";
 import Carousel from "semantic-ui-carousel-react";
 import elements from '../utilities/carousel-elements'
@@ -27,7 +27,9 @@ class HomePage extends React.Component {
             </p>
             <p>Book a free 15 minute trial lesson now!</p>
             <Link href="/book-lesson">
-              <LessonButton />
+              <a>
+                <LessonButton />
+              </a>
             </Link>
           </GridColumn>
         </Grid>
