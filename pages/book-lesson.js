@@ -34,16 +34,6 @@ class BookLesson extends React.Component {
         <GridRow columns={2}>
           <div className="booking-container">
             <GridColumn>
-              {/* <div className="booking-iframe-container">
-                    <iframe
-                      onClick={resizeIframe}
-                      src="https://www.canumeet.com/talirecorderlessons"
-                      width="100%"
-                      height="100vh"
-                      scrolling="no"
-                    />
-                  </div> */}
-
               <Card
                 fluid={true}
                 data-appointlet-organization="tali-recorder-lessons"

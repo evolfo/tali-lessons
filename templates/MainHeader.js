@@ -17,6 +17,14 @@ class MainHeader extends React.Component {
     this.setState({ activeItem: "home"})
   }
 
+  handleBookLessonClick = () => {
+    // Forcing a refresh since the appointlet embed wasn't working otherwise
+    window.location.href = "https://www.talirecorderlessons.com/book-lesson"
+    setTimeout(() => {
+      window.location.reload();
+    }, 200) 
+  }
+
   componentDidMount() {
     const len = document.location.href.split('/').length
     const activeItem = document.location.href.split('/')[len - 1]
@@ -104,7 +112,7 @@ class MainHeader extends React.Component {
               </a>
             </Link>
             <Link href="/book-lesson">
-             <a>
+             <a onClick={this.handleBookLessonClick}>
               <LessonButton />
              </a>
             </Link>
