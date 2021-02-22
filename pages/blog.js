@@ -1,36 +1,55 @@
-import React from "react";
+import React from 'react'
+import BlogLayout from '../components/BlogLayout'
+import BlogList from '../components/BlogList'
+import matter from 'gray-matter'
 
-class Blog extends React.Component {
-
-    state = {
-        blogs: []
-    }
-
-    componentDidMount() {
-        // const content = import("../../posts/${slug}.md")
-        // Have to do a basic for loop because babel-plugin-wildcard
-        // is returning something that is not quite a normal object.
-        // Can't call Blogs.values, can't do normal object stuff
-        // for (let i = 1; i < 500; i++) {
-        //     let blogNum = "Blog" + i;
-            
-        //     if (blog1[blogNum]) {
-        //         this.setState(prevState => ({
-        //             blogs: [...prevState.blogs, blog1[blogNum]],
-        //         }));
-        //     } else {
-        //         break;
-        //     }
-        // }
-    }
-
-    render() {
-        return (
-            <div id="blog-wrapper">
-                <h1>Coming Soon!</h1>
-            </div>
-        )
-    }
+const Blog = props => {
+    return (
+        <BlogLayout
+            pathname="/"
+            siteTitle={props.title}
+            siteDescription={props.description}
+            >
+            <section>
+                <BlogList allBlogs={props.allBlogs} />
+            </section>
+        </BlogLayout>
+    )
 }
 
 export default Blog
+
+export async function getStaticProps() {
+  const siteConfig = await import(`../data/config.json`)
+  //get posts & context from folder
+  const posts = (context => {
+    const keys = context.keys()
+    const values = keys.map(context)
+
+    const data = keys.map((key, index) => {
+      // Create slug from filename
+      const slug = key
+        .replace(/^.*[\\\/]/, '')
+        .split('.')
+        .slice(0, -1)
+        .join('.')
+      const value = values[index]
+      // Parse yaml metadata & markdownbody in document
+      const document = matter(value.default)
+      return {
+        frontmatter: document.data,
+        markdownBody: document.content,
+        slug,
+      }
+    })
+    return data
+  })(require.context('../posts', true, /\.md$/))
+
+  return {
+    props: {
+      allBlogs: posts,
+      title: siteConfig.default.title,
+      description: siteConfig.default.description,
+    },
+  }
+}

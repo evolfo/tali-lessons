@@ -87,6 +87,10 @@ html, body {
     a {
         color: white;
         padding: 1rem;
+
+        @include breakpoint(smallest) {
+            padding: 0;
+        }
     }
 
     > .menu {
@@ -105,11 +109,14 @@ html, body {
     }
 
     .item > .content {
-        padding: 2rem;
+        padding: .5rem;
 
         @include breakpoint(laptop) {
             padding: 0rem;
             padding-bottom: 1rem;
+        }
+        @include  breakpoint(formobile) {
+            width: 45px;
         }
     }
 
@@ -720,6 +727,80 @@ html, body {
 ///////////
 // BLOGS //
 ///////////
+
+.blog-layout {
+    .list {
+        list-style-type: none;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 1rem;
+
+        @include breakpoint(smallest) {
+            padding: 2.5rem;
+        }
+
+        li {
+            display: flex;
+
+            @include breakpoint(smallest) {
+                display: block;
+
+                h2, h3 {
+                    padding-top: .3rem;
+                    margin: 0;
+                }
+            }
+        }
+
+        > a {
+            padding: 1rem;
+        }
+
+        .hero_image {
+            img {
+                max-width: 300px;
+
+                @include breakpoint(smallest) {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+
+    .blog__info {
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        button {
+            padding: .5rem;
+            border: 1px solid aliceblue;
+        }
+    }
+
+    .blog { 
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 2rem;
+
+        .blog__hero {
+            margin: 0;
+
+            img {
+                max-width: 100%;
+            }
+        }
+
+        .blog__info {
+            padding: 0;
+
+            h1, h3 {margin: 0; padding-bottom: .5rem;}
+        }
+    }
+}
+
+.back-button {
+    font-size: 17px;
+}
 
 #blog-wrapper {
     @include breakpoint(tablet) {

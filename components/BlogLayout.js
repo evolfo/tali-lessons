@@ -1,24 +1,20 @@
-import Header from "./Header";
-import Meta from './Meta'
+import React from 'react'
 
-export default function Layout(props) {
+export default function BlogLayout(props) {
   return (
-    <section
-    className={`layout ${
-      props.pathname == "info" &&
-      "info_page"}`
-    }
-    style={{
-      backgroundColor: `${props.bgColor && props.bgColor}`,
-      color: `${props.pathname == "info" && 'white'}`
-    }}
-  >
-    <Meta
-      siteTitle={props.siteTitle}
-      siteDescription={props.siteDescription}
-    />
-    <Header siteTitle={props.siteTitle} />
-    <div className="content">{props.children}</div>
-  </section>
+    <>
+      <section
+        className={`blog-layout ${
+          props.pathname == "info" &&
+          "info_page"}`
+        }
+        style={{
+          backgroundColor: `${props.bgColor && props.bgColor}`,
+          color: `${props.pathname == "info" && 'white'}`
+        }}
+      >
+      <div className="content">{props.children}</div>
+      </section>
+    </>
   );
 }

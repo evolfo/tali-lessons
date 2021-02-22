@@ -50,7 +50,7 @@ const Footer = () => {
           </List.Content>
         </List.Item>
       </List>
-      <Header>Copyright © 2020 Tali Rubinstein</Header>
+      <Header>Copyright © 2021 Tali Rubinstein</Header>
     </Segment>
   );
 }
