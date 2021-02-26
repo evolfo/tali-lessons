@@ -2,6 +2,7 @@ import * as React from 'react'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import { NextSeo } from 'next-seo';
+import {Embed} from 'semantic-ui-react'
 const glob = require('glob')
 
 import BlogLayout from '../../components/BlogLayout'
@@ -37,10 +38,22 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
         <article className="blog">
           <a href="/blog" className="back-button"> &lt;Back</a>
           <figure className="blog__hero">
-            <img
-              src={frontmatter.hero_image}
-              alt={`blog_hero_${frontmatter.title}`}
-            />
+            {frontmatter.video_link ? 
+              <Embed
+                  width="560"
+                  height="315"
+                  placeholder={frontmatter.video_image}
+                  id={frontmatter.video_link}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  source="youtube"
+                /> :
+              <img
+                src={frontmatter.hero_image}
+                alt={`blog_hero_${frontmatter.title}`}
+              />
+            }
           </figure>
           <div className="blog__info">
             <h1>{frontmatter.title}</h1>

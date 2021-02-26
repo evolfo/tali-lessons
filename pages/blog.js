@@ -4,6 +4,8 @@ import BlogList from '../components/BlogList'
 import matter from 'gray-matter'
 
 const Blog = props => {
+    console.log(props.allBlogs)
+    console.log(props.allBlogs.reverse())
     return (
         <BlogLayout
             pathname="/"
@@ -11,7 +13,7 @@ const Blog = props => {
             siteDescription={props.description}
             >
             <section>
-                <BlogList allBlogs={props.allBlogs} />
+                <BlogList allBlogs={props.allBlogs.reverse()} />
             </section>
         </BlogLayout>
     )

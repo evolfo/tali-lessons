@@ -12,11 +12,15 @@ const BlogList = ({ allBlogs }) => {
     return date.toDateString().slice(4)
   }
 
+  function sortAllBlogsByDate() {
+    return allBlogs.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+  }
+
   return (
     <>
       <ul className="list">
         {allBlogs.length > 0 &&
-          allBlogs.map(post => (
+          sortAllBlogsByDate().map(post => (
             <>
               <Link key={post.slug} href={{ pathname: `/blog/${post.slug}` }}>
                 <a>
