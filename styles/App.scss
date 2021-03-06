@@ -744,7 +744,7 @@ html, body {
             max-height: 188px;
 
             @include breakpoint(smallest) {
-                display: inline list-item;
+                display: inline;
 
                 h2, h3 {
                     padding-top: .3rem;

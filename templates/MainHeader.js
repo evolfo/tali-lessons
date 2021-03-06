@@ -156,6 +156,11 @@ class MainHeader extends React.Component {
                 <DropdownItem text="Blog" />
                </a>
               </Link>
+              <Link href="/store">
+               <a>
+                <DropdownItem text="Store" />
+               </a>
+              </Link>
               <Link href="/contact">
                <a>
                 <DropdownItem text="Contact" />
