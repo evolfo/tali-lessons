@@ -22,7 +22,7 @@ class HomePage extends React.Component {
               Ever wondered – “Can I actually play that on a&nbsp;recorder?”
             </p>
             <p className="centered-text">
-              The answer is – yes. NYC based Award-winning recorder player Tali
+              The answer is – yes. California based Award-winning recorder player Tali
               Rubinstein will teach you&nbsp;how.
             </p>
             <p>Book a free 15 minute trial lesson now!</p>
