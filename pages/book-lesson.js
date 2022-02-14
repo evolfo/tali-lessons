@@ -42,7 +42,7 @@ class BookLesson extends React.Component {
                 <Card.Content>
                   <Card.Header>Book a Single Lesson</Card.Header>
                   <Card.Description>
-                    Lessons can be 15 (free trial), 30, 45, or 60 minutes long.
+                    Lessons can be 30, 45, or 60 minutes long.
                   </Card.Description>
                 </Card.Content>
               </Card>

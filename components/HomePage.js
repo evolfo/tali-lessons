@@ -25,7 +25,6 @@ class HomePage extends React.Component {
               The answer is – yes. California based Award-winning recorder player Tali
               Rubinstein will teach you&nbsp;how.
             </p>
-            <p>Book a free 15 minute trial lesson now!</p>
             <Link href="/book-lesson">
               <a>
                 <LessonButton />
