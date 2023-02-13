@@ -1,182 +1,159 @@
-import React from 'react'
-import { Menu, Segment, Image, Dropdown, DropdownMenu, DropdownItem } from 'semantic-ui-react'
-import Link from 'next/link'
+import React, { useEffect, useState } from "react";
+import {
+  Menu,
+  Segment,
+  Image,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+} from "semantic-ui-react";
+import Link from "next/link";
 
-import LessonButton from '../components/LessonButton'
+import LessonButton from "../components/LessonButton";
 
-class MainHeader extends React.Component {
+const MainHeader = () => {
+  const [activeItem, setActiveItem] = useState("home");
 
-  state = { activeItem: "home" }
-
-  handleMenuItemClick = (e, { name }) => {
-    this.setState({ activeItem: name })
-    console.log(name)
+  const handleMenuItemClick = (e, { name }) => {
+    if (name === "store") {
+      window.location.href = "https://www.talirecorderlessons.com/book-bundle";
+      setTimeout(() => {
+        window.location.reload();
+      }, 200);
+    }
+    this.setState({ activeItem: name });
   };
 
-  handleHeaderImgClick = (e) => {
-    this.setState({ activeItem: "home"})
-  }
+  const handleHeaderImgClick = (e) => {
+    setActiveItem("home");
+  };
 
-  handleBookLessonClick = () => {
-    // Forcing a refresh since the appointlet embed wasn't working otherwise
-    window.location.href = "https://www.talirecorderlessons.com/book-lesson"
-    setTimeout(() => {
-      window.location.reload();
-    }, 200) 
-  }
-
-  componentDidMount() {
-    const len = document.location.href.split('/').length
-    const activeItem = document.location.href.split('/')[len - 1]
+  useEffect(() => {
+    const len = document.location.href.split("/").length;
+    const item = document.location.href.split("/")[len - 1];
     if (activeItem) {
-      this.setState({activeItem})
+      setActiveItem(item);
     } else {
-      this.setState({activeItem: "home"})
+      setActiveItem("home");
     }
-  }
+  }, []);
 
-  render() {
-    const { activeItem } = this.state;
-
-    return (
-      <Segment className="navbar" inverted>
-        <Menu inverted pointing secondary>
-          <div className="hide-header">
-            <Link 
-              href="/" 
+  return (
+    <Segment className="navbar" inverted>
+      <Menu inverted pointing secondary>
+        <div className="hide-header">
+          <Link
+            href="/"
+            name="home"
+            active={activeItem === "home"}
+            onClick={handleMenuItemClick}
+          >
+            <a>Home</a>
+          </Link>
+          <Link
+            href="/about"
+            name="about"
+            active={activeItem === "about"}
+            onClick={handleMenuItemClick}
+          >
+            <a>About</a>
+          </Link>
+          <Link
+            href="/tutorials"
+            name="tutorials"
+            active={activeItem === "tutorials"}
+            onClick={handleMenuItemClick}
+          >
+            <a>Tutorials</a>
+          </Link>
+          <Link href="/">
+            <Image
+              alt="Tali's Logo"
               name="home"
               active={activeItem === "home"}
-              onClick={this.handleMenuItemClick}>
-              <a>
-                Home
-              </a>
-            </Link>
-            <Link 
-              href="/about"
-              name="about"
-              active={activeItem === "about"}
-              onClick={this.handleMenuItemClick}
-            >
-              <a>
-                About
-              </a>
-            </Link>
-            <Link 
-              href="/tutorials"
-              name="tutorials"
-              active={activeItem === "tutorials"}
-              onClick={this.handleMenuItemClick}
-            >
-             <a>
-              Tutorials
-             </a>
-            </Link>
-            <Link href="/">
-              <Image
-                alt="Tali's Logo"
-                name="home"
-                active={activeItem === "home"}
-                onClick={this.handleHeaderImgClick}
-                src="/img/talilogo.png"
-                centered
-              />
-            </Link>
-            <Link 
-              href="/blog"
-              name="blog"
-              active={activeItem === "blog"}
-              onClick={this.handleMenuItemClick}
-            >
-              <a>
-                Blog
-              </a>
-            </Link>
-            <Link 
-              href="/book-bundle"
-              name="store"
-              active={activeItem === "store"}
-              onClick={this.handleMenuItemClick}
-            >
-              <a>
-                Store
-              </a>
-            </Link>
-            <Link 
-              href="/contact"
-              name="contact"
-              active={activeItem === "contact"}
-              onClick={this.handleMenuItemClick}
-            >
-              <a>
-                Contact
-              </a>
-            </Link>
-            <Link href="/book-lesson">
-             <a onClick={this.handleBookLessonClick}>
-              <LessonButton />
-             </a>
-            </Link>
-          </div>
-          <Link aria-label="Homepage" href="/">
-            <a>
-              <Image
-                className="header-burger"
-                name="home"
-                onClick={this.handleHeaderImgClick}
-                src="/img/talilogo.png"
-                centered
-                alt="header burger"
-              />
-            </a>
+              onClick={handleHeaderImgClick}
+              src="/img/talilogo.png"
+              centered
+            />
           </Link>
-          <Dropdown
-            aria-label="Header burger"
-            alt="Header burger"
-            className="header-burger"
-            icon="bars"
+          <Link
+            href="/blog"
+            name="blog"
+            active={activeItem === "blog"}
+            onClick={handleMenuItemClick}
           >
-            <DropdownMenu>
-              <Link href="/">
-               <a>
+            <a>Blog</a>
+          </Link>
+          <a href="/book-bundle" name="store" onClick={handleMenuItemClick}>
+            Store
+          </a>
+          <Link
+            href="/contact"
+            name="contact"
+            active={activeItem === "contact"}
+            onClick={handleMenuItemClick}
+          >
+            <a>Contact</a>
+          </Link>
+          <a href="/book-bundle">
+            <LessonButton />
+          </a>
+        </div>
+        <Link aria-label="Homepage" href="/">
+          <a>
+            <Image
+              className="header-burger"
+              name="home"
+              onClick={handleHeaderImgClick}
+              src="/img/talilogo.png"
+              centered
+              alt="header burger"
+            />
+          </a>
+        </Link>
+        <Dropdown
+          aria-label="Header burger"
+          alt="Header burger"
+          className="header-burger"
+          icon="bars"
+        >
+          <DropdownMenu>
+            <Link href="/">
+              <a>
                 <DropdownItem text="Home" />
-               </a>
-              </Link>
-              <Link href="/tutorials">
-               <a>
+              </a>
+            </Link>
+            <Link href="/tutorials">
+              <a>
                 <DropdownItem text="Tutorials" />
-               </a>
-              </Link>
-              <Link href="/about">
-               <a>
+              </a>
+            </Link>
+            <Link href="/about">
+              <a>
                 <DropdownItem text="About" />
-               </a>
-              </Link>
-              <Link href="/blog">
-               <a>
+              </a>
+            </Link>
+            <Link href="/blog">
+              <a>
                 <DropdownItem text="Blog" />
-               </a>
-              </Link>
-              <Link href="/book-bundle">
-               <a>
-                <DropdownItem text="Store" />
-               </a>
-              </Link>
-              <Link href="/contact">
-               <a>
+              </a>
+            </Link>
+            <a href="/book-bundle">
+              <DropdownItem text="Store" />
+            </a>
+            <Link href="/contact">
+              <a>
                 <DropdownItem text="Contact" />
-               </a>
-              </Link>
-              <Link href="/book-lesson">
-               <a>
-                <DropdownItem className="timify-button" text="Book a Lesson" />
-               </a>
-              </Link>
-            </DropdownMenu>
-          </Dropdown>
-        </Menu>
-      </Segment>
-    );
-  }
+              </a>
+            </Link>
+            <a href="/book-bundle">
+              <DropdownItem className="timify-button" text="Book a Lesson" />
+            </a>
+          </DropdownMenu>
+        </Dropdown>
+      </Menu>
+    </Segment>
+  );
 };
 
-export default MainHeader
+export default MainHeader;

@@ -22,13 +22,13 @@ class BookBundleLesson extends React.Component {
     return (
       <Container id="book-bundle-lesson-container" className="bundle-container">
         <Header>Book a lesson!</Header>
-        <Button
+        {/* <Button
           data-appointlet-organization="tali-recorder-lessons"
           data-appointlet-service="376666"
           primary
         >
           30 Minutes
-        </Button>
+        </Button> */}
         <Button
           data-appointlet-organization="tali-recorder-lessons"
           data-appointlet-service="376670"

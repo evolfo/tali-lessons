@@ -4,29 +4,12 @@ import Link from 'next/link'
 
 // This is a class to use ComponentDidMount for a loading of a script for the booking embed
 class BookLesson extends React.Component {
-
-  state = {
-    script: ""
-  }
-
-  componentDidMount = () => {
-    const script = document.createElement("script");
-
-    script.src = "https://www.appointletcdn.com/loader/loader.min.js";
-    script.async = true;
-    script.defer = true;
-
-    this.setState({ script })
-
-    document.body.appendChild(script);
-  }
-
   handleBundleClick = () => {
     window.location.href = "https://www.talirecorderlessons.com/book-bundle"
     setTimeout(() => {
       window.location.reload();
     }, 200) 
-  } 
+  }
 
   render() {
     return (
