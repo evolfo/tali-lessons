@@ -41,7 +41,7 @@ const EcwidEmbed = () => {
       <Container id="lesson-bundles" className="bundle-container">
         <Header>Lessons and Sheet Music</Header>
         <p>
-          Get 5% off 5 lessons, 8% off 10 lessons, or 12% off 20 lessons by
+          Get 5% off 5 lessons, 7% off 10 lessons, or 10% off 20 lessons by
           choosing one of the options below.
           <br />
           (The prices listed are for 5-lesson bundles, click on a box for more

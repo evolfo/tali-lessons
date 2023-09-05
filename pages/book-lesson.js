@@ -36,7 +36,7 @@ class BookLesson extends React.Component {
                   <Image src="/img/recorders.jpg" wrapped ui={false} />
                   <Card.Content>
                     <Card.Header>Purchase a Lesson Bundle</Card.Header>
-                    <Card.Description>Get up to 12% off!</Card.Description>
+                    <Card.Description>Get up to 10% off!</Card.Description>
                   </Card.Content>
                 </Card>
               </Link>
