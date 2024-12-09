@@ -43,7 +43,7 @@
     "@babel/runtime": "^7.9.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-wildcard": "^6.0.0",
-    "marked": "^1.1.1",
+    "marked": "^4.0.10",
     "react-router-sitemap": "^1.2.0",
     "react-router-sitemap-builder": "^1.1.1",
     "sass": "^1.26.10"
