@@ -9,7 +9,7 @@ class Contact extends React.Component {
             <Container id="contact-wrapper">
               <Grid>
                 <GridRow>
-                  <GridColumn mobile={16} tablet={11} computer={10}>
+                  <GridColumn mobile={20} tablet={12} computer={12}>
                     <div className="responsive-iframe">
                       <iframe
                         src="https://docs.google.com/forms/d/e/1FAIpQLScxhYHXfEXjIkT0uO3VhZcGjNhOtQBUgvT_x0Pg-L4L2zk_2A/viewform?embedded=true"
