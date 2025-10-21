@@ -35,7 +35,11 @@ export async function getStaticProps() {
         .join(".");
       const value = values[index];
       // Parse yaml metadata & markdownbody in document
-      const document = matter(value.default);
+      let content = value.default || value;
+      if (typeof content !== 'string' && content?.toString) {
+        content = content.toString('utf-8');
+      }
+      const document = matter(content);
       return {
         frontmatter: document.data,
         markdownBody: document.content,

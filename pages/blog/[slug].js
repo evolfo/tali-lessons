@@ -60,7 +60,7 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
             <h3>{reformatDate(frontmatter.date)}</h3>
           </div>
           <div className="blog__body">
-            <ReactMarkdown source={markdownBody} />
+            <ReactMarkdown>{markdownBody}</ReactMarkdown>
           </div>
         </article>
       </BlogLayout>
@@ -72,7 +72,11 @@ export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params
   const content = await import(`../../posts/${slug}.md`)
   const config = await import(`../../data/config.json`)
-  const data = matter(content.default)
+  let markdownContent = content.default || content;
+  if (typeof markdownContent !== 'string' && markdownContent?.toString) {
+    markdownContent = markdownContent.toString('utf-8');
+  }
+  const data = matter(markdownContent)
 
   return {
     props: {

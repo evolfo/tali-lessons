@@ -44,33 +44,28 @@ const MainHeader = () => {
         <div className="hide-header">
           <Link
             href="/"
-            name="home"
-            active={activeItem === "home"}
             onClick={handleMenuItemClick}
+            className={activeItem === "home" ? "active" : ""}
           >
-            <a>Home</a>
+            Home
           </Link>
           <Link
             href="/about"
-            name="about"
-            active={activeItem === "about"}
             onClick={handleMenuItemClick}
+            className={activeItem === "about" ? "active" : ""}
           >
-            <a>About</a>
+            About
           </Link>
           <Link
             href="/tutorials"
-            name="tutorials"
-            active={activeItem === "tutorials"}
             onClick={handleMenuItemClick}
+            className={activeItem === "tutorials" ? "active" : ""}
           >
-            <a>Tutorials</a>
+            Tutorials
           </Link>
           <Link href="/">
             <Image
               alt="Tali's Logo"
-              name="home"
-              active={activeItem === "home"}
               onClick={handleHeaderImgClick}
               src="/img/talilogo.png"
               centered
@@ -78,38 +73,33 @@ const MainHeader = () => {
           </Link>
           <Link
             href="/blog"
-            name="blog"
-            active={activeItem === "blog"}
             onClick={handleMenuItemClick}
+            className={activeItem === "blog" ? "active" : ""}
           >
-            <a>Blog</a>
+            Blog
           </Link>
-          <a href="/book-bundle" name="store" onClick={handleMenuItemClick}>
+          <a href="/book-bundle" onClick={handleMenuItemClick}>
             Store
           </a>
           <Link
             href="/contact"
-            name="contact"
-            active={activeItem === "contact"}
             onClick={handleMenuItemClick}
+            className={activeItem === "contact" ? "active" : ""}
           >
-            <a>Contact</a>
+            Contact
           </Link>
           <a href="/book-bundle">
             <LessonButton />
           </a>
         </div>
         <Link aria-label="Homepage" href="/">
-          <a>
-            <Image
-              className="header-burger"
-              name="home"
-              onClick={handleHeaderImgClick}
-              src="/img/talilogo.png"
-              centered
-              alt="header burger"
-            />
-          </a>
+          <Image
+            className="header-burger"
+            onClick={handleHeaderImgClick}
+            src="/img/talilogo.png"
+            centered
+            alt="header burger"
+          />
         </Link>
         <Dropdown
           aria-label="Header burger"
@@ -119,32 +109,22 @@ const MainHeader = () => {
         >
           <DropdownMenu>
             <Link href="/">
-              <a>
-                <DropdownItem text="Home" />
-              </a>
+              <DropdownItem text="Home" />
             </Link>
             <Link href="/tutorials">
-              <a>
-                <DropdownItem text="Tutorials" />
-              </a>
+              <DropdownItem text="Tutorials" />
             </Link>
             <Link href="/about">
-              <a>
-                <DropdownItem text="About" />
-              </a>
+              <DropdownItem text="About" />
             </Link>
             <Link href="/blog">
-              <a>
-                <DropdownItem text="Blog" />
-              </a>
+              <DropdownItem text="Blog" />
             </Link>
             <a href="/book-bundle">
               <DropdownItem text="Store" />
             </a>
             <Link href="/contact">
-              <a>
-                <DropdownItem text="Contact" />
-              </a>
+              <DropdownItem text="Contact" />
             </Link>
             <a href="/book-bundle">
               <DropdownItem className="timify-button" text="Book a Lesson" />

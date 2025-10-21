@@ -21,30 +21,26 @@ const BlogList = ({ allBlogs }) => {
       <ul className="list">
         {allBlogs.length > 0 &&
           sortAllBlogsByDate().map(post => (
-            <>
-              <Link key={post.slug} href={{ pathname: `/blog/${post.slug}` }}>
-                <a>
-                  <li>
-                    <div className="hero_image">
-                      <img
-                        src={post.frontmatter.hero_image}
-                        alt={post.frontmatter.hero_image}
-                      />
-                    </div>
-                    <div className="blog__info">
-                      <h2>{post.frontmatter.title}</h2>
-                      <h3> {reformatDate(post.frontmatter.date)}</h3>
-                      <p>
-                        <ReactMarkdown
-                          source={truncateSummary(post.markdownBody)}
-                        />
-                      </p>
-                      <button>Click to read more</button>
-                    </div>
-                  </li>
-                </a>
+            <li key={post.slug}>
+              <Link href={{ pathname: `/blog/${post.slug}` }} style={{ display: 'flex' }}>
+                <span className="hero_image">
+                  <img
+                    src={post.frontmatter.hero_image}
+                    alt={post.frontmatter.hero_image}
+                  />
+                </span>
+                <span className="blog__info">
+                  <h2>{post.frontmatter.title}</h2>
+                  <h3> {reformatDate(post.frontmatter.date)}</h3>
+                  <div>
+                    <ReactMarkdown>
+                      {truncateSummary(post.markdownBody)}
+                    </ReactMarkdown>
+                  </div>
+                  <button>Click to read more</button>
+                </span>
               </Link>
-            </>
+            </li>
           ))}
       </ul>
     </>

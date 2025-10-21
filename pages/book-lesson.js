@@ -31,7 +31,7 @@ class BookLesson extends React.Component {
               </Card>
             </GridColumn>
             <GridColumn>
-              <Link href="/book-bundle" onClick={this.handleBundleClick}>
+              <Link href="/book-bundle" onClick={this.handleBundleClick} style={{ display: 'block' }}>
                 <Card fluid={true}>
                   <Image src="/img/recorders.jpg" wrapped ui={false} />
                   <Card.Content>

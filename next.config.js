@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   i18n: {
     locales: ['en-US'],
     defaultLocale: 'en-US'
@@ -6,8 +7,10 @@ module.exports = {
   webpack: function(config) {
     config.module.rules.push({
       test: /\.md$/,
-      use: 'raw-loader',
+      type: 'asset/source',
     })
     return config
   },
 }
+
+module.exports = nextConfig

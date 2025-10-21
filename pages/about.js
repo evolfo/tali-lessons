@@ -1,12 +1,12 @@
 import React from 'react'
-import { Grid, GridColumn, Image, Header, Container, Embed } from "semantic-ui-react";
+import { Grid, GridColumn, Image, Header, Container } from "semantic-ui-react";
 
 const About = () => {
     return (
       <div id="about-wrapper">
         <Grid centered id="about">
           <GridColumn
-            stretched="true"
+            stretched
             className="about-img"
             tablet={16}
             computer={6}
@@ -17,7 +17,7 @@ const About = () => {
             /> */}
           </GridColumn>
           <GridColumn
-            stretched="true"
+            stretched
             tablet={12}
             computer={7}
             className="about-text"
@@ -66,7 +66,7 @@ const About = () => {
             </p>
           </GridColumn>
           <GridColumn
-            stretched="true"
+            stretched
             className="about-img"
             tablet={16}
             computer={4}
@@ -75,12 +75,15 @@ const About = () => {
         <div className="about-vid-wrapper">
           <Container className="about-vid">
             <Header>Tali with her Band</Header>
-            <Embed
-              id="lMFN3UKNBh8"
-              placeholder="/img/placeholder-vid.jpg"
-              source="youtube"
-              alt="Tali with her band."
-            />
+            <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/lMFN3UKNBh8"
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Tali with her band."
+              />
+            </div>
           </Container>
         </div>
       </div>
