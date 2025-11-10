@@ -3,16 +3,24 @@ import {
   Menu,
   Segment,
   Image,
+  Icon,
   Dropdown,
   DropdownMenu,
   DropdownItem,
+  Button,
+  Label,
 } from "semantic-ui-react";
 import Link from "next/link";
+import { useShoppingCart } from "use-shopping-cart";
+import { useCartModal } from "../contexts/CartModalContext";
 
 import LessonButton from "../components/LessonButton";
+import ShoppingCart from "../components/ShoppingCart";
 
 const MainHeader = () => {
   const [activeItem, setActiveItem] = useState("home");
+  const { cartOpen, openCart, closeCart } = useCartModal();
+  const { cartCount } = useShoppingCart();
 
   const handleMenuItemClick = (e, { name }) => {
     if (name === "store") {
@@ -88,9 +96,15 @@ const MainHeader = () => {
           >
             Contact
           </Link>
-          <a href="/book-bundle">
-            <LessonButton />
-          </a>
+          <div className="header-buttons">
+            <a href="/book-bundle">
+              <LessonButton />
+            </a>
+            <Button className="cart-button" onClick={openCart}>
+              <Icon name="shopping bag" />
+              {cartCount > 0 && <Label color="red" floating circular>{cartCount}</Label>}
+            </Button>
+          </div>
         </div>
         <Link aria-label="Homepage" href="/">
           <Image
@@ -131,7 +145,12 @@ const MainHeader = () => {
             </a>
           </DropdownMenu>
         </Dropdown>
+        <Button className="cart-button-mobile" onClick={openCart}>
+          <Icon name="shopping bag" />
+          {cartCount > 0 && <Label color="red" floating circular>{cartCount}</Label>}
+        </Button>
       </Menu>
+      <ShoppingCart open={cartOpen} onClose={closeCart} />
     </Segment>
   );
 };

@@ -1,0 +1,19 @@
+export const products = {
+  // 60 Minute Lessons (Base: $105.00) (DO NOT EDIT the id, that is the price_id from Stripe)
+  lesson60_1: { id: 'lesson60_1', price_id: 'price_1SMe4UB6mafAcwtxfy6weWQl', name: '60 Minute Lesson', price: 10500, currency: 'USD', image: '/img/recorders.jpg', description: '', youtubeUrl: '' },
+  lesson60_5: { id: 'lesson60_5', price_id: 'price_1SRPMvB6mafAcwtxnONAG3HK', name: '5 x 60 Minute Lessons', price: 49875, currency: 'USD', image: '/img/recorders.jpg', description: '', youtubeUrl: '' },
+  lesson60_10: { id: 'lesson60_10', price_id: 'price_1SRPOAB6mafAcwtxPwn5bRlY', name: '10 x 60 Minute Lessons', price: 97650, currency: 'USD', image: '/img/recorders.jpg', description: '', youtubeUrl: '' },
+  lesson60_20: { id: 'lesson60_20', price_id: 'price_1SRPOjB6mafAcwtxst3YVRYc', name: '20 x 60 Minute Lessons', price: 189000, currency: 'USD', image: '/img/recorders.jpg', description: '', youtubeUrl: '' },
+
+  // 45 Minute Lessons (Base: $95.00)
+  lesson45_1: { id: 'lesson45_1', price_id: 'price_1SLIp6B6mafAcwtxtTDfNCHp', name: '45 Minute Lesson', price: 9500, currency: 'USD', image: '/img/recorders.jpg', description: '', youtubeUrl: '' },
+  // lesson45_5: { id: 'lesson45_5', name: '5 x 45 Minute Lessons', price: 45125, currency: 'USD', image: '/img/recorders.jpg', description: 'Bundle of 5 forty-five-minute lessons (5% off)' },
+  // lesson45_10: { id: 'lesson45_10', name: '10 x 45 Minute Lessons', price: 88350, currency: 'USD', image: '/img/recorders.jpg', description: 'Bundle of 10 forty-five-minute lessons (7% off)' },
+  // lesson45_20: { id: 'lesson45_20', name: '20 x 45 Minute Lessons', price: 171000, currency: 'USD', image: '/img/recorders.jpg', description: 'Bundle of 20 forty-five-minute lessons (10% off)' },
+
+  // Sheet Music - Update these IDs and prices based on your actual products
+  sheetMusic1: { id: 'sheetMusic1', price_id: 'price_1SMt0PB6mafAcwtxilZUkGCv', name: '"Hot Cross Buns & Variations" by Tali Rubinstein', price: 1000, currency: 'USD', image: '/img/sheet-music.jpg', description: 'Sheet music of Hot Cross Buns & Variations by Tali Rubinstein. Includes sheet music for recorder. You will receive an email with the chart shortly after a purchase is made.', youtubeUrl: 'https://www.youtube.com/embed/b1Me1HYalFw', pdfFile: 'hot-cross-buns.pdf' },
+  sheetMusic2: { id: 'sheetMusic2', price_id: 'price_1SMt0PB6mafAcwtxilZUkGCv', name: '"The Swimming Pool Song" by Tali Rubinstein', price: 1000, currency: 'USD', image: '/img/sheet-music.jpg', description: 'Sheet music of The Swimming Pool Song by Tali Rubinstein. Includes sheet music for recorder. You will receive an email with the chart shortly after a purchase is made.', youtubeUrl: 'https://www.youtube.com/embed/OZ-zJ7SUs5E', pdfFile: 'the-swimming-pool-song.pdf' },
+  sheetMusic3: { id: 'sheetMusic3', price_id: 'price_1SMt0PB6mafAcwtxilZUkGCv', name: '"Alone" by Tali Rubinstein', price: 1000, currency: 'USD', image: '/img/sheet-music.jpg', description: 'Sheet music of Alone by Tali Rubinstein. Includes sheet music for recorder. You will receive an email with the chart shortly after a purchase is made.', youtubeUrl: 'https://www.youtube.com/embed/JUGv3c79YCk', pdfFile: 'Alone.pdf' },
+  sheetMusic4: { id: 'sheetMusic4', price_id: 'price_1SMt0PB6mafAcwtxilZUkGCv', name: '"Tico Tico no Fubá" (arranged for recorder and piano)', price: 1000, currency: 'USD', image: '/img/sheet-music.jpg', description: 'Sheet music of "Tico Tico no Fubá" (arranged for recorder and piano) by Tali Rubinstein. You will receive an email with the chart shortly after a purchase is made.', youtubeUrl: 'https://www.youtube.com/embed/9n2s8mXo5jA', pdfFile: 'tico-tico-no-fuba.zip' }
+};
