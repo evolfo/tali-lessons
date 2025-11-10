@@ -11,6 +11,8 @@ const nextConfig = {
     })
     return config
   },
+  // Enable server-side rendering for Netlify
+  output: 'standalone',
 }
 
 module.exports = nextConfig
