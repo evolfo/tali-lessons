@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US'
+  output: 'export',
+  images: {
+    unoptimized: true,
   },
   webpack: function(config) {
     config.module.rules.push({
@@ -11,7 +11,6 @@ const nextConfig = {
     })
     return config
   },
-  // Remove standalone - let Netlify plugin handle the build
   trailingSlash: false,
 }
 

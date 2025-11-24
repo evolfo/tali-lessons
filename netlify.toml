@@ -1,19 +1,15 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "20"
-  NEXT_USE_NETLIFY_EDGE = "false"
-
-[[plugins]]
-package = "@netlify/plugin-nextjs"
 
 [[plugins]]
 package = "@netlify/plugin-sitemap"
 
   [plugins.inputs]
-  buildDir = ".next"
+  buildDir = "out"
   exclude = [
     '/api/**',
     '/success',
