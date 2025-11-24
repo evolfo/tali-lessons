@@ -11,8 +11,8 @@ const nextConfig = {
     })
     return config
   },
-  // Enable server-side rendering for Netlify
-  output: 'standalone',
+  // Remove standalone - let Netlify plugin handle the build
+  trailingSlash: false,
 }
 
 module.exports = nextConfig

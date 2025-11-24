@@ -409,9 +409,12 @@ export async function getStaticPaths() {
   const allSlugs = [...blogSlugs, ...substackSlugs];
 
   // Create paths with `slug` param
-  const paths = allSlugs.map(slug => `/blog/${slug}`)
+  const paths = allSlugs.map(slug => ({
+    params: { slug }
+  }))
+
   return {
     paths,
-    fallback: 'blocking', // Use blocking fallback to handle new Substack posts
+    fallback: false, // Changed to false to avoid SSR issues on Netlify
   }
 }
