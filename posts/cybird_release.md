@@ -3,6 +3,10 @@ title: "New Album: Cybird"
 date: "2021-02-06"
 hero_image: /img/blog-img/cybird.jpg
 description: "⭐️Cybird⭐️ by the Maiello Rubinstein Duo is now out on all major platforms!"
+author: "Tali Rubinstein"
+category: "Album Release"
+keywords: "Cybird album, Maiello Rubinstein Duo, recorder and harpsichord, baroque music, contemporary recorder, new classical music, Apollonio Maiello"
+excerpt: "Listen to Cybird, our new EP featuring recorder and harpsichord, full of passion and creativity by the Maiello Rubinstein Duo."
 ---
 
 [Click here to listen to the full album](https://ffm.to/mrduo) 

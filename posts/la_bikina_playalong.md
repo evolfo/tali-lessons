@@ -5,6 +5,10 @@ hero_image: /img/blog-img/la-bikina-playalong.png
 description: "Playalong with Tali! La Bikina Playalong video"
 video_link: "V2dcEru5Mps"
 video_image: /img/blog-img/la-bikina-playalong.png
+author: "Tali Rubinstein"
+category: "Tutorial"
+keywords: "La Bikina recorder, play along recorder, recorder tutorial, Latin music recorder, Luis Miguel recorder cover, recorder challenge, free sheet music"
+excerpt: "Play along with me on La Bikina by Rubén Fuentes! Download free sheet music and join the #labikinarecorder challenge."
 ---
 
 Hey guys! I'm happy to share my playalong version for La Bikina by Rubén Fuentes (as performed by Luis Miguel), accompanied by eight people I found that look like me and also play the recorder. No big deal.

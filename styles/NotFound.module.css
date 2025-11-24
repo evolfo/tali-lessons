@@ -1,0 +1,122 @@
+.notFoundContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.notFoundContent {
+  max-width: 600px;
+  text-align: center;
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.errorCode {
+  font-size: 8rem;
+  font-weight: 900;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.errorMessage {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  color: #333;
+}
+
+.errorDescription {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.linksContainer {
+  margin-top: 2rem;
+}
+
+.primaryLink {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 2rem;
+}
+
+.primaryLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.helpfulLinks {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #f0f0f0;
+}
+
+.helpfulLinks h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.helpfulLinks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.helpfulLinks li {
+  margin: 0.75rem 0;
+}
+
+.helpfulLinks a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.helpfulLinks a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .notFoundContent {
+    padding: 2rem;
+  }
+
+  .errorCode {
+    font-size: 5rem;
+  }
+
+  .errorMessage {
+    font-size: 1.5rem;
+  }
+
+  .errorDescription {
+    font-size: 1rem;
+  }
+
+  .primaryLink {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}

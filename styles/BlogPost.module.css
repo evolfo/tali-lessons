@@ -1,0 +1,252 @@
+.blogPost {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.blogPostHeader {
+  margin-bottom: 3rem;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  background: #f8f9ff;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.backButton:hover {
+  background: #667eea;
+  color: white;
+  transform: translateX(-4px);
+  border-color: #667eea;
+}
+
+.backButton svg {
+  transition: transform 0.3s ease;
+}
+
+.backButton:hover svg {
+  transform: translateX(-4px);
+}
+
+.blogPostMeta {
+  margin-bottom: 1rem;
+}
+
+.blogPostMeta time {
+  font-size: 0.9375rem;
+  color: #667eea;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blogPostTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.blogPostHero {
+  margin: 0 0 3rem 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.blogPostHero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.blogPostContent {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.blogPostContent :global(h2) {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+
+.blogPostContent :global(h3) {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem;
+  color: #1a1a1a;
+}
+
+.blogPostContent :global(p) {
+  margin-bottom: 1.5rem;
+}
+
+.blogPostContent :global(a) {
+  color: #667eea;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+  transition: all 0.2s ease;
+}
+
+.blogPostContent :global(a:hover) {
+  border-bottom-color: #667eea;
+}
+
+.blogPostContent :global(ul),
+.blogPostContent :global(ol) {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.blogPostContent :global(li) {
+  margin-bottom: 0.5rem;
+}
+
+.blogPostContent :global(blockquote) {
+  border-left: 4px solid #667eea;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+.blogPostContent :global(code) {
+  background: #f5f5f5;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.blogPostContent :global(pre) {
+  background: #1a1a1a;
+  color: #f8f8f2;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.blogPostContent :global(pre code) {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.blogPostContent :global(img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.substackContent {
+  overflow-x: hidden;
+}
+
+.substackContent :global(*) {
+  max-width: 100%;
+}
+
+.substackContent :global(img) {
+  max-width: 600px !important;
+  height: auto !important;
+  width: auto !important;
+  object-fit: contain;
+  border-radius: 8px;
+  margin: 2rem auto;
+  display: block;
+}
+
+.substackContent :global(figure),
+.substackContent :global(div),
+.substackContent :global(table),
+.substackContent :global(picture) {
+  max-width: 100% !important;
+  overflow-x: auto;
+}
+
+.substackContent :global(iframe) {
+  max-width: 100%;
+}
+
+.substackContent :global(a) {
+  display: block;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.substackContent :global(a img) {
+  width: auto !important;
+  max-width: 600px !important;
+}
+
+.substackContent :global(.image-link-expand),
+.substackContent :global(button[aria-label*="zoom"]),
+.substackContent :global(button[aria-label*="expand"]),
+.substackContent :global(.pencraft) {
+  display: none !important;
+}
+
+.substackContent :global(.social-icons),
+.substackContent :global([class*="social"]),
+.substackContent :global(table[class*="social"]),
+.substackContent :global(.image-link.image2),
+.substackContent :global(a.image2),
+.substackContent :global(img[alt*="icon"]),
+.substackContent :global(img[alt="Logo"]),
+.substackContent :global(img[width="24"][height="24"]) {
+  display: none !important;
+}
+
+.substackContent :global(*:has(img[src*="mailchimp"])),
+.substackContent :global(a[href*="mailchimp"]),
+.substackContent :global(table:has(a[href*="mailchimp"])),
+.substackContent :global(img[alt*="mailchimp"]),
+.substackContent :global(img[title*="mailchimp"]),
+.substackContent :global(img[alt*="Email Marketing"]),
+.substackContent :global(.image2-inset),
+.substackContent :global(div:has(> img[alt*="mailchimp"])),
+.substackContent :global(picture:has(> img[alt*="mailchimp"])) {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .blogPost {
+    padding: 1rem 1rem 3rem;
+  }
+
+  .blogPostTitle {
+    font-size: 1.75rem;
+  }
+
+  .blogPostContent {
+    font-size: 1rem;
+  }
+
+  .blogPostContent :global(h2) {
+    font-size: 1.5rem;
+  }
+
+  .blogPostContent :global(h3) {
+    font-size: 1.25rem;
+  }
+}

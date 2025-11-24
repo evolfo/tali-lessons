@@ -5,6 +5,10 @@ hero_image: /img/blog-img/here-there.jpg
 description: "New video of Here, There and Everywhere by The Beatles performed by Tali Rubinstein and Tal Zilber"
 video_link: "q2Yib9M2eIw"
 video_image: /img/blog-img/here-there.jpg
+author: "Tali Rubinstein"
+category: "Music Video"
+keywords: "Beatles recorder cover, Here There and Everywhere, recorder arrangement, Beatles on recorder, recorder duet, Tal Zilber, recorder performance"
+excerpt: "Watch our performance of Here, There and Everywhere by The Beatles, performed on recorder during our China tour in 2019."
 ---
 
 Happy to share another piece performed by Tal Zilber and I during our China tour in 2019 - Here, There and Everywhere by The Beatles (with a little bit of Chinese influence).

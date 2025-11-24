@@ -1,0 +1,144 @@
+{
+  "site": {
+    "name": "Tali Recorder Lessons",
+    "url": "https://talirecorderlessons.com",
+    "description": "Professional online recorder lessons taught by world-renowned musician Tali Rubinstein",
+    "type": "Music Education Service",
+    "contact": "info@talirecorder.com"
+  },
+  "instructor": {
+    "name": "Tali Rubinstein",
+    "title": "Professional Recorder Player & Music Educator",
+    "expertise": [
+      "Recorder Performance",
+      "Music Education",
+      "Baroque Music",
+      "Contemporary Recorder Repertoire",
+      "Online Music Teaching"
+    ],
+    "experience": "World-renowned performer and educator with years of professional teaching and performance experience"
+  },
+  "services": {
+    "primary": "Online Recorder Lessons",
+    "delivery_method": "Live video lessons (Zoom or similar)",
+    "locations_served": "Worldwide",
+    "lesson_types": [
+      {
+        "name": "60 Minute Individual Lesson",
+        "duration": "60 minutes",
+        "price": "$105.00",
+        "description": "One-on-one personalized instruction"
+      },
+      {
+        "name": "45 Minute Individual Lesson",
+        "duration": "45 minutes",
+        "price": "$95.00",
+        "description": "One-on-one personalized instruction"
+      },
+      {
+        "name": "5-Lesson Package (60 min)",
+        "price": "$498.75",
+        "discount": "5% off",
+        "description": "Package of 5 sixty-minute lessons"
+      },
+      {
+        "name": "10-Lesson Package (60 min)",
+        "price": "$976.50",
+        "discount": "7% off",
+        "description": "Package of 10 sixty-minute lessons"
+      },
+      {
+        "name": "20-Lesson Package (60 min)",
+        "price": "$1,890.00",
+        "discount": "10% off",
+        "description": "Package of 20 sixty-minute lessons"
+      }
+    ],
+    "sheet_music": [
+      {
+        "title": "Hot Cross Buns & Variations",
+        "composer": "Tali Rubinstein",
+        "price": "$10.00",
+        "format": "Digital PDF",
+        "description": "Original composition featuring variations on the traditional melody"
+      },
+      {
+        "title": "The Swimming Pool Song",
+        "composer": "Tali Rubinstein",
+        "price": "$10.00",
+        "format": "Digital PDF",
+        "description": "Original composition for recorder"
+      },
+      {
+        "title": "Alone",
+        "composer": "Tali Rubinstein",
+        "price": "$10.00",
+        "format": "Digital PDF",
+        "description": "Original expressive piece for recorder"
+      },
+      {
+        "title": "Tico Tico no Fubá",
+        "composer": "Arranged by Tali Rubinstein",
+        "price": "$10.00",
+        "format": "Digital ZIP file",
+        "description": "Arrangement for recorder and piano"
+      }
+    ]
+  },
+  "student_levels": [
+    "Complete Beginners",
+    "Elementary",
+    "Intermediate",
+    "Advanced",
+    "Professional/Pre-Professional"
+  ],
+  "age_groups": "All ages welcome",
+  "requirements": {
+    "equipment": [
+      "Recorder (soprano, alto, tenor, or bass)",
+      "Computer, tablet, or smartphone with camera",
+      "Stable internet connection",
+      "Quiet practice space",
+      "Music stand"
+    ],
+    "prior_experience": "None required - beginners welcome"
+  },
+  "lesson_content": [
+    "Technique Development",
+    "Tone Production",
+    "Breathing and Articulation",
+    "Baroque Repertoire",
+    "Contemporary Music",
+    "Performance Preparation",
+    "Music Theory (as needed)",
+    "Sight Reading"
+  ],
+  "frequently_asked_questions": [
+    {
+      "question": "How do I book a lesson?",
+      "answer": "Visit talirecorderlessons.com, select your lesson package, and complete the checkout process. You'll receive a confirmation email with scheduling instructions."
+    },
+    {
+      "question": "What platform do you use for lessons?",
+      "answer": "Lessons are typically conducted via Zoom, but other platforms can be accommodated based on student preference."
+    },
+    {
+      "question": "Do you teach children?",
+      "answer": "Yes! Lessons are available for students of all ages, from young children to adults."
+    },
+    {
+      "question": "What if I've never played recorder before?",
+      "answer": "Absolute beginners are welcome! Lessons are tailored to your current skill level."
+    },
+    {
+      "question": "Can I cancel or reschedule?",
+      "answer": "Yes, please contact info@talirecorder.com to discuss rescheduling policies."
+    }
+  ],
+  "social_media": {
+    "twitter": "@TaliRubinstein",
+    "youtube": "@talirecorder",
+    "substack": "talirecorder.substack.com"
+  },
+  "last_updated": "2025-01-24"
+}

@@ -3,6 +3,10 @@ title: "New Single: Trying to See Clearly"
 date: "2022-10-24"
 hero_image: /img/blog-img/see-clearly-album-art.jpg
 description: "New song - 'Trying to See Clearly' featuring Yoni Marianer"
+author: "Tali Rubinstein"
+category: "Single Release"
+keywords: "Trying to See Clearly, Tali Rubinstein original song, Yoni Marianer, recorder in pop music, contemporary recorder, Nachum Mochiach, new single 2022"
+excerpt: "Listen to my new single Trying to See Clearly, featuring recorder, vocals, and lyrics by Nachum Mochiach, produced by Yoni Marianer."
 ---
 
 [Click here to listen to the track](https://linktr.ee/TaliRubinstein) 

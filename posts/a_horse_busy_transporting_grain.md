@@ -5,6 +5,10 @@ hero_image: /img/blog-img/video-horse.jpg
 description: "New video performance: A Horse Busy Transporting Grain (揚鞭催馬運糧忙) by Wei Xianzhong"
 video_link: "k6AgHDzpma8"
 video_image: /img/blog-img/video-horse.jpg
+author: "Tali Rubinstein"
+category: "Music Video"
+keywords: "Chinese recorder music, Wei Xianzhong, A Horse Busy Transporting Grain, recorder performance, traditional Chinese music, recorder duet, Tal Zilber"
+excerpt: "Watch our performance of A Horse Busy Transporting Grain, a bright and joyful Chinese song by Wei Xianzhong, from our Tal and Tali in China series."
 ---
 
 Hey guys, here's the last video from our "Tal and Tali in China" series - this is "A Horse Busy Transporting Grain" (揚鞭催馬運糧忙), a bright and joyful Chinese song by Wei Xianzhong, performed with Tal Zilber.

@@ -1,0 +1,4 @@
+# Disable secrets detection for Next.js build cache
+.next/cache/** -diff -merge -text
+.next/server/** -diff -merge -text
+.next/static/** -diff -merge -text

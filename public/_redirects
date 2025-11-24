@@ -1,0 +1,55 @@
+# Redirect common old URLs to new structure
+
+# Old blog URL patterns (if site used different structure before)
+/posts/*            /blog/:splat        301
+/articles/*         /blog/:splat        301
+/blog-post/*        /blog/:splat        301
+
+# Lessons redirects
+/lessons            /#lessons           301
+/book-lesson        /#lessons           301
+/book-lessons       /#lessons           301
+/schedule           /#lessons           301
+
+# Sheet music redirects
+/music              /#sheet-music       301
+/sheet-music        /#sheet-music       301
+/scores             /#sheet-music       301
+/downloads          /#sheet-music       301
+
+# Contact redirects
+/contact            /#contact           301
+/get-in-touch       /#contact           301
+/reach-out          /#contact           301
+
+# About redirects
+/about              /#about             301
+/bio                /#about             301
+/biography          /#about             301
+
+# Social media redirects
+/youtube            https://youtube.com/@talirecorder           301!
+/twitter            https://twitter.com/TaliRubinstein          301!
+/substack           https://talirecorder.substack.com           301!
+
+# Cart and checkout (keep these on current URLs)
+/cart               /                   302
+/success            /success            200
+
+# API routes should not be redirected
+/api/*              /api/:splat         200
+
+# Old homepage variants
+/home               /                   301
+/index              /                   301
+/index.html         /                   301
+
+# Force HTTPS
+http://talirecorderlessons.com/*    https://talirecorderlessons.com/:splat    301!
+
+# WWW redirect
+http://www.talirecorderlessons.com/*    https://talirecorderlessons.com/:splat    301!
+https://www.talirecorderlessons.com/*   https://talirecorderlessons.com/:splat    301!
+
+# Fallback to homepage for unmatched routes (except API and known paths)
+/*                  /                   404
