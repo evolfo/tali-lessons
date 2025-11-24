@@ -339,7 +339,6 @@ export async function getStaticProps({ ...ctx }) {
           markdownBody: fullContent,
           isSubstack: true,
         },
-        revalidate: 3600, // Revalidate every hour
       };
     } catch (error) {
       console.error('Error fetching Substack post:', error);

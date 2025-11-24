@@ -137,6 +137,5 @@ export async function getStaticProps() {
       title: siteConfig.default.title,
       description: siteConfig.default.description,
     },
-    revalidate: 3600, // Revalidate every hour to fetch new Substack posts
   };
 }
