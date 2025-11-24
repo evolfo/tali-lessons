@@ -50,6 +50,3 @@ http://talirecorderlessons.com/*    https://talirecorderlessons.com/:splat    30
 # WWW redirect
 http://www.talirecorderlessons.com/*    https://talirecorderlessons.com/:splat    301!
 https://www.talirecorderlessons.com/*   https://talirecorderlessons.com/:splat    301!
-
-# Fallback to homepage for unmatched routes (except API and known paths)
-/*                  /                   404
