@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  # Don't set publish - let Netlify Next.js runtime handle it
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
