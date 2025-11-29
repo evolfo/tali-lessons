@@ -22,10 +22,24 @@ const ShoppingCart = ({ open, onClose }) => {
         body: JSON.stringify(items),
       });
 
-      const { clientSecret } = await response.json();
-      window.location.href = `/checkout?client_secret=${clientSecret}`;
+      // Check content type before parsing
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        console.error('Non-JSON response:', text.substring(0, 500));
+        throw new Error(`Server returned ${response.status}: ${text.substring(0, 100)}`);
+      }
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Checkout failed');
+      }
+
+      window.location.href = `/checkout?client_secret=${data.clientSecret}`;
     } catch (error) {
       console.error('Checkout error:', error);
+      alert('Checkout error: ' + error.message);
     }
   };
 

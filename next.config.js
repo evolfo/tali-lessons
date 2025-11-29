@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   images: {
     // Use Netlify Image CDN loader for optimization
     loader: 'custom',
