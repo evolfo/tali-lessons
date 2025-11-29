@@ -2,6 +2,7 @@ import * as React from 'react'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
+import Head from 'next/head'
 import { NextSeo } from 'next-seo'
 import { Embed } from 'semantic-ui-react'
 import Parser from 'rss-parser'
@@ -9,6 +10,7 @@ const glob = require('glob')
 
 import BlogLayout from '../../components/BlogLayout'
 import SocialShare from '../../components/SocialShare'
+import { BreadcrumbSchema } from '../../components/StructuredData'
 import styles from '../../styles/BlogPost.module.css'
 
 export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isSubstack }) {
@@ -126,13 +128,38 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
 
   if (!frontmatter) return <></>
 
-  const fullUrl = "https://talirecorderlessons.com" + (typeof window !== 'undefined' ? window.location.pathname : `/blog/${frontmatter.title}`)
+  const fullUrl = "https://talirecorderlessons.com/blog/" + (frontmatter.slug || frontmatter.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-'))
   const imageUrl = frontmatter.hero_image?.startsWith('http')
     ? frontmatter.hero_image
     : `https://talirecorderlessons.com${frontmatter.hero_image}`
+  
+  // Calculate reading time
+  const wordsPerMinute = 200;
+  const wordCount = markdownBody?.split(/\s+/).length || 0;
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
 
   return (
     <>
+      {/* Additional meta tags for article */}
+      <Head>
+        <meta property="article:published_time" content={frontmatter.date} />
+        <meta property="article:author" content={frontmatter.author || 'Tali Rubinstein'} />
+        <meta property="article:section" content={frontmatter.category || 'Music'} />
+        {frontmatter.keywords?.split(',').map((tag, i) => (
+          <meta key={i} property="article:tag" content={tag.trim()} />
+        ))}
+        <meta name="twitter:label1" content="Written by" />
+        <meta name="twitter:data1" content={frontmatter.author || 'Tali Rubinstein'} />
+        <meta name="twitter:label2" content="Est. reading time" />
+        <meta name="twitter:data2" content={`${readingTime} min read`} />
+      </Head>
+
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Blog', url: '/blog' },
+        { name: frontmatter.title, url: `/blog/${frontmatter.slug || ''}` }
+      ]} />
+
       <NextSeo
         title={`${frontmatter.title} | Tali Rubinstein`}
         description={frontmatter.description || frontmatter.excerpt}
@@ -204,12 +231,16 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
             },
             keywords: frontmatter.keywords || '',
             articleSection: frontmatter.category || 'Music',
+            wordCount: wordCount,
+            timeRequired: `PT${readingTime}M`,
           }),
         }}
       />
 
       <BlogLayout siteTitle={siteTitle}>
-        <article className={styles.blogPost}>
+        <article className={styles.blogPost} itemScope itemType="https://schema.org/BlogPosting">
+          <meta itemProp="datePublished" content={frontmatter.date} />
+          <meta itemProp="author" content={frontmatter.author || 'Tali Rubinstein'} />
           <div className={styles.blogPostHeader}>
             <a href="/blog" className={styles.backButton}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -218,9 +249,10 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
               Back to articles
             </a>
             <div className={styles.blogPostMeta}>
-              <time>{reformatDate(frontmatter.date)}</time>
+              <time dateTime={frontmatter.date}>{reformatDate(frontmatter.date)}</time>
+              <span className={styles.readingTime}> · {readingTime} min read</span>
             </div>
-            <h1 className={styles.blogPostTitle}>{frontmatter.title}</h1>
+            <h1 className={styles.blogPostTitle} itemProp="headline">{frontmatter.title}</h1>
           </div>
 
           <figure className={styles.blogPostHero}>

@@ -1,4 +1,5 @@
 import React from "react";
+import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 import BlogLayout from "../components/BlogLayout";
 import BlogList from "../components/BlogList";
@@ -7,8 +8,38 @@ import matter from "gray-matter";
 import Parser from 'rss-parser';
 
 const Blog = (props) => {
+  // Create blog list schema for SEO
+  const blogListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Tali Rubinstein Blog',
+    description: 'Articles about recorder playing, music performances, and education from professional recorder player Tali Rubinstein.',
+    url: 'https://talirecorderlessons.com/blog',
+    author: {
+      '@type': 'Person',
+      name: 'Tali Rubinstein',
+    },
+    blogPost: props.allBlogs?.slice(0, 10).map(post => ({
+      '@type': 'BlogPosting',
+      headline: post.frontmatter.title,
+      description: post.frontmatter.description || post.frontmatter.excerpt,
+      datePublished: post.frontmatter.date,
+      author: {
+        '@type': 'Person',
+        name: post.frontmatter.author || 'Tali Rubinstein',
+      },
+      url: `https://talirecorderlessons.com/blog/${post.slug}`,
+    })) || [],
+  };
+
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
+        />
+      </Head>
       <NextSeo
         title="Blog | Recorder News, Tips & Updates from Tali Rubinstein"
         description="Read the latest articles from Tali Rubinstein about recorder playing, music performances, new releases, and tips for recorder students of all levels."

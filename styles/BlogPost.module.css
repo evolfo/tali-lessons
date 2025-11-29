@@ -51,6 +51,14 @@
   letter-spacing: 0.05em;
 }
 
+.readingTime {
+  font-size: 0.9375rem;
+  color: #666;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .blogPostTitle {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
