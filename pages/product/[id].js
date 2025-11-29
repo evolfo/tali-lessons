@@ -1,9 +1,12 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Container, Grid, Header, Button, Image } from 'semantic-ui-react';
+import NextImage from 'next/image';
 import { useShoppingCart } from 'use-shopping-cart';
+import { NextSeo } from 'next-seo';
 import { useCartModal } from '../../contexts/CartModalContext';
 import { products } from '../../data/products';
+import { ProductSchema, BreadcrumbSchema } from '../../components/StructuredData';
 
 const ProductPage = () => {
   const router = useRouter();
@@ -43,8 +46,38 @@ const ProductPage = () => {
   const originalPrice = getOriginalPrice();
   const isSheetMusic = product.id.startsWith('sheetMusic');
 
+  const productDescription = product.description || 
+    (isSheetMusic 
+      ? `Digital sheet music: ${product.name} by Tali Rubinstein. Available for instant download.`
+      : `${product.name} - Professional online recorder instruction with Tali Rubinstein.`);
+
   return (
     <>
+      <NextSeo
+        title={`${product.name} | Tali Recorder Lessons`}
+        description={productDescription}
+        canonical={`https://talirecorderlessons.com/product/${id}`}
+        openGraph={{
+          url: `https://talirecorderlessons.com/product/${id}`,
+          title: product.name,
+          description: productDescription,
+          images: product.image ? [
+            {
+              url: `https://talirecorderlessons.com${product.image}`,
+              width: 1200,
+              height: 630,
+              alt: product.name,
+            },
+          ] : [],
+          type: 'product',
+        }}
+      />
+      <ProductSchema product={product} />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Products', url: '/book-bundle' },
+        { name: product.name, url: `/product/${id}` }
+      ]} />
       <style dangerouslySetInnerHTML={{
         __html: `
           .sheet-music-overlay {
@@ -117,9 +150,12 @@ const ProductPage = () => {
                     />
                   </div>
                 ) : (
-                  <Image
+                  <NextImage
                     src={product.image}
                     alt={product.name}
+                    width={600}
+                    height={400}
+                    priority
                     style={{
                       width: '100%',
                       height: 'auto',

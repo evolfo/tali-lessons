@@ -223,10 +223,156 @@ export const BreadcrumbSchema = ({ items }) => (
   </Head>
 );
 
+export const ProductSchema = ({ product }) => (
+  <Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Product',
+          name: product.name,
+          description: product.description,
+          image: product.image ? `https://talirecorderlessons.com${product.image}` : undefined,
+          offers: {
+            '@type': 'Offer',
+            price: (product.price / 100).toFixed(2),
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            seller: {
+              '@type': 'Person',
+              name: 'Tali Rubinstein',
+            },
+          },
+          brand: {
+            '@type': 'Brand',
+            name: 'Tali Recorder Lessons',
+          },
+        }),
+      }}
+    />
+  </Head>
+);
+
+export const WebPageSchema = ({ title, description, url }) => (
+  <Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: title,
+          description: description,
+          url: `https://talirecorderlessons.com${url}`,
+          isPartOf: {
+            '@type': 'WebSite',
+            name: 'Tali Recorder Lessons',
+            url: 'https://talirecorderlessons.com',
+          },
+        }),
+      }}
+    />
+  </Head>
+);
+
+export const BlogPostSchema = ({ title, description, datePublished, image, url, author = 'Tali Rubinstein' }) => (
+  <Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: title,
+          description: description,
+          image: image ? (image.startsWith('http') ? image : `https://talirecorderlessons.com${image}`) : undefined,
+          datePublished: datePublished,
+          dateModified: datePublished,
+          url: `https://talirecorderlessons.com${url}`,
+          author: {
+            '@type': 'Person',
+            name: author,
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'Tali Recorder Lessons',
+            url: 'https://talirecorderlessons.com',
+          },
+        }),
+      }}
+    />
+  </Head>
+);
+
+export const VideoSchema = ({ videos }) => (
+  <Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          itemListElement: videos.map((video, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+              '@type': 'VideoObject',
+              name: video.name,
+              description: video.description,
+              thumbnailUrl: video.thumbnail.startsWith('http') 
+                ? video.thumbnail 
+                : `https://talirecorderlessons.com${video.thumbnail}`,
+              uploadDate: video.uploadDate || '2020-01-01',
+              contentUrl: `https://www.youtube.com/watch?v=${video.youtubeId}`,
+              embedUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
+              publisher: {
+                '@type': 'Person',
+                name: 'Tali Rubinstein',
+              },
+            },
+          })),
+        }),
+      }}
+    />
+  </Head>
+);
+
+export const SingleVideoSchema = ({ name, description, thumbnail, youtubeId, uploadDate }) => (
+  <Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'VideoObject',
+          name: name,
+          description: description,
+          thumbnailUrl: thumbnail.startsWith('http') 
+            ? thumbnail 
+            : `https://talirecorderlessons.com${thumbnail}`,
+          uploadDate: uploadDate || '2020-01-01',
+          contentUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
+          embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
+          publisher: {
+            '@type': 'Person',
+            name: 'Tali Rubinstein',
+          },
+        }),
+      }}
+    />
+  </Head>
+);
+
 export default {
   PersonSchema,
   MusicSchoolSchema,
   FAQSchema,
   ServiceSchema,
   BreadcrumbSchema,
+  ProductSchema,
+  WebPageSchema,
+  BlogPostSchema,
+  VideoSchema,
+  SingleVideoSchema,
 };

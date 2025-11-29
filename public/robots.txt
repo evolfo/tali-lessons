@@ -24,6 +24,21 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 # Disallow checkout and API routes
 Disallow: /api/
 Disallow: /checkout
@@ -31,3 +46,7 @@ Disallow: /success
 
 # Sitemap location
 Sitemap: https://talirecorderlessons.com/sitemap.xml
+
+# LLM-specific information
+# See https://llmstxt.org for more information
+LLMs-Txt: https://talirecorderlessons.com/llms.txt

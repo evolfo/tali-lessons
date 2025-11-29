@@ -1,9 +1,35 @@
 import React from 'react'
 import { Grid, GridColumn, Image, Header, Container } from "semantic-ui-react";
+import { NextSeo } from 'next-seo';
+import { PersonSchema, BreadcrumbSchema } from '../components/StructuredData';
 
 const About = () => {
     return (
-      <div id="about-wrapper">
+      <>
+        <NextSeo
+          title="About Tali Rubinstein | Professional Recorder Player & Educator"
+          description="Learn about Tali Rubinstein, a world-renowned recorder player and Berklee College of Music graduate. Award-winning performer teaching online recorder lessons worldwide."
+          canonical="https://talirecorderlessons.com/about"
+          openGraph={{
+            url: 'https://talirecorderlessons.com/about',
+            title: 'About Tali Rubinstein | Professional Recorder Player & Educator',
+            description: 'World-renowned recorder player and Berklee graduate offering online lessons. First recorder player to attend Berklee College of Music.',
+            images: [
+              {
+                url: 'https://talirecorderlessons.com/img/about1.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Tali Rubinstein - Professional Recorder Player',
+              },
+            ],
+          }}
+        />
+        <PersonSchema />
+        <BreadcrumbSchema items={[
+          { name: 'Home', url: '/' },
+          { name: 'About', url: '/about' }
+        ]} />
+        <div id="about-wrapper">
         <Grid centered id="about">
           <GridColumn
             stretched
@@ -86,7 +112,8 @@ const About = () => {
             </div>
           </Container>
         </div>
-      </div>
+        </div>
+      </>
     );
 }
 

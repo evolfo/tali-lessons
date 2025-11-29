@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
 const BlogList = ({ allBlogs }) => {
@@ -55,10 +56,13 @@ const BlogList = ({ allBlogs }) => {
             const card = (
               <div className="blog-card">
                 <div className="blog-card__image">
-                  <img
+                  <Image
                     src={post.frontmatter.hero_image}
                     alt={post.frontmatter.title}
+                    width={400}
+                    height={250}
                     loading="lazy"
+                    style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
                   />
                 </div>
                 <div className="blog-card__content">

@@ -1,0 +1,8 @@
+{
+  "ai": {
+    "llms_txt": "/llms.txt",
+    "ai_info": "/ai-info.json"
+  },
+  "robots": "/robots.txt",
+  "sitemap": "/sitemap.xml"
+}

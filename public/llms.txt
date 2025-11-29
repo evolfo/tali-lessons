@@ -1,0 +1,78 @@
+# Tali Recorder Lessons
+
+> Professional online recorder lessons taught by world-renowned musician Tali Rubinstein
+
+## About
+
+Tali Rubinstein is a professional recorder player, composer, and music educator offering online recorder lessons to students of all ages and skill levels worldwide. As the first recorder player to attend Berklee College of Music (full scholarship), Tali has established herself in jazz, pop, and R&B music while teaching the next generation of recorder players.
+
+## Services
+
+### Online Recorder Lessons
+- 60 Minute Individual Lesson: $105.00
+- 45 Minute Individual Lesson: $95.00
+- 5-Lesson Package (60 min): $498.75 (5% off)
+- 10-Lesson Package (60 min): $976.50 (7% off)
+- 20-Lesson Package (60 min): $1,890.00 (10% off)
+
+Lessons are conducted via Zoom and available worldwide.
+
+### Digital Sheet Music
+Original compositions and arrangements by Tali Rubinstein available as digital PDFs:
+- Hot Cross Buns & Variations
+- The Swimming Pool Song
+- Alone
+- Tico Tico no Fubá (arrangement for recorder and piano)
+
+## Student Levels
+- Complete Beginners
+- Elementary
+- Intermediate
+- Advanced
+- Professional/Pre-Professional
+
+## Lesson Content
+- Technique Development
+- Tone Production
+- Breathing and Articulation
+- Baroque Repertoire
+- Contemporary Music
+- Performance Preparation
+- Music Theory
+- Sight Reading
+
+## Requirements
+- Recorder (soprano, alto, tenor, or bass)
+- Computer, tablet, or smartphone with camera
+- Stable internet connection
+- Quiet practice space
+- Music stand
+
+## Contact
+- Website: https://talirecorderlessons.com
+- Email: info@talirecorder.com
+
+## Social Media
+- YouTube: @talirecorder
+- Instagram: @TaliRubinstein
+- Substack: talirecorder.substack.com
+
+## Site Structure
+- /: Homepage with overview and testimonials
+- /about: Tali's biography and background
+- /book-bundle: Browse and purchase lesson packages
+- /book-lesson: Book individual lessons
+- /tutorials: Free recorder tutorials
+- /blog: Articles and updates
+- /contact: Contact information
+
+## Key Pages
+- [Home](https://talirecorderlessons.com/)
+- [About](https://talirecorderlessons.com/about)
+- [Book Lessons](https://talirecorderlessons.com/book-bundle)
+- [Tutorials](https://talirecorderlessons.com/tutorials)
+- [Blog](https://talirecorderlessons.com/blog)
+- [Contact](https://talirecorderlessons.com/contact)
+
+## Additional Information
+- [Structured Data](/ai-info.json)

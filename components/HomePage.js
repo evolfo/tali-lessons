@@ -1,17 +1,68 @@
 import React from "react";
-import { Grid, GridColumn, Header, Embed } from "semantic-ui-react";
+import { Grid, GridColumn, Header } from "semantic-ui-react";
+import Head from "next/head";
 import Carousel from "semantic-ui-carousel-react";
 import elements from "../utilities/carousel-elements";
 import LessonButton from "../components/LessonButton";
+import AccessibleEmbed from "../components/AccessibleEmbed";
 import Link from "next/link";
 
 const HomePage = () => {
   return (
     <>
+      {/* Video Schema for homepage videos */}
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ItemList',
+              name: 'Tali Rubinstein Performance Videos',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  item: {
+                    '@type': 'VideoObject',
+                    name: 'Tali Rubinstein on Nickelodeon - Recorder Performance',
+                    description: 'Watch Tali Rubinstein perform recorder on Nickelodeon, showcasing her unique style and incredible technique.',
+                    thumbnailUrl: 'https://talirecorderlessons.com/img/placeholder-nick.jpg',
+                    contentUrl: 'https://www.youtube.com/watch?v=AUeUZdfiuJ0',
+                    embedUrl: 'https://www.youtube.com/embed/AUeUZdfiuJ0',
+                    uploadDate: '2019-01-01',
+                    publisher: {
+                      '@type': 'Person',
+                      name: 'Tali Rubinstein',
+                    },
+                  },
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  item: {
+                    '@type': 'VideoObject',
+                    name: 'Tali Rubinstein ULAB Performance - Recorder',
+                    description: 'Tali Rubinstein performs at ULAB, demonstrating recorder versatility in modern music.',
+                    thumbnailUrl: 'https://talirecorderlessons.com/img/placeholder-ulab.jpg',
+                    contentUrl: 'https://www.youtube.com/watch?v=6YTo9RjX6j8',
+                    embedUrl: 'https://www.youtube.com/embed/6YTo9RjX6j8',
+                    uploadDate: '2019-01-01',
+                    publisher: {
+                      '@type': 'Person',
+                      name: 'Tali Rubinstein',
+                    },
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
       <Grid id="main-background">
         <GridColumn className="tablet-display-none" computer={8}></GridColumn>
         <GridColumn tablet={16} computer={8} className="main-about-text">
-          <Header className="centered-text">
+          <Header as="h1" className="centered-text">
             Learn Recorder with&nbsp;Tali!
           </Header>
           <p className="centered-text">
@@ -21,47 +72,37 @@ const HomePage = () => {
             The answer is – yes. California based Award-winning recorder player
             Tali Rubinstein will teach you&nbsp;how.
           </p>
-          <a href="/book-bundle">
+          <Link href="/book-bundle" aria-label="Book online recorder lessons with Tali Rubinstein">
             <LessonButton />
-          </a>
+          </Link>
         </GridColumn>
       </Grid>
       <Grid id="tutorial-videos">
-        <Header className="main-about-text video-header">
+        <Header as="h2" className="main-about-text video-header">
           See Tali in Action
         </Header>
         <GridColumn tablet={16} computer={8}>
           <div className="">
-            <Embed
-              width="560"
-              height="315"
-              id="AUeUZdfiuJ0"
+            <AccessibleEmbed
+              youtubeId="AUeUZdfiuJ0"
               placeholder="/img/placeholder-nick.jpg"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              source="youtube"
-              alt="Nickelodeon YouTube Recorder Tutorial"
+              title="Tali Rubinstein performing recorder on Nickelodeon"
             />
           </div>
         </GridColumn>
         <GridColumn tablet={16} computer={8}>
           <div className="">
-            <Embed
-              width="560"
-              height="315"
-              id="6YTo9RjX6j8"
+            <AccessibleEmbed
+              youtubeId="6YTo9RjX6j8"
               placeholder="/img/placeholder-ulab.jpg"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              source="youtube"
-              alt="Ulab YouTube Recorder Tutorial"
+              title="Tali Rubinstein ULAB recorder performance"
             />
           </div>
         </GridColumn>
       </Grid>
       <Grid centered id="testimonials">
         <div className="testimonial-background-color">
-          <Header className="main-about-text testimonials-header">
+          <Header as="h2" className="main-about-text testimonials-header">
             Testimonials
           </Header>
           <GridColumn className="testimonials-text" computer={12} tablet={16}>

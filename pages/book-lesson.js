@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, GridColumn, Card, Image, GridRow } from "semantic-ui-react"
+import { Grid, GridColumn, Card, GridRow } from "semantic-ui-react"
+import NextImage from 'next/image'
 import Link from 'next/link'
 
 // This is a class to use ComponentDidMount for a loading of a script for the booking embed
@@ -21,7 +22,15 @@ class BookLesson extends React.Component {
                 fluid={true}
                 data-appointlet-organization="tali-recorder-lessons"
               >
-                <Image src="/img/recorders.jpg" wrapped ui={false} />
+                <div style={{ position: 'relative', width: '100%', height: '200px' }}>
+                  <NextImage 
+                    src="/img/recorders.jpg" 
+                    alt="Book a single recorder lesson with Tali Rubinstein"
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
                 <Card.Content>
                   <Card.Header>Book a Single Lesson</Card.Header>
                   <Card.Description>
@@ -33,7 +42,15 @@ class BookLesson extends React.Component {
             <GridColumn>
               <Link href="/book-bundle" onClick={this.handleBundleClick} style={{ display: 'block' }}>
                 <Card fluid={true}>
-                  <Image src="/img/recorders.jpg" wrapped ui={false} />
+                  <div style={{ position: 'relative', width: '100%', height: '200px' }}>
+                    <NextImage 
+                      src="/img/recorders.jpg" 
+                      alt="Purchase discounted recorder lesson bundles"
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                   <Card.Content>
                     <Card.Header>Purchase a Lesson Bundle</Card.Header>
                     <Card.Description>Get up to 10% off!</Card.Description>

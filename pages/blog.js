@@ -1,20 +1,39 @@
 import React from "react";
+import { NextSeo } from 'next-seo';
 import BlogLayout from "../components/BlogLayout";
 import BlogList from "../components/BlogList";
+import { BreadcrumbSchema } from '../components/StructuredData';
 import matter from "gray-matter";
 import Parser from 'rss-parser';
 
 const Blog = (props) => {
   return (
-    <BlogLayout
-      pathname="/"
-      siteTitle={props.title}
-      siteDescription={props.description}
-    >
-      <section>
-        <BlogList allBlogs={props.allBlogs} />
-      </section>
-    </BlogLayout>
+    <>
+      <NextSeo
+        title="Blog | Recorder News, Tips & Updates from Tali Rubinstein"
+        description="Read the latest articles from Tali Rubinstein about recorder playing, music performances, new releases, and tips for recorder students of all levels."
+        canonical="https://talirecorderlessons.com/blog"
+        openGraph={{
+          url: 'https://talirecorderlessons.com/blog',
+          title: 'Blog | Recorder News & Tips from Tali Rubinstein',
+          description: 'Articles about recorder playing, performances, and music education from professional recorder player Tali Rubinstein.',
+          type: 'blog',
+        }}
+      />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Blog', url: '/blog' }
+      ]} />
+      <BlogLayout
+        pathname="/"
+        siteTitle={props.title}
+        siteDescription={props.description}
+      >
+        <section>
+          <BlogList allBlogs={props.allBlogs} />
+        </section>
+      </BlogLayout>
+    </>
   );
 };
 

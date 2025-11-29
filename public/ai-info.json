@@ -140,5 +140,6 @@
     "youtube": "@talirecorder",
     "substack": "talirecorder.substack.com"
   },
-  "last_updated": "2025-01-24"
+  "llms_txt": "https://talirecorderlessons.com/llms.txt",
+  "last_updated": "2025-11-29"
 }

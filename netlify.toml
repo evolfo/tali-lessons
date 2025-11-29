@@ -5,6 +5,10 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Enable Netlify Image CDN
+[images]
+  remote_images = ["https://talirecorderlessons.com/.*", "https://i.ytimg.com/.*", "https://substackcdn.com/.*"]
+
 [[plugins]]
 package = "@netlify/plugin-sitemap"
 

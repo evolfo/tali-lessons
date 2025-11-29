@@ -1,6 +1,7 @@
 import * as React from 'react'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
+import Image from 'next/image'
 import { NextSeo } from 'next-seo'
 import { Embed } from 'semantic-ui-react'
 import Parser from 'rss-parser'
@@ -234,9 +235,13 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
                   allowFullScreen
                   source="youtube"
                 /> :
-              <img
+              <Image
                 src={frontmatter.hero_image}
-                alt={`blog_hero_${frontmatter.title}`}
+                alt={frontmatter.title}
+                width={1200}
+                height={630}
+                priority
+                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
               />
             }
           </figure>

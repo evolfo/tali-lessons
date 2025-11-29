@@ -1,6 +1,7 @@
 import React from "react";
 import Link from 'next/link';
-import { Card, Image, Button } from 'semantic-ui-react';
+import NextImage from 'next/image';
+import { Card, Button } from 'semantic-ui-react';
 import { useShoppingCart } from 'use-shopping-cart';
 import { useCartModal } from '../contexts/CartModalContext';
 
@@ -36,14 +37,23 @@ const ProductCard = ({ product }) => {
     return false;
   })();
 
-  const imageStyle = isSheetMusic
-    ? { height: '200px', width: '100%', objectFit: 'cover', overflow: 'hidden' }
-    : { height: 'auto', width: '100%', objectFit: 'cover' };
-
   return (
     <Link href={`/product/${product.id}`} legacyBehavior>
         <Card raised className="product-card">
-          <Image src={product.image} wrapped ui={false} style={imageStyle} />
+          <div style={{ 
+            position: 'relative', 
+            width: '100%', 
+            height: isSheetMusic ? '200px' : '250px',
+            overflow: 'hidden'
+          }}>
+            <NextImage 
+              src={product.image} 
+              alt={product.name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
           <Card.Content>
             <Card.Header>{product.name}</Card.Header>
             <Card.Meta>
