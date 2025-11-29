@@ -10,6 +10,9 @@
   remote_images = ["https://talirecorderlessons.com/.*", "https://i.ytimg.com/.*", "https://substackcdn.com/.*"]
 
 [[plugins]]
+package = "@netlify/plugin-nextjs"
+
+[[plugins]]
 package = "@netlify/plugin-sitemap"
 
   [plugins.inputs]
