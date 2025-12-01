@@ -1,0 +1,688 @@
+/* Shared styles for all lesson pages */
+
+.lessonPage {
+  margin-top: -2rem;
+}
+
+/* Hero Section - Base */
+.lessonHero {
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.lessonHeroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lessonHero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 900;
+}
+
+.lessonHeroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.lessonHeroDescription {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+/* Hero Variants */
+.lessonHero.beginner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.lessonHero.advanced {
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+
+.lessonHero.baroque {
+  background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
+}
+
+.lessonHero.kids {
+  background: linear-gradient(135deg, #FF6B9D 0%, #FFA06B 100%);
+}
+
+/* CTA Buttons */
+.ctaButton {
+  display: inline-block;
+  background: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.ctaButton.beginner {
+  color: #667eea;
+}
+
+.ctaButton.advanced {
+  color: #302b63;
+}
+
+.ctaButton.baroque {
+  color: #8B4513;
+}
+
+.ctaButton.kids {
+  color: #FF6B9D;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.ctaButtonLarge {
+  padding: 1.25rem 3rem;
+  font-size: 1.2rem;
+}
+
+/* Content Section */
+.lessonContent {
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.leadText {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #555;
+  margin: 2rem 0;
+}
+
+/* Global h2 styles for lesson pages */
+.lessonPage :global(h2) {
+  font-size: 2.5rem;
+  margin: 3rem 0 2rem;
+  color: #333;
+  font-weight: 800;
+}
+
+/* Benefits Grid - 4 columns */
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin: 2rem 0 4rem;
+}
+
+@media (max-width: 1200px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.benefitCard {
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.benefitCard.beginner {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  border: 2px solid #667eea30;
+}
+
+.benefitCard.advanced {
+  background: linear-gradient(135deg, #302b6315 0%, #24243e15 100%);
+  border: 2px solid #302b6330;
+}
+
+.benefitCard.baroque {
+  background: linear-gradient(135deg, #8B451315 0%, #65432115 100%);
+  border: 2px solid #8B451330;
+}
+
+.benefitCard.kids {
+  background: linear-gradient(135deg, #FF6B9D15 0%, #FFA06B15 100%);
+  border: 2px solid #FF6B9D30;
+}
+
+.benefitCard h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.benefitCard.beginner h3 {
+  color: #667eea;
+}
+
+.benefitCard.advanced h3 {
+  color: #302b63;
+}
+
+.benefitCard.baroque h3 {
+  color: #8B4513;
+}
+
+.benefitCard.kids h3 {
+  color: #FF6B9D;
+}
+
+/* Curriculum */
+.curriculum {
+  margin: 2rem 0;
+  display: grid;
+  gap: 2rem;
+}
+
+.curriculumSection,
+.curriculumPhase {
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.curriculumSection.beginner,
+.curriculumPhase.beginner {
+  border-left: 4px solid #667eea;
+}
+
+.curriculumSection.advanced {
+  border-left: 4px solid #302b63;
+}
+
+.curriculumSection.baroque {
+  border-left: 4px solid #8B4513;
+}
+
+.curriculumSection.kids,
+.curriculumPhase.kids {
+  border-left: 4px solid #FF6B9D;
+}
+
+.curriculumSection h3,
+.curriculumPhase h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.curriculumSection.beginner h3,
+.curriculumPhase.beginner h3 {
+  color: #667eea;
+}
+
+.curriculumSection.advanced h3 {
+  color: #302b63;
+}
+
+.curriculumSection.baroque h3 {
+  color: #8B4513;
+}
+
+.curriculumSection.kids h3,
+.curriculumPhase.kids h3 {
+  color: #FF6B9D;
+}
+
+.curriculumSection ul,
+.curriculumPhase ul {
+  list-style: none;
+  padding: 0;
+}
+
+.curriculumSection li,
+.curriculumPhase li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.curriculumSection.beginner li:before,
+.curriculumPhase.beginner li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.curriculumSection.advanced li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #302b63;
+  font-weight: bold;
+}
+
+.curriculumSection.baroque li:before {
+  content: "♫";
+  position: absolute;
+  left: 0;
+  color: #8B4513;
+  font-weight: bold;
+}
+
+.curriculumSection.kids li:before,
+.curriculumPhase.kids li:before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: #FF6B9D;
+}
+
+/* Target Audiences */
+.targetAudiences,
+.ageGroups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.audienceCard,
+.ageCard {
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.audienceCard.beginner,
+.ageCard.beginner {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  border: 2px solid #667eea30;
+}
+
+.audienceCard.advanced {
+  background: linear-gradient(135deg, #302b6315 0%, #24243e15 100%);
+  border: 2px solid #302b6330;
+}
+
+.audienceCard.baroque {
+  background: #f8f9fa;
+  border: 2px solid #8B451330;
+}
+
+.audienceCard.kids,
+.ageCard.kids {
+  background: linear-gradient(135deg, #FF6B9D15 0%, #FFA06B15 100%);
+  border: 2px solid #FF6B9D30;
+}
+
+.audienceCard h3,
+.ageCard h3 {
+  margin-bottom: 1rem;
+}
+
+.audienceCard.beginner h3,
+.ageCard.beginner h3 {
+  color: #667eea;
+}
+
+.audienceCard.advanced h3 {
+  color: #302b63;
+}
+
+.audienceCard.baroque h3,
+.ageCard.baroque h3 {
+  color: #8B4513;
+}
+
+.audienceCard.kids h3,
+.ageCard.kids h3 {
+  color: #FF6B9D;
+}
+
+/* Testimonials */
+.testimonial {
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 2rem 0;
+  font-style: italic;
+}
+
+.testimonial.beginner {
+  border-left: 4px solid #667eea;
+}
+
+.testimonial.advanced {
+  border-left: 4px solid #302b63;
+}
+
+.testimonial.baroque {
+  border-left: 4px solid #8B4513;
+}
+
+.testimonial.kids {
+  border-left: 4px solid #FF6B9D;
+}
+
+.testimonial cite {
+  display: block;
+  margin-top: 1rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.testimonial.beginner cite {
+  color: #667eea;
+}
+
+.testimonial.advanced cite {
+  color: #302b63;
+}
+
+.testimonial.baroque cite {
+  color: #8B4513;
+}
+
+.testimonial.kids cite {
+  color: #FF6B9D;
+}
+
+/* Getting Started Steps */
+.gettingStarted {
+  margin: 3rem 0;
+}
+
+.step {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  align-items: flex-start;
+}
+
+.stepNumber {
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.stepNumber.beginner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.stepNumber.advanced {
+  background: linear-gradient(135deg, #302b63 0%, #24243e 100%);
+}
+
+.stepNumber.baroque {
+  background: linear-gradient(135deg, #8B4513 0%, #654321 100%);
+}
+
+.stepNumber.kids {
+  background: linear-gradient(135deg, #FF6B9D 0%, #FFA06B 100%);
+}
+
+.stepContent h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* FAQ */
+.faq {
+  margin: 2rem 0;
+}
+
+.faqItem {
+  background: white;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.faqItem h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.faqItem.beginner h3 {
+  color: #667eea;
+}
+
+.faqItem.advanced h3 {
+  color: #302b63;
+}
+
+.faqItem.baroque h3 {
+  color: #8B4513;
+}
+
+.faqItem.kids h3 {
+  color: #FF6B9D;
+}
+
+/* CTA Section */
+.ctaSection {
+  text-align: center;
+  padding: 4rem 2rem;
+  border-radius: 12px;
+  margin: 4rem 0;
+}
+
+.ctaSection.beginner {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+}
+
+.ctaSection.advanced {
+  background: linear-gradient(135deg, #302b6315 0%, #24243e15 100%);
+}
+
+.ctaSection.baroque {
+  background: linear-gradient(135deg, #8B451315 0%, #65432115 100%);
+}
+
+.ctaSection.kids {
+  background: linear-gradient(135deg, #FF6B9D15 0%, #FFA06B15 100%);
+}
+
+.ctaSection h2 {
+  margin-top: 0;
+}
+
+.ctaSection p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Additional Components */
+.repertoireSection,
+.repertoireLevels,
+.songCategories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.repertoireCategory,
+.levelCard,
+.songCategory {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.repertoireCategory h3,
+.levelCard h3,
+.songCategory h3 {
+  margin-bottom: 1rem;
+}
+
+.levelCard.beginner,
+.songCategory.beginner {
+  border: 2px solid #667eea30;
+}
+
+.levelCard.baroque {
+  border: 2px solid #8B451330;
+}
+
+.songCategory.kids {
+  color: inherit;
+}
+
+.repertoireCategory.advanced h3,
+.levelCard h3,
+.songCategory.kids h3 {
+  color: #FF6B9D;
+}
+
+.repertoireCategory.baroque h3 {
+  color: #8B4513;
+}
+
+.levelCard.baroque h3 {
+  color: #8B4513;
+}
+
+.levelCard ul,
+.repertoireCategory ul,
+.songCategory ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.levelCard li,
+.repertoireCategory li,
+.songCategory li {
+  padding: 0.3rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.levelCard.beginner li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+}
+
+.levelCard.baroque li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #8B4513;
+}
+
+.repertoireCategory.advanced li:before {
+  content: "♪";
+  position: absolute;
+  left: 0;
+  color: #302b63;
+}
+
+.repertoireCategory.baroque li:before,
+.songCategory.kids li:before {
+  content: "♪";
+  position: absolute;
+  left: 0;
+  color: #FF6B9D;
+}
+
+/* Additional Sections */
+.uniqueApproach,
+.whyBaroque {
+  margin: 2rem 0;
+}
+
+.approachItem,
+.whyBaroque {
+  background: white;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.approachItem.advanced {
+  border-left: 4px solid #302b63;
+}
+
+.whyBaroque {
+  background: #f8f9fa;
+}
+
+.approachItem h3 {
+  color: #302b63;
+  margin-bottom: 1rem;
+}
+
+.whyBaroque p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .lessonHero h1 {
+    font-size: 2rem;
+  }
+
+  .lessonHeroSubtitle {
+    font-size: 1.2rem;
+  }
+
+  .lessonPage :global(h2) {
+    font-size: 2rem;
+  }
+
+  .leadText {
+    font-size: 1.1rem;
+  }
+
+  .step {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .benefitsGrid {
+    gap: 1.5rem;
+  }
+}
+
+/* Age Card Specific */
+.ageCard ul {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.ageCard li {
+  padding: 0.3rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.ageCard.kids li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #FF6B9D;
+}
