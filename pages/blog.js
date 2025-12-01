@@ -110,8 +110,10 @@ export async function getStaticProps() {
         item: ['content:encoded', 'content']
       }
     });
-    const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://yoursubstack.substack.com/feed';
+    const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
+    console.log('Fetching Substack RSS from:', SUBSTACK_URL);
     const feed = await parser.parseURL(SUBSTACK_URL);
+    console.log('Substack RSS fetched successfully, found', feed.items?.length || 0, 'posts');
 
     substackPosts = feed.items.map((item) => {
       // Create a URL-safe slug from the title
@@ -189,7 +191,8 @@ export async function getStaticProps() {
       };
     });
   } catch (error) {
-    console.warn('Could not fetch Substack posts:', error.message);
+    console.error('Could not fetch Substack posts:', error.message);
+    console.error('Full error:', error);
     // Continue without Substack posts if fetch fails
   }
 
