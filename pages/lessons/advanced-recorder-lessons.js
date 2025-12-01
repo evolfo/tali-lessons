@@ -307,7 +307,6 @@ const AdvancedRecorderLessons = () => {
           </section>
         </div>
       </>
-    </>
   )
 }
 

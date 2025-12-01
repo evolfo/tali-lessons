@@ -319,7 +319,6 @@ const KidsRecorderLessons = () => {
           </section>
         </div>
       </>
-    </>
   )
 }
 
