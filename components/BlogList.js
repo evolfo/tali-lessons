@@ -63,6 +63,9 @@ const BlogList = ({ allBlogs }) => {
                     height={250}
                     loading="lazy"
                     style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
+                    onError={(e) => {
+                      e.target.src = '/img/blog-img/blog1.jpg'
+                    }}
                   />
                 </div>
                 <div className="blog-card__content">

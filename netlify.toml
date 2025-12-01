@@ -7,7 +7,7 @@
 
 # Enable Netlify Image CDN
 [images]
-  remote_images = ["https://talirecorderlessons.com/.*", "https://i.ytimg.com/.*", "https://substackcdn.com/.*"]
+  remote_images = ["https://talirecorderlessons.com/.*", "https://i.ytimg.com/.*", "https://substackcdn.com/.*", "https://substack-post-media.s3.amazonaws.com/.*"]
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"

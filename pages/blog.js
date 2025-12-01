@@ -155,11 +155,26 @@ export async function getStaticProps() {
         category = 'Announcement';
       }
 
+      // Extract hero image - try multiple sources
+      let heroImage = '/img/blog-img/blog1.jpg'; // Default fallback
+
+      // First, try the enclosure tag
+      if (item.enclosure?.url) {
+        heroImage = item.enclosure.url;
+      }
+      // If no enclosure, try to extract first image from content
+      else if (fullContent) {
+        const imgMatch = fullContent.match(/<img[^>]+src=["']([^"']+)["']/i);
+        if (imgMatch && imgMatch[1]) {
+          heroImage = imgMatch[1];
+        }
+      }
+
       return {
         frontmatter: {
           title: item.title,
           date: item.pubDate || item.isoDate,
-          hero_image: item.enclosure?.url || '/img/blog-img/blog1.jpg', // Fallback image
+          hero_image: heroImage,
           author: 'Tali Rubinstein',
           description: description,
           excerpt: excerpt,
