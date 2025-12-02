@@ -104,15 +104,45 @@ export async function getStaticProps() {
   // Fetch Substack posts via RSS using native fetch (more reliable in serverless)
   let substackPosts = [];
   let fetchError = null;
+  
+  // Helper function to fetch with timeout and retries
+  const fetchWithRetry = async (url, options, retries = 3, timeout = 15000) => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), timeout);
+        
+        const response = await fetch(url, {
+          ...options,
+          signal: controller.signal,
+        });
+        
+        clearTimeout(timeoutId);
+        return response;
+      } catch (err) {
+        console.log(`[Blog Build] Fetch attempt ${i + 1} failed:`, err.message);
+        if (i === retries - 1) throw err;
+        // Wait before retry (exponential backoff)
+        await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+      }
+    }
+  };
+  
   try {
-    const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
+    // Force HTTPS and ensure correct URL format
+    let SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
+    // Ensure HTTPS
+    SUBSTACK_URL = SUBSTACK_URL.replace('http://', 'https://');
+    
     console.log('[Blog Build] Fetching Substack RSS from:', SUBSTACK_URL);
     console.log('[Blog Build] Environment:', process.env.NODE_ENV);
     
-    const response = await fetch(SUBSTACK_URL, {
+    const response = await fetchWithRetry(SUBSTACK_URL, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; TaliRecorderLessons/1.0)',
-        'Accept': 'application/rss+xml, application/xml, text/xml',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Cache-Control': 'no-cache',
       },
     });
     
