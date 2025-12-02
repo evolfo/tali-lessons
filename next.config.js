@@ -37,7 +37,17 @@ const nextConfig = {
     ],
   },
 
-  // Webpack optimizations
+  // Turbopack configuration for Next.js 16+
+  turbopack: {
+    rules: {
+      '*.md': {
+        loaders: ['raw-loader'],
+        as: '*.js',
+      },
+    },
+  },
+
+  // Webpack optimizations (for --webpack flag builds)
   webpack: function(config, { dev, isServer }) {
     config.module.rules.push({
       test: /\.md$/,

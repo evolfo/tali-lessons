@@ -12,18 +12,6 @@
 [[plugins]]
 package = "@netlify/plugin-nextjs"
 
-[[plugins]]
-package = "@netlify/plugin-sitemap"
-
-  [plugins.inputs]
-  buildDir = ".next"
-  exclude = [
-    '/api/**',
-    '/success',
-    '/checkout'
-  ]
-  prettyURLs = true
-
 # Performance headers
 [[headers]]
   for = "/*"

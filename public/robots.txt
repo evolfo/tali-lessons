@@ -1,52 +1,12 @@
-# Allow all crawlers
+# *
 User-agent: *
 Allow: /
-
-# Allow AI crawlers specifically
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-# Disallow checkout and API routes
 Disallow: /api/
-Disallow: /checkout
 Disallow: /success
+Disallow: /checkout
 
-# Sitemap location
-Sitemap: https://talirecorderlessons.com/sitemap.xml
+# Host
+Host: https://www.talirecorderlessons.com
 
-# LLM-specific information
-# See https://llmstxt.org for more information
-LLMs-Txt: https://talirecorderlessons.com/llms.txt
+# Sitemaps
+Sitemap: https://www.talirecorderlessons.com/sitemap.xml
