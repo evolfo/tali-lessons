@@ -90,7 +90,8 @@ const nextConfig = {
 
   // Modern JavaScript compilation
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    // Temporarily disabled to debug Substack RSS issue
+    // removeConsole: process.env.NODE_ENV === 'production',
   },
 
   trailingSlash: false,

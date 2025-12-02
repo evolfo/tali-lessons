@@ -5,7 +5,6 @@ import BlogLayout from "../components/BlogLayout";
 import BlogList from "../components/BlogList";
 import { BreadcrumbSchema } from '../components/StructuredData';
 import matter from "gray-matter";
-import Parser from 'rss-parser';
 
 const Blog = (props) => {
   // Create blog list schema for SEO
@@ -102,20 +101,62 @@ export async function getStaticProps() {
     return data;
   })(require.context("../posts", true, /\.md$/));
 
-  // Fetch Substack posts via RSS
+  // Fetch Substack posts via RSS using native fetch (more reliable in serverless)
   let substackPosts = [];
+  let fetchError = null;
   try {
-    const parser = new Parser({
-      customFields: {
-        item: ['content:encoded', 'content']
-      }
-    });
     const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
-    console.log('Fetching Substack RSS from:', SUBSTACK_URL);
-    const feed = await parser.parseURL(SUBSTACK_URL);
-    console.log('Substack RSS fetched successfully, found', feed.items?.length || 0, 'posts');
+    console.log('[Blog Build] Fetching Substack RSS from:', SUBSTACK_URL);
+    console.log('[Blog Build] Environment:', process.env.NODE_ENV);
+    
+    const response = await fetch(SUBSTACK_URL, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; TaliRecorderLessons/1.0)',
+        'Accept': 'application/rss+xml, application/xml, text/xml',
+      },
+    });
+    
+    if (!response.ok) {
+      throw new Error(`RSS fetch failed: ${response.status} ${response.statusText}`);
+    }
+    
+    const xmlText = await response.text();
+    console.log('[Blog Build] RSS response length:', xmlText.length);
+    
+    // Parse XML manually (more reliable than rss-parser in serverless)
+    const items = [];
+    const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+    let match;
+    
+    while ((match = itemRegex.exec(xmlText)) !== null) {
+      const itemXml = match[1];
+      
+      const getTagContent = (xml, tag) => {
+        // Handle CDATA sections
+        const cdataMatch = xml.match(new RegExp(`<${tag}[^>]*><!\\[CDATA\\[([\\s\\S]*?)\\]\\]><\\/${tag}>`, 'i'));
+        if (cdataMatch) return cdataMatch[1];
+        
+        const simpleMatch = xml.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i'));
+        return simpleMatch ? simpleMatch[1].trim() : '';
+      };
+      
+      const title = getTagContent(itemXml, 'title');
+      const link = getTagContent(itemXml, 'link');
+      const pubDate = getTagContent(itemXml, 'pubDate');
+      const content = getTagContent(itemXml, 'content:encoded') || getTagContent(itemXml, 'description');
+      
+      // Get enclosure URL for image
+      const enclosureMatch = itemXml.match(/<enclosure[^>]+url=["']([^"']+)["']/i);
+      const enclosureUrl = enclosureMatch ? enclosureMatch[1] : null;
+      
+      if (title) {
+        items.push({ title, link, pubDate, content, enclosureUrl });
+      }
+    }
+    
+    console.log('[Blog Build] Parsed', items.length, 'Substack posts');
 
-    substackPosts = feed.items.map((item) => {
+    substackPosts = items.map((item) => {
       // Create a URL-safe slug from the title
       const slug = 'substack-' + item.title
         .toLowerCase()
@@ -125,7 +166,7 @@ export async function getStaticProps() {
         .trim();
 
       // Extract description from content
-      const fullContent = item['content:encoded'] || item.content || item.contentSnippet || '';
+      const fullContent = item.content || '';
       const plainText = fullContent.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').trim();
       const description = plainText.slice(0, 160) + (plainText.length > 160 ? '...' : '');
       const excerpt = plainText.slice(0, 200) + (plainText.length > 200 ? '...' : '');
@@ -161,8 +202,8 @@ export async function getStaticProps() {
       let heroImage = '/img/blog-img/blog1.jpg'; // Default fallback
 
       // First, try the enclosure tag
-      if (item.enclosure?.url) {
-        heroImage = item.enclosure.url;
+      if (item.enclosureUrl) {
+        heroImage = item.enclosureUrl;
       }
       // If no enclosure, try to extract first image from content
       else if (fullContent) {
@@ -175,7 +216,7 @@ export async function getStaticProps() {
       return {
         frontmatter: {
           title: item.title,
-          date: item.pubDate || item.isoDate,
+          date: item.pubDate,
           hero_image: heroImage,
           author: 'Tali Rubinstein',
           description: description,
@@ -183,7 +224,7 @@ export async function getStaticProps() {
           keywords: keywords,
           category: category,
         },
-        // Use full HTML content, fallback to content or contentSnippet
+        // Use full HTML content
         markdownBody: fullContent,
         slug: slug,
         source: 'substack', // Mark as Substack post
@@ -191,19 +232,31 @@ export async function getStaticProps() {
       };
     });
   } catch (error) {
-    console.error('Could not fetch Substack posts:', error.message);
-    console.error('Full error:', error);
+    console.error('[Blog Build] ERROR fetching Substack posts:', error.message);
+    console.error('[Blog Build] Full error:', error);
+    fetchError = error.message;
     // Continue without Substack posts if fetch fails
   }
 
   // Combine local and Substack posts
   const allBlogs = [...posts, ...substackPosts];
+  
+  console.log('[Blog Build] Total blogs:', allBlogs.length, '(local:', posts.length, ', substack:', substackPosts.length, ')');
 
   return {
     props: {
       allBlogs,
       title: siteConfig.default.title,
       description: siteConfig.default.description,
+      // Debug info (remove after fixing)
+      _debug: {
+        substackCount: substackPosts.length,
+        localCount: posts.length,
+        fetchError: fetchError,
+        buildTime: new Date().toISOString(),
+      }
     },
+    // Revalidate every hour to pick up new Substack posts
+    revalidate: 3600,
   };
 }
