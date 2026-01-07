@@ -7,9 +7,22 @@ const Success = () => {
   const { clearCart } = useShoppingCart();
 
   useEffect(() => {
+    // Clear cart on successful purchase
     clearCart();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    
+    // Also clear localStorage directly as a fallback
+    if (typeof window !== 'undefined') {
+      // The use-shopping-cart package stores cart in localStorage
+      const cartKeys = Object.keys(localStorage).filter(key => 
+        key.includes('cart') || key.includes('stripe')
+      );
+      cartKeys.forEach(key => {
+        if (key.toLowerCase().includes('cart')) {
+          localStorage.removeItem(key);
+        }
+      });
+    }
+  }, [clearCart]);
 
   return (
     <Container style={{ marginTop: '4rem', textAlign: 'center' }}>
