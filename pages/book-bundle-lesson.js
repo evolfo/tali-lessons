@@ -1,5 +1,7 @@
 import React from 'react';
+import { NextSeo } from 'next-seo';
 import { Button, Container, Header } from 'semantic-ui-react'
+import { ServiceSchema, BreadcrumbSchema } from '../components/StructuredData';
 
 class BookBundleLesson extends React.Component {
   state = {
@@ -20,7 +22,32 @@ class BookBundleLesson extends React.Component {
 
   render() {
     return (
-      <Container id="book-bundle-lesson-container" className="bundle-container">
+      <>
+        <NextSeo
+          title="Book a Recorder Lesson | Tali Rubinstein"
+          description="Schedule your online recorder lesson with Tali Rubinstein. Choose from 45 or 60 minute sessions. Expert instruction for all skill levels."
+          canonical="https://talirecorderlessons.com/book-bundle-lesson"
+          openGraph={{
+            url: 'https://talirecorderlessons.com/book-bundle-lesson',
+            title: 'Book a Recorder Lesson',
+            description: 'Schedule your online recorder lesson with Tali Rubinstein. Choose from 45 or 60 minute sessions.',
+            images: [
+              {
+                url: 'https://talirecorderlessons.com/img/background1.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Book a Recorder Lesson with Tali Rubinstein',
+              },
+            ],
+          }}
+        />
+        <ServiceSchema />
+        <BreadcrumbSchema items={[
+          { name: 'Home', url: '/' },
+          { name: 'Book Lessons', url: '/book-bundle' },
+          { name: 'Schedule Lesson', url: '/book-bundle-lesson' }
+        ]} />
+        <Container id="book-bundle-lesson-container" className="bundle-container">
         <Header>Book a lesson!</Header>
         {/* <Button
           data-appointlet-organization="tali-recorder-lessons"
@@ -43,7 +70,8 @@ class BookBundleLesson extends React.Component {
         >
           60 Minutes
         </Button>
-      </Container>
+        </Container>
+      </>
     );
   }
 }

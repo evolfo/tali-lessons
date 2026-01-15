@@ -309,7 +309,7 @@ export async function getStaticProps({ ...ctx }) {
           item: ['content:encoded', 'content']
         }
       });
-      const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://yoursubstack.substack.com/feed';
+      const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
       const feed = await parser.parseURL(SUBSTACK_URL);
 
       // Find the matching post by slug
