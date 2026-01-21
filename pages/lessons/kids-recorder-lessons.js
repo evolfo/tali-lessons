@@ -39,7 +39,7 @@ const KidsRecorderLessons = () => {
               Professional online lessons that make learning recorder exciting, rewarding, and educational
             </p>
             <Link href="/book-bundle" className={`${styles.ctaButton} ${styles.kids}`}>
-              Book a Trial Lesson
+              Book a Lesson
             </Link>
           </div>
         </div>
@@ -232,9 +232,9 @@ const KidsRecorderLessons = () => {
                 <div className="step">
                   <div className="step-number">1</div>
                   <div className="step-content">
-                    <h3>Book a Trial Lesson</h3>
+                    <h3>Book a Lesson</h3>
                     <p>
-                      Schedule a 30-minute trial lesson to see if recorder lessons are a good fit for your child. No long-term commitment required.
+                      Schedule a lesson to see if recorder lessons are a good fit for your child. No long-term commitment required.
                     </p>
                   </div>
                 </div>
@@ -266,7 +266,7 @@ const KidsRecorderLessons = () => {
                 <div className={`${styles.faqItem} ${styles.kids}`}>
                   <h3>What age is best to start recorder?</h3>
                   <p>
-                    I recommend starting at age 8 or older. At this age, kids have the hand coordination, attention span, and ability to follow instructions needed for successful lessons. That said, every child is different—if your 7-year-old is ready, we can try a trial lesson!
+                    I recommend starting at age 7 or older. At this age, kids have the hand coordination, attention span, and ability to follow instructions needed for successful lessons. That said, every child is different—if your 7-year-old is ready, we can try a lesson!
                   </p>
                 </div>
 
@@ -309,10 +309,10 @@ const KidsRecorderLessons = () => {
               <div className={`${styles.ctaSection} ${styles.kids}`}>
                 <h2>Give Your Child the Gift of Music</h2>
                 <p>
-                  Recorder lessons build confidence, creativity, and discipline while being genuinely fun. Book a trial lesson today and see how music can enrich your child's life.
+                  Recorder lessons build confidence, creativity, and discipline while being genuinely fun. Book a lesson today and see how music can enrich your child's life.
                 </p>
                 <Link href="/book-bundle" className={`${styles.ctaButton} ${styles.ctaButtonLarge} ${styles.kids}`}>
-                  Book a Trial Lesson for Your Child
+                  Book a Lesson for Your Child
                 </Link>
               </div>
             </div>
