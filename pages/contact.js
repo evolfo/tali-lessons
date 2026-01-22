@@ -11,9 +11,9 @@ class Contact extends React.Component {
             <NextSeo
               title="Contact Tali Rubinstein | Book Online Recorder Lessons"
               description="Get in touch with Tali Rubinstein to book online recorder lessons, ask questions about lessons, or inquire about sheet music and collaborations."
-              canonical="https://talirecorderlessons.com/contact"
+              canonical="https://www.talirecorderlessons.com/contact"
               openGraph={{
-                url: 'https://talirecorderlessons.com/contact',
+                url: 'https://www.talirecorderlessons.com/contact',
                 title: 'Contact Tali Rubinstein | Book Online Recorder Lessons',
                 description: 'Contact Tali to book lessons or ask questions about online recorder instruction.',
               }}

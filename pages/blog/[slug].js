@@ -128,10 +128,10 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
 
   if (!frontmatter) return <></>
 
-  const fullUrl = "https://talirecorderlessons.com/blog/" + (frontmatter.slug || frontmatter.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-'))
+  const fullUrl = "https://www.talirecorderlessons.com/blog/" + (frontmatter.slug || frontmatter.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-'))
   const imageUrl = frontmatter.hero_image?.startsWith('http')
     ? frontmatter.hero_image
-    : `https://talirecorderlessons.com${frontmatter.hero_image}`
+    : `https://www.talirecorderlessons.com${frontmatter.hero_image}`
   
   // Calculate reading time
   const wordsPerMinute = 200;
@@ -215,14 +215,14 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
             author: {
               '@type': 'Person',
               name: frontmatter.author || 'Tali Rubinstein',
-              url: 'https://talirecorderlessons.com',
+              url: 'https://www.talirecorderlessons.com',
             },
             publisher: {
               '@type': 'Organization',
               name: 'Tali Rubinstein - Recorder Lessons',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://talirecorderlessons.com/img/logo.png',
+                url: 'https://www.talirecorderlessons.com/img/logo.png',
               },
             },
             mainEntityOfPage: {

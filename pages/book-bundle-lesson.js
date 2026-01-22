@@ -26,14 +26,14 @@ class BookBundleLesson extends React.Component {
         <NextSeo
           title="Book a Recorder Lesson | Tali Rubinstein"
           description="Schedule your online recorder lesson with Tali Rubinstein. Choose from 45 or 60 minute sessions. Expert instruction for all skill levels."
-          canonical="https://talirecorderlessons.com/book-bundle-lesson"
+          canonical="https://www.talirecorderlessons.com/book-bundle-lesson"
           openGraph={{
-            url: 'https://talirecorderlessons.com/book-bundle-lesson',
+            url: 'https://www.talirecorderlessons.com/book-bundle-lesson',
             title: 'Book a Recorder Lesson',
             description: 'Schedule your online recorder lesson with Tali Rubinstein. Choose from 45 or 60 minute sessions.',
             images: [
               {
-                url: 'https://talirecorderlessons.com/img/background1.jpg',
+                url: 'https://www.talirecorderlessons.com/img/background1.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Book a Recorder Lesson with Tali Rubinstein',

@@ -13,7 +13,7 @@ const Blog = (props) => {
     '@type': 'Blog',
     name: 'Tali Rubinstein Blog',
     description: 'Articles about recorder playing, music performances, and education from professional recorder player Tali Rubinstein.',
-    url: 'https://talirecorderlessons.com/blog',
+    url: 'https://www.talirecorderlessons.com/blog',
     author: {
       '@type': 'Person',
       name: 'Tali Rubinstein',
@@ -27,7 +27,7 @@ const Blog = (props) => {
         '@type': 'Person',
         name: post.frontmatter.author || 'Tali Rubinstein',
       },
-      url: `https://talirecorderlessons.com/blog/${post.slug}`,
+      url: `https://www.talirecorderlessons.com/blog/${post.slug}`,
     })) || [],
   };
 
@@ -42,9 +42,9 @@ const Blog = (props) => {
       <NextSeo
         title="Blog | Recorder News, Tips & Updates from Tali Rubinstein"
         description="Read the latest articles from Tali Rubinstein about recorder playing, music performances, new releases, and tips for recorder students of all levels."
-        canonical="https://talirecorderlessons.com/blog"
+        canonical="https://www.talirecorderlessons.com/blog"
         openGraph={{
-          url: 'https://talirecorderlessons.com/blog',
+          url: 'https://www.talirecorderlessons.com/blog',
           title: 'Blog | Recorder News & Tips from Tali Rubinstein',
           description: 'Articles about recorder playing, performances, and music education from professional recorder player Tali Rubinstein.',
           type: 'blog',

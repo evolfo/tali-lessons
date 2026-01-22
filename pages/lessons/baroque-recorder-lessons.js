@@ -10,13 +10,13 @@ const BaroqueRecorderLessons = () => {
       <NextSeo
         title="Baroque Recorder Lessons Online | Authentic Period Style with Tali Rubinstein"
         description="Master baroque recorder repertoire, ornamentation, and historically informed performance. Learn Handel, Telemann, Bach, and Vivaldi with expert online instruction."
-        canonical="https://talirecorderlessons.com/lessons/baroque-recorder-lessons"
+        canonical="https://www.talirecorderlessons.com/lessons/baroque-recorder-lessons"
         openGraph={{
-          url: 'https://talirecorderlessons.com/lessons/baroque-recorder-lessons',
+          url: 'https://www.talirecorderlessons.com/lessons/baroque-recorder-lessons',
           title: 'Baroque Recorder Lessons | Period Performance Expertise',
           description: 'Learn authentic baroque performance practice. Master ornamentation, articulation, and the great baroque repertoire for recorder.',
           images: [{
-              url: 'https://talirecorderlessons.com/img/about1.jpg',
+              url: 'https://www.talirecorderlessons.com/img/about1.jpg',
               width: 1200,
               height: 630,
               alt: 'Tali Rubinstein baroque recorder',

@@ -4,5 +4,6 @@
 /substack           https://talirecorder.substack.com           301!
 
 
-# Force HTTPS
-http://talirecorderlessons.com/*    https://talirecorderlessons.com/:splat    301!
+# Redirect non-www to www (canonical domain)
+https://talirecorderlessons.com/*    https://www.talirecorderlessons.com/:splat    301!
+http://talirecorderlessons.com/*     https://www.talirecorderlessons.com/:splat    301!

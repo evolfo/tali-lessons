@@ -54,14 +54,14 @@ const Tutorials = () => {
         <NextSeo
           title="Free Recorder Tutorials | Carnegie Hall Education Series with Tali Rubinstein"
           description="Free recorder tutorials featuring Carnegie Hall's education series. Learn recorder basics, posture, breathing, articulation, and the C-major scale with Tali Rubinstein."
-          canonical="https://talirecorderlessons.com/tutorials"
+          canonical="https://www.talirecorderlessons.com/tutorials"
           openGraph={{
-            url: 'https://talirecorderlessons.com/tutorials',
+            url: 'https://www.talirecorderlessons.com/tutorials',
             title: 'Free Recorder Tutorials | Carnegie Hall Education Series',
             description: 'Learn recorder basics for free with Carnegie Hall education series. Professional instruction from Tali Rubinstein.',
             images: [
               {
-                url: 'https://talirecorderlessons.com/img/tutorials/RB1edit.jpg',
+                url: 'https://www.talirecorderlessons.com/img/tutorials/RB1edit.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Tali Rubinstein Recorder Tutorial',

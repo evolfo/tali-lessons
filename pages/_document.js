@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
           </noscript>
 
           {/* Alternate for language/locale */}
-          <link rel="alternate" hrefLang="en" href="https://talirecorderlessons.com" />
+          <link rel="alternate" hrefLang="en" href="https://www.talirecorderlessons.com" />
 
           {/* RSS Feed for blog discovery */}
           <link 
@@ -48,7 +48,7 @@ export default class MyDocument extends Document {
           />
 
           {/* LLM and AI discovery */}
-          <link rel="author" href="https://talirecorderlessons.com/about" />
+          <link rel="author" href="https://www.talirecorderlessons.com/about" />
           <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         </Head>
         <body>

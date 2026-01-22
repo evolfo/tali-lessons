@@ -13,14 +13,14 @@ class BookBundle extends React.Component {
         <NextSeo
           title="Book Online Recorder Lessons & Sheet Music | Tali Rubinstein"
           description="Book online recorder lessons with Tali Rubinstein. Individual lessons and discounted packages available. Also browse original sheet music compositions."
-          canonical="https://talirecorderlessons.com/book-bundle"
+          canonical="https://www.talirecorderlessons.com/book-bundle"
           openGraph={{
-            url: 'https://talirecorderlessons.com/book-bundle',
+            url: 'https://www.talirecorderlessons.com/book-bundle',
             title: 'Book Online Recorder Lessons & Sheet Music',
             description: 'Individual lessons starting at $95. Package discounts up to 10% off. Original sheet music by Tali Rubinstein.',
             images: [
               {
-                url: 'https://talirecorderlessons.com/img/background1.jpg',
+                url: 'https://www.talirecorderlessons.com/img/background1.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Book Recorder Lessons with Tali Rubinstein',

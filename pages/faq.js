@@ -97,14 +97,14 @@ const FAQ = () => {
       <NextSeo
         title="Recorder Lessons FAQ | Common Questions Answered - Tali Rubinstein"
         description="Get answers to common recorder lesson questions: costs, best beginner recorders, learning timeline, online lesson effectiveness, and more. Expert answers from professional recorder teacher Tali Rubinstein."
-        canonical="https://talirecorderlessons.com/faq"
+        canonical="https://www.talirecorderlessons.com/faq"
         openGraph={{
-          url: 'https://talirecorderlessons.com/faq',
+          url: 'https://www.talirecorderlessons.com/faq',
           title: 'Recorder Lessons FAQ | Common Questions Answered',
           description: 'Everything you need to know about learning recorder: lesson costs, best instruments for beginners, learning timeline, and expert teaching approaches.',
           images: [
             {
-              url: 'https://talirecorderlessons.com/img/about1.jpg',
+              url: 'https://www.talirecorderlessons.com/img/about1.jpg',
               width: 1200,
               height: 630,
               alt: 'Tali Rubinstein Recorder Teacher',

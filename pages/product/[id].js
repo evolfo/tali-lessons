@@ -56,14 +56,14 @@ const ProductPage = () => {
       <NextSeo
         title={`${product.name} | Tali Recorder Lessons`}
         description={productDescription}
-        canonical={`https://talirecorderlessons.com/product/${id}`}
+        canonical={`https://www.talirecorderlessons.com/product/${id}`}
         openGraph={{
-          url: `https://talirecorderlessons.com/product/${id}`,
+          url: `https://www.talirecorderlessons.com/product/${id}`,
           title: product.name,
           description: productDescription,
           images: product.image ? [
             {
-              url: `https://talirecorderlessons.com${product.image}`,
+              url: `https://www.talirecorderlessons.com${product.image}`,
               width: 1200,
               height: 630,
               alt: product.name,
