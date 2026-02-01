@@ -39,4 +39,8 @@ class BookBundle extends React.Component {
   }
 }
 
+export async function getStaticProps() {
+  return { props: {} }
+}
+
 export default BookBundle;

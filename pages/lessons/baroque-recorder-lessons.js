@@ -203,4 +203,8 @@ const BaroqueRecorderLessons = () => {
     )
   }
 
+export async function getStaticProps() {
+  return { props: {} }
+}
+
 export default BaroqueRecorderLessons

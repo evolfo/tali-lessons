@@ -46,4 +46,8 @@ class Contact extends React.Component {
     }
 }
 
+export async function getStaticProps() {
+  return { props: {} }
+}
+
 export default Contact

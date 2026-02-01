@@ -190,4 +190,8 @@ const Tutorials = () => {
     );
 }
 
+export async function getStaticProps() {
+  return { props: {} }
+}
+
 export default Tutorials

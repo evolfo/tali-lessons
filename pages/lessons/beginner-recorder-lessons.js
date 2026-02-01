@@ -348,4 +348,8 @@ const BeginnerRecorderLessons = () => {
   )
 }
 
+export async function getStaticProps() {
+  return { props: {} }
+}
+
 export default BeginnerRecorderLessons

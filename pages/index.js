@@ -69,4 +69,11 @@ const Home = () => {
   );
 }
 
+// Enable static generation for Netlify prerendering
+export async function getStaticProps() {
+  return {
+    props: {},
+  }
+}
+
 export default Home

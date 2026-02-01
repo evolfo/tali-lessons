@@ -322,4 +322,8 @@ const KidsRecorderLessons = () => {
   )
 }
 
+export async function getStaticProps() {
+  return { props: {} }
+}
+
 export default KidsRecorderLessons
