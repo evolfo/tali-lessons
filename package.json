@@ -18,7 +18,7 @@
     "gray-matter": "^4.0.3",
     "iframe-resizer-react": "^1.1.0",
     "micro": "^10.0.1",
-    "next": "16.1.2",
+    "next": "16.3.1",
     "next-seo": "^6.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -52,6 +52,9 @@
   "overrides": {
     "react-router-sitemap": {
       "react": "$react"
+    },
+    "use-shopping-cart": {
+      "uuid": "^11.1.1"
     }
   }
 }

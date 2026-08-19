@@ -5,54 +5,67 @@ Disallow: /api/
 Disallow: /success
 Disallow: /checkout
 
-# AI crawlers / answer engines - explicitly allowed so LLM-based search
-# (ChatGPT, Claude, Perplexity, Google AI Overviews, etc.) can fetch and
-# cite this site. See /llms.txt for a structured summary built for them.
+# GPTBot
 User-agent: GPTBot
 Allow: /
 
+# ChatGPT-User
 User-agent: ChatGPT-User
 Allow: /
 
+# OAI-SearchBot
 User-agent: OAI-SearchBot
 Allow: /
 
+# ClaudeBot
 User-agent: ClaudeBot
 Allow: /
 
+# Claude-Web
 User-agent: Claude-Web
 Allow: /
 
+# anthropic-ai
 User-agent: anthropic-ai
 Allow: /
 
+# PerplexityBot
 User-agent: PerplexityBot
 Allow: /
 
+# Perplexity-User
 User-agent: Perplexity-User
 Allow: /
 
+# Google-Extended
 User-agent: Google-Extended
 Allow: /
 
+# GoogleOther
 User-agent: GoogleOther
 Allow: /
 
+# CCBot
 User-agent: CCBot
 Allow: /
 
+# cohere-ai
 User-agent: cohere-ai
 Allow: /
 
+# Amazonbot
 User-agent: Amazonbot
 Allow: /
 
+# Applebot-Extended
 User-agent: Applebot-Extended
 Allow: /
 
+# meta-externalagent
 User-agent: meta-externalagent
 Allow: /
 
+# Bytespider
 User-agent: Bytespider
 Allow: /
 
