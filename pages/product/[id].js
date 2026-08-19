@@ -8,13 +8,10 @@ import { useCartModal } from '../../contexts/CartModalContext';
 import { products } from '../../data/products';
 import { ProductSchema, BreadcrumbSchema } from '../../components/StructuredData';
 
-const ProductPage = () => {
+const ProductPage = ({ product, id }) => {
   const router = useRouter();
-  const { id } = router.query;
   const { addItem, cartDetails, incrementItem } = useShoppingCart();
   const { openCart } = useCartModal();
-
-  const product = products[id];
 
   if (!product) {
     return (
@@ -353,5 +350,24 @@ const ProductPage = () => {
     </>
   );
 };
+
+// Statically prerender every product page with its own metadata so search
+// engines and AI crawlers (which mostly don't execute client-side JS) see
+// real title/description/price content instead of an empty shell.
+export async function getStaticPaths() {
+  return {
+    paths: Object.keys(products).map((id) => ({ params: { id } })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  return {
+    props: {
+      id: params.id,
+      product: products[params.id] || null,
+    },
+  };
+}
 
 export default ProductPage;

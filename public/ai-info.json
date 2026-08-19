@@ -85,6 +85,28 @@
       }
     ]
   },
+  "lesson_specializations": [
+    {
+      "name": "Beginner Recorder Lessons",
+      "url": "https://talirecorderlessons.com/lessons/beginner-recorder-lessons",
+      "description": "Instruction for complete beginners and elementary players, no prior music reading required"
+    },
+    {
+      "name": "Kids Recorder Lessons",
+      "url": "https://talirecorderlessons.com/lessons/kids-recorder-lessons",
+      "description": "Age-appropriate instruction for young students, typically starting age 8+"
+    },
+    {
+      "name": "Baroque Recorder Lessons",
+      "url": "https://talirecorderlessons.com/lessons/baroque-recorder-lessons",
+      "description": "Handel, Bach, Vivaldi, Telemann, and historically-informed technique"
+    },
+    {
+      "name": "Advanced Recorder Lessons",
+      "url": "https://talirecorderlessons.com/lessons/advanced-recorder-lessons",
+      "description": "Virtuosic technique, ornamentation, and pre-professional/professional preparation"
+    }
+  ],
   "student_levels": [
     "Complete Beginners",
     "Elementary",
@@ -140,6 +162,16 @@
     "youtube": "@talirecorder",
     "substack": "talirecorder.substack.com"
   },
+  "key_pages": {
+    "home": "https://talirecorderlessons.com/",
+    "about": "https://talirecorderlessons.com/about",
+    "faq": "https://talirecorderlessons.com/faq",
+    "book_single_lesson": "https://talirecorderlessons.com/book-lesson",
+    "book_bundle": "https://talirecorderlessons.com/book-bundle",
+    "tutorials": "https://talirecorderlessons.com/tutorials",
+    "blog": "https://talirecorderlessons.com/blog",
+    "contact": "https://talirecorderlessons.com/contact"
+  },
   "llms_txt": "https://talirecorderlessons.com/llms.txt",
-  "last_updated": "2025-11-29"
+  "last_updated": "2026-08-19"
 }

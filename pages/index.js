@@ -36,7 +36,7 @@ const Home = () => {
       <ServiceSchema />
 
       <Head>
-        <link rel="shortcut icon" href="/img/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="keywords" content="recorder lessons, online music lessons, recorder teacher, learn recorder, recorder instruction, music education, baroque recorder, Tali Rubinstein, online recorder classes" />
 
         {/* Geo tags for local SEO */}

@@ -88,6 +88,22 @@ const FAQ = () => {
           '@type': 'Answer',
           text: 'Recorder repertoire includes: Baroque (Handel, Bach, Vivaldi, Telemann), Renaissance (dance music, consort pieces), Folk and traditional songs, Jazz and improvisation, Contemporary classical, Pop arrangements, Latin styles (bossa nova, samba), World music. The recorder is surprisingly versatile!'
         }
+      },
+      {
+        '@type': 'Question',
+        name: 'What equipment do I need for recorder lessons?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You need a soprano recorder ($20-100), and for online lessons a computer or tablet with a camera. A music stand ($15-40) and metronome app (free) are recommended but not required. Total startup cost is typically $40-150.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Do recorder skills transfer to other instruments?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Recorder builds music reading (treble clef transfers directly to flute, violin, and oboe), breath control for wind instruments, finger dexterity, ear training, and music theory that apply to any instrument. Many professional flutists, oboists, and clarinetists started on recorder.'
+        }
       }
     ]
   }
