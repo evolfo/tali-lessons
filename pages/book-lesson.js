@@ -19,7 +19,7 @@ class BookLesson extends React.Component {
       <>
       <NextSeo
         title="Book an Online Recorder Lesson | Tali Rubinstein"
-        description="Book a single 30, 45, or 60 minute online recorder lesson with Tali Rubinstein, or save up to 10% with a lesson bundle. Instant online booking, all skill levels welcome."
+        description="Book a single 45 or 60 minute online recorder lesson with Tali Rubinstein, or save up to 10% with a lesson bundle. Instant online booking, all skill levels welcome."
         canonical="https://www.talirecorderlessons.com/book-lesson"
         openGraph={{
           url: 'https://www.talirecorderlessons.com/book-lesson',
@@ -60,7 +60,7 @@ class BookLesson extends React.Component {
                 <Card.Content>
                   <Card.Header>Book a Single Lesson</Card.Header>
                   <Card.Description>
-                    Lessons can be 30, 45, or 60 minutes long.
+                    Lessons can be 45 or 60 minutes long.
                   </Card.Description>
                 </Card.Content>
               </Card>
