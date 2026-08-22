@@ -6,6 +6,7 @@ import elements from "../utilities/carousel-elements";
 import LessonButton from "../components/LessonButton";
 import AccessibleEmbed from "../components/AccessibleEmbed";
 import Link from "next/link";
+import { PERSON_ID } from "./StructuredData";
 
 const HomePage = () => {
   return (
@@ -32,6 +33,7 @@ const HomePage = () => {
                     embedUrl: 'https://www.youtube.com/embed/AUeUZdfiuJ0',
                     uploadDate: '2019-01-01',
                     publisher: {
+                      '@id': PERSON_ID,
                       '@type': 'Person',
                       name: 'Tali Rubinstein',
                     },
@@ -49,6 +51,7 @@ const HomePage = () => {
                     embedUrl: 'https://www.youtube.com/embed/6YTo9RjX6j8',
                     uploadDate: '2019-01-01',
                     publisher: {
+                      '@id': PERSON_ID,
                       '@type': 'Person',
                       name: 'Tali Rubinstein',
                     },

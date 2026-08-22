@@ -1,7 +1,7 @@
 import React from 'react'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
-import { PersonSchema, ServiceSchema } from '../../components/StructuredData'
+import { PersonSchema, ServiceSchema, CourseSchema } from '../../components/StructuredData'
 import styles from '../../styles/LessonPage.module.css'
 
 const BeginnerRecorderLessons = () => {
@@ -73,6 +73,12 @@ const BeginnerRecorderLessons = () => {
 
       <PersonSchema />
       <ServiceSchema />
+      <CourseSchema
+        name="Beginner Recorder Lessons"
+        description="Online recorder lessons for complete beginners and elementary players. No prior music reading required - learn technique, tone, and simple repertoire from scratch."
+        url="/lessons/beginner-recorder-lessons"
+        educationalLevel="Beginner"
+      />
 
       <div className={styles.lessonPage}>
         <div className={`${styles.lessonHero} ${styles.beginner}`}>

@@ -10,7 +10,7 @@ const glob = require('glob')
 
 import BlogLayout from '../../components/BlogLayout'
 import SocialShare from '../../components/SocialShare'
-import { BreadcrumbSchema } from '../../components/StructuredData'
+import { BreadcrumbSchema, PERSON_ID, ORGANIZATION_ID } from '../../components/StructuredData'
 import styles from '../../styles/BlogPost.module.css'
 
 export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isSubstack }) {
@@ -213,11 +213,13 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
             datePublished: frontmatter.date,
             dateModified: frontmatter.date,
             author: {
+              '@id': PERSON_ID,
               '@type': 'Person',
               name: frontmatter.author || 'Tali Rubinstein',
               url: 'https://www.talirecorderlessons.com',
             },
             publisher: {
+              '@id': ORGANIZATION_ID,
               '@type': 'Organization',
               name: 'Tali Rubinstein - Recorder Lessons',
               logo: {

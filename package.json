@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev -p 3005 --webpack",
     "build": "next build --webpack",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && node scripts/submit-indexnow.js",
     "start": "next start"
   },
   "dependencies": {

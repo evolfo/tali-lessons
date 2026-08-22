@@ -1,6 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
 
+// Canonical entity IDs, reused across every schema block on the site so
+// Google/LLMs resolve "Tali Rubinstein" and "Tali Recorder Lessons" as the
+// same entity everywhere they're mentioned, instead of a fresh disconnected
+// blob per page.
+export const PERSON_ID = 'https://www.talirecorderlessons.com/#person';
+export const ORGANIZATION_ID = 'https://www.talirecorderlessons.com/#organization';
+
 export const PersonSchema = () => (
   <Head>
     <script
@@ -9,11 +16,25 @@ export const PersonSchema = () => (
         __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Person',
+          '@id': PERSON_ID,
           name: 'Tali Rubinstein',
           jobTitle: 'Professional Recorder Player, Composer & Music Educator',
           url: 'https://www.talirecorderlessons.com',
           image: 'https://www.talirecorderlessons.com/img/about1.jpg',
+          // Verified profiles for this exact person (confirmed against her
+          // Wikipedia/Wikidata bio: Israeli-American recorder player, first
+          // recorder player at Berklee, Latin Grammy album, Obama's 2018
+          // favorite songs list) - linking these lets Google/LLMs resolve
+          // this site to her existing, well-documented public identity
+          // instead of treating it as an unverified new entity.
           sameAs: [
+            'https://en.wikipedia.org/wiki/Tali_Rubinstein',
+            'https://www.wikidata.org/wiki/Q105627819',
+            'https://www.talirubinstein.com',
+            'https://college.berklee.edu/people/tali-rubinstein',
+            'https://www.linkedin.com/in/tali-rubinstein-86b64667/',
+            'https://www.facebook.com/talirubinsteinrecorder/',
+            'https://x.com/talirubinstein',
             'https://instagram.com/TaliRubinstein',
             'https://www.youtube.com/@talirecorder',
           ],
@@ -33,6 +54,23 @@ export const PersonSchema = () => (
             '@type': 'EducationalOrganization',
             name: 'Berklee College of Music',
           },
+          // Notable third-party coverage - helps corroborate the bio claims
+          // made elsewhere on this site (Latin Grammy album, Obama 2018
+          // list) with independently-published sources.
+          subjectOf: [
+            {
+              '@type': 'Article',
+              headline: 'Tali Rubinstein Redefines the Recorder',
+              url: 'https://jazztimes.com/features/profiles/tali-rubinstein-redefines-the-recorder/',
+              publisher: { '@type': 'Organization', name: 'JazzTimes' },
+            },
+            {
+              '@type': 'Article',
+              headline: 'Recorder Player Tali Rubinstein on Translating Nostalgia',
+              url: 'https://www.berklee.edu/news/berklee-now/recorder-player-tali-rubinstein-translating-nostalgia',
+              publisher: { '@type': 'Organization', name: 'Berklee College of Music' },
+            },
+          ],
         }),
       }}
     />
@@ -47,12 +85,14 @@ export const MusicSchoolSchema = () => (
         __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'EducationalOrganization',
-          '@id': 'https://www.talirecorderlessons.com/#organization',
+          '@id': ORGANIZATION_ID,
           name: 'Tali Recorder Lessons',
           alternateName: 'Online Recorder Lessons with Tali Rubinstein',
           url: 'https://www.talirecorderlessons.com',
           logo: 'https://www.talirecorderlessons.com/img/logo.png',
           description: 'Professional online recorder lessons for all ages and skill levels, taught by world-renowned recorder player Tali Rubinstein.',
+          founder: { '@id': PERSON_ID, '@type': 'Person', name: 'Tali Rubinstein' },
+          employee: { '@id': PERSON_ID, '@type': 'Person', name: 'Tali Rubinstein' },
           address: {
             '@type': 'PostalAddress',
             addressCountry: 'US',
@@ -154,6 +194,7 @@ export const ServiceSchema = () => (
           '@type': 'Service',
           serviceType: 'Online Music Lessons',
           provider: {
+            '@id': PERSON_ID,
             '@type': 'Person',
             name: 'Tali Rubinstein',
           },
@@ -203,6 +244,46 @@ export const ServiceSchema = () => (
   </Head>
 );
 
+// Course schema for the lesson-specialization pages (beginner/kids/baroque/
+// advanced). Distinct from ServiceSchema (a commercial offer) - this marks
+// the page as an educational curriculum, which is what Google's Course rich
+// result and LLM answer engines actually look for when someone asks "where
+// can I learn X" rather than "where can I buy X."
+export const CourseSchema = ({ name, description, url, educationalLevel }) => (
+  <Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Course',
+          name,
+          description,
+          url: `https://www.talirecorderlessons.com${url}`,
+          provider: {
+            '@id': ORGANIZATION_ID,
+            '@type': 'EducationalOrganization',
+            name: 'Tali Recorder Lessons',
+            url: 'https://www.talirecorderlessons.com',
+          },
+          ...(educationalLevel ? { educationalLevel } : {}),
+          hasCourseInstance: {
+            '@type': 'CourseInstance',
+            courseMode: 'online',
+            courseWorkload: 'PT45M',
+            instructor: {
+              '@id': PERSON_ID,
+              '@type': 'Person',
+              name: 'Tali Rubinstein',
+            },
+          },
+          inLanguage: 'en',
+        }),
+      }}
+    />
+  </Head>
+);
+
 export const BreadcrumbSchema = ({ items }) => (
   <Head>
     <script
@@ -240,6 +321,7 @@ export const ProductSchema = ({ product }) => (
             priceCurrency: 'USD',
             availability: 'https://schema.org/InStock',
             seller: {
+              '@id': PERSON_ID,
               '@type': 'Person',
               name: 'Tali Rubinstein',
             },
@@ -291,10 +373,12 @@ export const BlogPostSchema = ({ title, description, datePublished, image, url, 
           dateModified: datePublished,
           url: `https://www.talirecorderlessons.com${url}`,
           author: {
+            '@id': PERSON_ID,
             '@type': 'Person',
             name: author,
           },
           publisher: {
+            '@id': ORGANIZATION_ID,
             '@type': 'Organization',
             name: 'Tali Recorder Lessons',
             url: 'https://www.talirecorderlessons.com',
@@ -327,6 +411,7 @@ export const VideoSchema = ({ videos }) => (
               contentUrl: `https://www.youtube.com/watch?v=${video.youtubeId}`,
               embedUrl: `https://www.youtube.com/embed/${video.youtubeId}`,
               publisher: {
+                '@id': PERSON_ID,
                 '@type': 'Person',
                 name: 'Tali Rubinstein',
               },
@@ -355,6 +440,7 @@ export const SingleVideoSchema = ({ name, description, thumbnail, youtubeId, upl
           contentUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
           embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
           publisher: {
+            '@id': PERSON_ID,
             '@type': 'Person',
             name: 'Tali Rubinstein',
           },
@@ -369,6 +455,7 @@ export default {
   MusicSchoolSchema,
   FAQSchema,
   ServiceSchema,
+  CourseSchema,
   BreadcrumbSchema,
   ProductSchema,
   WebPageSchema,

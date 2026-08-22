@@ -67,28 +67,59 @@ Instruction, Private Music Tutoring
 **Website:** https://www.talirecorderlessons.com
 **Booking:** https://www.talirecorderlessons.com/book-lesson
 
+## On-site work shipped since this doc was written
+
+Everything below is off-site (needs a human with an account/login). But there was more real
+on-site leverage available, and it's now done:
+
+- **Entity linking.** Every JSON-LD block on the site (Person, Organization, Service, Course,
+  Product, BlogPosting, VideoObject) now shares a consistent `@id` for "Tali Rubinstein" and
+  "Tali Recorder Lessons," instead of each page redefining a disconnected blob. This is what
+  lets Google/LLMs resolve every mention across the site as *the same entity*.
+- **Verified `sameAs` links.** Found via live search research: Tali Rubinstein has an existing
+  **Wikipedia article** (`en.wikipedia.org/wiki/Tali_Rubinstein`) and **Wikidata entry**
+  (`wikidata.org/wiki/Q105627819`) — confirmed as the same person via matching bio facts
+  (Berklee, Latin Grammy album, Obama's 2018 list). Wikipedia/Wikidata are the two strongest
+  possible entity signals for both Google's Knowledge Graph and LLM training/retrieval data,
+  and neither was linked anywhere on the site before. Added those plus LinkedIn, Facebook,
+  X/Twitter, and her personal site (`talirubinstein.com`, already referenced in body text but
+  never in structured data) to the Person schema's `sameAs`.
+- **Course schema** added to the four lesson-specialization pages (beginner/kids/baroque/
+  advanced), on top of the existing commercial `Service` schema. `Course` is what Google's
+  "Learning Content" rich results and AI answer engines actually look for when someone asks
+  "where can I learn X," as distinct from "where can I buy X."
+- **IndexNow** wired into the build (`scripts/submit-indexnow.js`, runs in `postbuild`). Every
+  production deploy now pings Bing/Yandex (and anyone else on IndexNow) with the full URL list
+  immediately, instead of waiting for their next scheduled crawl. No account signup needed —
+  IndexNow only requires hosting a key file, which is already in `public/`. This matters
+  because Bing's index feeds Copilot/Bing Chat directly.
+
 ## Priority off-site actions
 
-### 1. American Recorder Society (ARS) — highest priority, recorder-specific
-The ARS (`americanrecorder.org`) is the top authority hub in this exact niche — its own
-"Online Resources" and "Free Online Recorder Lessons" pages are exactly the kind of page an AI
-answer engine pulls from when asked "where can I learn recorder online." Getting listed here is
-worth more than a dozen generic directory listings.
-- Teacher directory: https://americanrecorder.org/find_recorder_teachers.php — the directory
-  supports filtering by "Offers Online recorder Instruction," confirmed live in this research
-  pass. Listing appears to require ARS membership (see
-  https://americanrecorder.org/benefits_of_membership.php) — worth the cost for this niche.
-- General resources page (separate from the directory, may accept non-member links too):
-  https://americanrecorder.org/on-line_resources.php
-- Once a member, their print/digital magazine (*American Recorder*) is also open to teacher
-  profiles or guest articles — a strong, topically-relevant backlink beyond the directory entry.
+### 1. American Recorder Society (ARS) — deprioritized, paid membership required
+The ARS teacher directory (`americanrecorder.org/find_recorder_teachers.php`) is still the
+top-authority hub in this niche, but listing in it requires paid ARS membership, which you've
+said isn't worth it right now — dropping this from the priority list.
 
-### 2. LearnRecorder.com — recorder-specific teacher profile directory
-Confirmed in this research pass: LearnRecorder.com (`learnrecorder.com`) hosts individual,
-per-teacher profile pages, e.g.
-`learnrecorder.com/recorder-teacher-stlouis-mo-anne-timberlake/` for Anne Timberlake. This is
-a low-effort, highly relevant listing — find their submission/contact path and request a
-profile page linking to `https://www.talirecorderlessons.com`.
+One thing worth being explicit about: getting backend/CMS/FTP access to `americanrecorder.org`
+to add a listing without membership isn't something I can do or would do. It's a third
+party's system I have no legitimate access to — that would be unauthorized access to someone
+else's website, not a growth tactic. The only real paths in are (a) pay for membership, or
+(b) email whoever maintains the separate, non-directory "Online Resources" page
+(`americanrecorder.org/on-line_resources.php`) and ask if they'll add a free link there — that
+page doesn't obviously require membership, but confirming that needs a human to actually email
+them, which is outside what I can do from here.
+
+### 2. LearnRecorder.com — contact info not publicly findable from here
+Tried to find a contact email/submission form for LearnRecorder.com (`learnrecorder.com`) via
+search - couldn't find one. Their teacher-directory page
+(`learnrecorder.com/recorder-teachers/`) lists existing profiles like Anne Timberlake's, but no
+public contact path surfaced in search results, and this session's web access is restricted to
+search snippets - it can't browse the site directly to check a footer/Contact page or try a
+WHOIS domain-contact lookup, both of which are the next real steps. If you (or anyone with
+normal browser access) can open `learnrecorder.com` directly, check for a "Contact," "Add Your
+Listing," or "About" link, or a WHOIS lookup on the domain — any of those would likely surface
+it in under a minute in a way this session can't.
 
 ### 3. Confirm and reinforce existing organic mentions
 - **CMUSE** — confirmed real: Tali has an existing blog post (`/blog/cmuse`) thanking CMUSE for
@@ -156,8 +187,13 @@ posts get real updates, add an `updated` field to the post frontmatter and threa
 
 | Action | Status | Notes |
 |---|---|---|
-| ARS teacher directory | Not started | Highest priority — americanrecorder.org/find_recorder_teachers.php, requires membership |
-| LearnRecorder.com profile | Not started | Confirmed real per-teacher profile pages exist; low-effort |
+| Entity `@id` linking across all schema | Done | Shipped in code |
+| Wikipedia/Wikidata/LinkedIn/etc. `sameAs` | Done | Shipped in code |
+| Course schema on lesson pages | Done | Shipped in code |
+| IndexNow (Bing/Yandex instant ping) | Done | Shipped in code, active on next production deploy |
+| ARS teacher directory | Deprioritized | Requires paid membership — skipped per owner decision |
+| ARS resources page (non-directory) | Not started | May not require membership — worth a quick email to confirm |
+| LearnRecorder.com profile | Blocked | Contact info not found via search; needs direct site visit or WHOIS |
 | Verify CMUSE mention | Not started | Blog post + live search suggest it's still there; confirm link target |
 | Check Singersroom roundup | Not started | singersroom.com/best-online-recorder-lessons/ — confirm if Tali is listed |
 | Google Business Profile | Not started | Also unlocks real review schema later |
