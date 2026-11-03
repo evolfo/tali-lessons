@@ -91,6 +91,13 @@ const nextConfig = {
     // removeConsole: process.env.NODE_ENV === 'production',
   },
 
+  // Paid sheet music lives in /private (NOT /public, which is served to
+  // everyone). The Stripe webhook emails it after purchase, so make sure the
+  // files are bundled into that serverless function.
+  outputFileTracingIncludes: {
+    '/api/webhooks/stripe': ['./private/sheet-music/**/*'],
+  },
+
   // Security headers. These used to live in netlify.toml, which Vercel ignores
   // (the live site was sending none of them). Vercel adds HSTS on its own.
   async headers() {
