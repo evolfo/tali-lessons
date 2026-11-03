@@ -19,6 +19,34 @@ export const config = {
   },
 };
 
+// Events that mean "an order is ready to fulfil". `completed` fires when the
+// customer finishes checkout (already paid for cards/wallets); delayed methods
+// such as bank debits fire `async_payment_succeeded` days later instead.
+const FULFILL_EVENTS = new Set([
+  'checkout.session.completed',
+  'checkout.session.async_payment_succeeded',
+]);
+
+const ADMIN_TO = () => process.env.ADMIN_EMAIL || 'info@talirecorder.com';
+const FROM = 'Tali Recorder Lessons <hello@talirecorder.com>';
+
+// Resend's send() RETURNS { data, error } rather than throwing, so every call
+// must check `error`. The idempotency key makes Stripe's webhook retries safe:
+// a retry of the same order returns the original send instead of emailing the
+// customer a second time (Resend remembers keys for 24 hours).
+async function sendEmail(payload, idempotencyKey) {
+  const { data, error } = await resend.emails.send(payload, { idempotencyKey });
+  if (error) {
+    // Same key, different payload: this email was already sent for this order.
+    if (error.name === 'invalid_idempotent_request') {
+      console.warn(`[fulfillment] Email already sent (idempotency key ${idempotencyKey})`);
+      return data;
+    }
+    throw new Error(`Resend error (${error.name}): ${error.message}`);
+  }
+  return data;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -41,8 +69,11 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: `Webhook Error: ${err.message}` });
   }
 
-  // Handle the checkout.session.completed event
-  if (event.type === 'checkout.session.completed') {
+  if (event.type === 'checkout.session.async_payment_failed') {
+    console.error(`[fulfillment] Delayed payment failed for session ${event.data.object.id}; nothing was sent.`);
+  }
+
+  if (FULFILL_EVENTS.has(event.type)) {
     const session = event.data.object;
 
     try {
@@ -50,6 +81,23 @@ export default async function handler(req, res) {
       const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
         expand: ['line_items'],
       });
+
+      // Only hand over the goods once the money has actually arrived. A
+      // completed checkout can still be unpaid (delayed bank debits), and a
+      // failed payment would otherwise leave the customer with free music.
+      if (fullSession.payment_status !== 'paid') {
+        console.warn(`[fulfillment] Session ${session.id} is ${fullSession.payment_status}, not paid; holding fulfilment.`);
+        await sendEmail(
+          {
+            from: FROM,
+            to: ADMIN_TO(),
+            subject: 'Order awaiting payment (nothing sent yet)',
+            html: `<p>Checkout session <strong>${session.id}</strong> (${fullSession.customer_details?.email || 'unknown email'}) completed but is <strong>${fullSession.payment_status}</strong>, so no files or confirmation were sent.</p><p>If the payment clears, Stripe sends an "async payment succeeded" event and the order is fulfilled automatically (the webhook endpoint must be subscribed to <code>checkout.session.async_payment_succeeded</code>). Otherwise no action is needed.</p>`,
+          },
+          `order-${session.id}-awaiting-payment`
+        );
+        return res.status(200).json({ received: true, fulfilled: false });
+      }
 
       const customerEmail = fullSession.customer_details?.email;
       const customerName = fullSession.customer_details?.name || 'Valued Customer';
@@ -105,12 +153,15 @@ export default async function handler(req, res) {
       if (missingFiles.length > 0) {
         console.error(`[fulfillment] Missing sheet music attachment(s) for session ${session.id}: ${missingFiles.join(', ')}`);
         try {
-          await resend.emails.send({
-            from: 'Tali Recorder Lessons <hello@talirecorder.com>',
-            to: process.env.ADMIN_EMAIL || 'info@talirecorder.com',
-            subject: 'ACTION NEEDED: sheet music was not attached to an order email',
-            html: `<p>A customer (${customerEmail || 'unknown email'}) bought sheet music but these files could not be attached automatically: <strong>${missingFiles.join(', ')}</strong>.</p><p>Stripe session: ${session.id}. Please send the files to the customer manually.</p>`,
-          });
+          await sendEmail(
+            {
+              from: FROM,
+              to: ADMIN_TO(),
+              subject: 'ACTION NEEDED: sheet music was not attached to an order email',
+              html: `<p>A customer (${customerEmail || 'unknown email'}) bought sheet music but these files could not be attached automatically: <strong>${missingFiles.join(', ')}</strong>.</p><p>Stripe session: ${session.id}. Please send the files to the customer manually.</p>`,
+            },
+            `order-${session.id}-missing-attachment`
+          );
         } catch (alertErr) {
           console.error('[fulfillment] Failed to send missing-attachment alert:', alertErr);
         }
@@ -147,27 +198,34 @@ export default async function handler(req, res) {
           emailData.attachments = attachments;
         }
 
-        await resend.emails.send(emailData);
+        await sendEmail(emailData, `order-${session.id}-customer`);
 
         // Send notification email to admin (you)
-        await resend.emails.send({
-          from: 'Tali Recorder Lessons <hello@talirecorder.com>',
-          to: process.env.ADMIN_EMAIL || 'info@talirecorder.com',
-          subject: getAdminEmailSubject(purchaseType.type),
-          html: generateAdminNotificationEmail(
-            customerName,
-            customerEmail,
-            purchasedItems,
-            totalAmount,
-            purchaseType.type
-          ),
-        });
+        await sendEmail(
+          {
+            from: FROM,
+            to: ADMIN_TO(),
+            subject: getAdminEmailSubject(purchaseType.type),
+            html: generateAdminNotificationEmail(
+              customerName,
+              customerEmail,
+              purchasedItems,
+              totalAmount,
+              purchaseType.type
+            ),
+          },
+          `order-${session.id}-admin`
+        );
+      } else {
+        console.error(`[fulfillment] Session ${session.id} has no customer email; nothing was sent.`);
       }
 
       console.log(`Emails sent successfully for session: ${session.id}`);
     } catch (error) {
-      console.error('Error sending emails:', error);
-      // Don't return error to Stripe - we still want to acknowledge the webhook
+      console.error('Error fulfilling order:', error);
+      // Tell Stripe to retry. Safe now: the idempotency keys above mean a retry
+      // can't send the customer a second copy of an email that already went out.
+      return res.status(500).json({ error: 'Fulfilment failed; will be retried' });
     }
   }
 
