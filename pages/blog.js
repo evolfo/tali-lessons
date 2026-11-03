@@ -41,7 +41,7 @@ const Blog = (props) => {
         />
       </Head>
       <NextSeo
-        title="Blog | Recorder News, Tips & Updates from Tali Rubinstein"
+        title="Recorder Blog: Tips & Updates"
         description="Read the latest articles from Tali Rubinstein about recorder playing, music performances, new releases, and tips for recorder students of all levels."
         canonical="https://www.talirecorderlessons.com/blog"
         openGraph={{

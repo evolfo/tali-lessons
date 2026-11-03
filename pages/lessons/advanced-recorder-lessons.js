@@ -32,8 +32,8 @@ const AdvancedRecorderLessons = () => {
   return (
     <>
       <NextSeo
-        title="Advanced Recorder Lessons Online | Master-Level Instruction with Tali Rubinstein"
-        description="Elevate your recorder playing to professional levels. Learn virtuosic technique, jazz improvisation, baroque ornamentation, and contemporary styles from a Berklee graduate and performing artist."
+        title="Advanced Recorder Lessons Online"
+        description="Advanced online recorder lessons: virtuosic technique, ornamentation, jazz improvisation, and contemporary styles with Berklee graduate Tali Rubinstein."
         canonical="https://www.talirecorderlessons.com/lessons/advanced-recorder-lessons"
         openGraph={{
           url: 'https://www.talirecorderlessons.com/lessons/advanced-recorder-lessons',

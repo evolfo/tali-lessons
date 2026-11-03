@@ -11,7 +11,7 @@ class BookBundle extends React.Component {
     return (
       <>
         <NextSeo
-          title="Book Online Recorder Lessons & Sheet Music | Tali Rubinstein"
+          title="Recorder Lesson Bundles & Sheet Music"
           description="Book online recorder lessons with Tali Rubinstein. Individual lessons and discounted packages available. Also browse original sheet music compositions."
           canonical="https://www.talirecorderlessons.com/book-bundle"
           openGraph={{

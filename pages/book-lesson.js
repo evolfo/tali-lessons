@@ -18,8 +18,8 @@ class BookLesson extends React.Component {
     return (
       <>
       <NextSeo
-        title="Book an Online Recorder Lesson | Tali Rubinstein"
-        description="Book a single 45 or 60 minute online recorder lesson with Tali Rubinstein, or save up to 10% with a lesson bundle. Instant online booking, all skill levels welcome."
+        title="Book an Online Recorder Lesson"
+        description="Book a single 45 or 60 minute online recorder lesson with Tali Rubinstein, or save up to 10% with a lesson bundle. All skill levels welcome."
         canonical="https://www.talirecorderlessons.com/book-lesson"
         openGraph={{
           url: 'https://www.talirecorderlessons.com/book-lesson',

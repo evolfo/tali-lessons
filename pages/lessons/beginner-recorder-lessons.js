@@ -48,8 +48,8 @@ const BeginnerRecorderLessons = () => {
   return (
     <>
       <NextSeo
-        title="Beginner Recorder Lessons Online | Learn Recorder from Scratch with Tali Rubinstein"
-        description="Start your recorder journey with professional online lessons. Perfect for adult beginners and kids. Learn proper technique, music reading, and play beautiful melodies within weeks."
+        title="Beginner Recorder Lessons Online"
+        description="Start recorder with live online lessons for adults and kids. Learn technique, music reading, and your first melodies within weeks with Tali Rubinstein."
         canonical="https://www.talirecorderlessons.com/lessons/beginner-recorder-lessons"
         openGraph={{
           url: 'https://www.talirecorderlessons.com/lessons/beginner-recorder-lessons',

@@ -43,6 +43,13 @@ const ProductPage = ({ product, id }) => {
   const originalPrice = getOriginalPrice();
   const isSheetMusic = product.id.startsWith('sheetMusic');
 
+  // Concise title (the site template appends the brand): sheet music drops the
+  // "by Tali Rubinstein" / arrangement notes, lessons say "Recorder Lesson".
+  const pageTitle = isSheetMusic
+    ? `${product.name.replace(/\s+by Tali Rubinstein$/, '').replace(/\s*\(.*\)$/, '').replace(/"/g, '')} Sheet Music`
+    : product.name.replace(/Lessons?$/, (m) => `Recorder ${m}`);
+
+  const truncate = (t, n = 155) => (t.length <= n ? t : t.slice(0, n).replace(/\s+\S*$/, '') + '\u2026');
   const productDescription = product.description || 
     (isSheetMusic 
       ? `Digital sheet music: ${product.name} by Tali Rubinstein. Available for instant download.`
@@ -51,8 +58,8 @@ const ProductPage = ({ product, id }) => {
   return (
     <>
       <NextSeo
-        title={`${product.name} | Tali Recorder Lessons`}
-        description={productDescription}
+        title={pageTitle}
+        description={truncate(productDescription)}
         canonical={`https://www.talirecorderlessons.com/product/${id}`}
         openGraph={{
           url: `https://www.talirecorderlessons.com/product/${id}`,

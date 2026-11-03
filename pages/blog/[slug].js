@@ -162,7 +162,8 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
       ]} />
 
       <NextSeo
-        title={`${frontmatter.title} | Tali Rubinstein`}
+        title={frontmatter.title}
+        titleTemplate={frontmatter.title.length <= 37 ? '%s | Tali Recorder Lessons' : '%s'}
         description={frontmatter.description || frontmatter.excerpt}
         canonical={fullUrl}
         openGraph={{

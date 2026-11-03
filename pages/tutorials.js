@@ -52,8 +52,8 @@ const Tutorials = () => {
     return (
       <>
         <NextSeo
-          title="Free Recorder Tutorials | Carnegie Hall Education Series with Tali Rubinstein"
-          description="Free recorder tutorials featuring Carnegie Hall's education series. Learn recorder basics, posture, breathing, articulation, and the C-major scale with Tali Rubinstein."
+          title="Free Recorder Tutorials"
+          description="Free recorder tutorials from Tali Rubinstein, including the Carnegie Hall Education series: fundamentals, technique, and short video lessons for beginners."
           canonical="https://www.talirecorderlessons.com/tutorials"
           openGraph={{
             url: 'https://www.talirecorderlessons.com/tutorials',

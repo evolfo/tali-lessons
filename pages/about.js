@@ -7,8 +7,8 @@ const About = () => {
     return (
       <>
         <NextSeo
-          title="About Tali Rubinstein | Professional Recorder Player & Educator"
-          description="Learn about Tali Rubinstein, a world-renowned recorder player and Berklee College of Music graduate. Award-winning performer teaching online recorder lessons worldwide."
+          title="About Tali Rubinstein: Recorder Player"
+          description="Tali Rubinstein is a Berklee graduate and the first recorder player to attend the school. She teaches online recorder lessons to students worldwide."
           canonical="https://www.talirecorderlessons.com/about"
           openGraph={{
             url: 'https://www.talirecorderlessons.com/about',

@@ -11,8 +11,9 @@ const Home = () => {
   return (
     <>
       <NextSeo
-        title="Online Recorder Lessons with Tali Rubinstein | Professional Instruction for All Levels"
-        description="Learn recorder with world-renowned musician Tali Rubinstein. Online lessons for beginners to advanced players. Personalized instruction, flexible scheduling, and original sheet music available."
+        title="Online Recorder Lessons | Tali Rubinstein"
+        titleTemplate="%s"
+        description="Learn recorder with Tali Rubinstein, a Berklee graduate. Live online lessons for beginners to advanced players, plus original sheet music."
         canonical="https://www.talirecorderlessons.com/"
         openGraph={{
           url: 'https://www.talirecorderlessons.com',

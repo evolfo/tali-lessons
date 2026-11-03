@@ -8,9 +8,9 @@ import { GLOSSARY_CATEGORIES, glossaryTerms } from '../data/glossary'
 
 const SITE = 'https://www.talirecorderlessons.com'
 const PAGE_URL = `${SITE}/glossary`
-const TITLE = 'Recorder Glossary: Recorder Terms and Techniques Explained'
+const TITLE = 'Recorder Glossary: Terms Explained'
 const DESCRIPTION =
-  'Plain-English definitions of recorder terms: soprano vs alto, Baroque vs German fingering, windway, labium, tonguing, flattement, divisions, basso continuo, and more.'
+  'Plain-English definitions of recorder terms: soprano vs alto, Baroque vs German fingering, tonguing, flattement, divisions, basso continuo, and more.'
 
 const Glossary = () => {
   const structuredData = {

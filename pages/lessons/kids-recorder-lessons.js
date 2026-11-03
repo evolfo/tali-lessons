@@ -8,8 +8,8 @@ const KidsRecorderLessons = () => {
   return (
     <>
       <NextSeo
-        title="Recorder Lessons for Kids Online | Fun Music Education with Tali Rubinstein"
-        description="Engaging online recorder lessons for children ages 8-17. Build musical skills, confidence, and creativity with professional instruction designed for young learners."
+        title="Recorder Lessons for Kids Online"
+        description="Online recorder lessons for children ages 8-17. Build musical skills, confidence, and creativity with professional, patient instruction from Tali Rubinstein."
         canonical="https://www.talirecorderlessons.com/lessons/kids-recorder-lessons"
         openGraph={{
           url: 'https://www.talirecorderlessons.com/lessons/kids-recorder-lessons',

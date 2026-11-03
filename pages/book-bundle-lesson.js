@@ -24,7 +24,7 @@ class BookBundleLesson extends React.Component {
     return (
       <>
         <NextSeo
-          title="Book a Recorder Lesson | Tali Rubinstein"
+          title="Schedule a Recorder Lesson"
           description="Schedule your online recorder lesson with Tali Rubinstein. Choose from 45 or 60 minute sessions. Expert instruction for all skill levels."
           canonical="https://www.talirecorderlessons.com/book-bundle-lesson"
           openGraph={{

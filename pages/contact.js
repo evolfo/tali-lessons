@@ -9,7 +9,7 @@ class Contact extends React.Component {
         return (
           <>
             <NextSeo
-              title="Contact Tali Rubinstein | Book Online Recorder Lessons"
+              title="Contact Tali Rubinstein"
               description="Get in touch with Tali Rubinstein to book online recorder lessons, ask questions about lessons, or inquire about sheet music and collaborations."
               canonical="https://www.talirecorderlessons.com/contact"
               openGraph={{
