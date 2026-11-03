@@ -9,9 +9,9 @@ import { FINGERINGS, INSTRUMENTS, HOLE_LABELS, fingeringText } from '../data/fin
 
 const SITE = 'https://www.talirecorderlessons.com'
 const PAGE_URL = `${SITE}/recorder-fingering-chart`
-const TITLE = 'Recorder Fingering Chart: Baroque Fingering for Soprano & Alto'
+const TITLE = 'Recorder Fingering Chart: Soprano & Alto'
 const DESCRIPTION =
-  'Free printable recorder fingering chart. Baroque (English) fingering for soprano and alto recorder with clear hole diagrams, from low C to high C, plus how to read it.'
+  'Free printable recorder fingering chart: Baroque (English) fingering for soprano and alto, low C to high C, with clear hole diagrams and how to read them.'
 
 const describe = (holes) =>
   holes
