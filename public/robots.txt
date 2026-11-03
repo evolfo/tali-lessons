@@ -25,6 +25,18 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
+# Claude-User
+User-agent: Claude-User
+Allow: /
+
+# Claude-SearchBot
+User-agent: Claude-SearchBot
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
 # anthropic-ai
 User-agent: anthropic-ai
 Allow: /

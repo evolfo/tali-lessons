@@ -1,7 +1,29 @@
+const fs = require('fs');
+const path = require('path');
+const matter = require('gray-matter');
+
+// Real publish dates for local blog posts, keyed by URL path. Everything else
+// gets no <lastmod>: stamping every URL with the build time on each deploy
+// claims "everything changed today" and teaches crawlers to ignore the field.
+const postDates = {};
+const postsDir = path.join(__dirname, 'posts');
+for (const file of fs.readdirSync(postsDir)) {
+  if (!file.endsWith('.md')) continue;
+  const { data } = matter(fs.readFileSync(path.join(postsDir, file), 'utf8'));
+  if (data.date) postDates['/blog/' + file.replace(/\.md$/, '')] = new Date(data.date).toISOString();
+}
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: process.env.SITE_URL || 'https://www.talirecorderlessons.com',
   generateRobotsTxt: true,
+  autoLastmod: false,
+  changefreq: undefined,
+  priority: undefined,
+  transform: async (config, loc) => ({
+    loc,
+    lastmod: postDates[loc],
+  }),
   exclude: ['/api/*', '/success', '/checkout'],
   robotsTxtOptions: {
     policies: [
@@ -20,6 +42,9 @@ module.exports = {
       { userAgent: 'OAI-SearchBot', allow: '/' },
       { userAgent: 'ClaudeBot', allow: '/' },
       { userAgent: 'Claude-Web', allow: '/' },
+      { userAgent: 'Claude-User', allow: '/' },
+      { userAgent: 'Claude-SearchBot', allow: '/' },
+      { userAgent: 'Bingbot', allow: '/' },
       { userAgent: 'anthropic-ai', allow: '/' },
       { userAgent: 'PerplexityBot', allow: '/' },
       { userAgent: 'Perplexity-User', allow: '/' },

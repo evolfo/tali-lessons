@@ -7,6 +7,7 @@ import LessonButton from "../components/LessonButton";
 import AccessibleEmbed from "../components/AccessibleEmbed";
 import Link from "next/link";
 import { PERSON_ID } from "./StructuredData";
+import { serializeJsonLd } from "../lib/jsonld";
 
 const HomePage = () => {
   return (
@@ -16,7 +17,7 @@ const HomePage = () => {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: serializeJsonLd({
               '@context': 'https://schema.org',
               '@type': 'ItemList',
               name: 'Tali Rubinstein Performance Videos',

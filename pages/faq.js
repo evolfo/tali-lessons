@@ -3,109 +3,21 @@ import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { Container } from 'semantic-ui-react'
 import { PersonSchema, ServiceSchema } from '../components/StructuredData'
+import { serializeJsonLd } from '../lib/jsonld'
+import { faqs } from '../data/faq'
 
 const FAQ = () => {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'How much do recorder lessons cost?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Tali Rubinstein offers online recorder lessons: $95 for 45 minutes or $105 for 60 minutes. Package bundles provide savings: 5-lesson package $498.75 (5% off), 10-lesson package $976.50 (7% off), 20-lesson package $1,890 (10% off).'
-        }
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
       },
-      {
-        '@type': 'Question',
-        name: 'What is the best recorder for beginners?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'The best beginner recorders are: Yamaha YRS-23 ($20-25) - excellent plastic soprano recorder; Aulos 203 ($20-30) - warm tone, durable; Mollenhauer Student ($60-100) - wooden option for better sound. Start with a soprano (descant) recorder in C.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How long does it take to learn recorder?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Learning timeline: 2-3 weeks for simple melodies, 2-3 months for folk songs and easy classical pieces, 6-12 months for intermediate baroque repertoire, 1-2 years for advanced technique and complex pieces. Daily 15-20 minute practice accelerates progress.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Is recorder hard to learn?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'No, the recorder is one of the easiest instruments to start. You can play your first notes in minutes. Basic melodies come within weeks. However, mastering advanced techniques, baroque ornamentation, and professional repertoire requires dedicated practice like any instrument.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Can adults learn recorder?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Absolutely! Adults often learn recorder faster than children due to better focus and understanding. Many adult beginners play recognizable songs within a month. The recorder is perfect for adults wanting to learn music - it\'s affordable, portable, and offers beautiful baroque and contemporary repertoire.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Do I need to read music to learn recorder?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'No prior music reading is required. Recorder lessons teach music reading alongside playing technique. Students start with finger charts and simple notation, gradually building reading skills. Most students read standard notation comfortably within 3-6 months.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What age should you start recorder lessons?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Age 8+ is ideal for recorder lessons. At this age, children have sufficient hand coordination, attention span, and instruction-following ability. Some advanced 7-year-olds can start earlier. Adults can start at any age - it\'s never too late to learn recorder.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Are online recorder lessons effective?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, online recorder lessons are highly effective. Camera angles show fingerings clearly, demonstrations are up-close, and students can record sessions for practice review. Many students prefer online lessons for convenience, scheduling flexibility, and ability to learn from expert teachers anywhere.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How often should I practice recorder?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Practice recommendations: Beginners: 15-20 minutes daily; Intermediate: 20-30 minutes daily; Advanced: 30-60 minutes daily. Consistency matters more than duration. Daily short sessions are more effective than one long weekly session. Quality practice with focus beats mindless repetition.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What styles of music can you play on recorder?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Recorder repertoire includes: Baroque (Handel, Bach, Vivaldi, Telemann), Renaissance (dance music, consort pieces), Folk and traditional songs, Jazz and improvisation, Contemporary classical, Pop arrangements, Latin styles (bossa nova, samba), World music. The recorder is surprisingly versatile!'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What equipment do I need for recorder lessons?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'You need a soprano recorder ($20-100), and for online lessons a computer or tablet with a camera. A music stand ($15-40) and metronome app (free) are recommended but not required. Total startup cost is typically $40-150.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Do recorder skills transfer to other instruments?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. Recorder builds music reading (treble clef transfers directly to flute, violin, and oboe), breath control for wind instruments, finger dexterity, ear training, and music theory that apply to any instrument. Many professional flutists, oboists, and clarinetists started on recorder.'
-        }
-      }
-    ]
+    })),
   }
 
   return (
@@ -132,7 +44,7 @@ const FAQ = () => {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
       />
 
       <PersonSchema />

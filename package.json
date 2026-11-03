@@ -7,6 +7,7 @@
   "description": "The lesson website for world famous recorder player Tali Rubinstein",
   "scripts": {
     "dev": "next dev -p 3005 --webpack",
+    "prebuild": "node scripts/generate-llms.js",
     "build": "next build --webpack",
     "postbuild": "next-sitemap && node scripts/submit-indexnow.js",
     "start": "next start"

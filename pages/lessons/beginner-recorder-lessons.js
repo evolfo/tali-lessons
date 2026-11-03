@@ -2,6 +2,7 @@ import React from 'react'
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
 import { PersonSchema, ServiceSchema, CourseSchema } from '../../components/StructuredData'
+import { serializeJsonLd } from '../../lib/jsonld'
 import styles from '../../styles/LessonPage.module.css'
 
 const BeginnerRecorderLessons = () => {
@@ -68,7 +69,7 @@ const BeginnerRecorderLessons = () => {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
       />
 
       <PersonSchema />

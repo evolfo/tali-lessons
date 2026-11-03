@@ -12,6 +12,7 @@ import BlogLayout from '../../components/BlogLayout'
 import SocialShare from '../../components/SocialShare'
 import { BreadcrumbSchema, PERSON_ID, ORGANIZATION_ID } from '../../components/StructuredData'
 import styles from '../../styles/BlogPost.module.css'
+import { serializeJsonLd } from '../../lib/jsonld'
 
 export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isSubstack }) {
   const contentRef = React.useRef(null)
@@ -204,7 +205,7 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             '@context': 'https://schema.org',
             '@type': 'BlogPosting',
             headline: frontmatter.title,

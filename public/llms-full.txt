@@ -1,0 +1,326 @@
+# Tali Recorder Lessons
+
+> Professional online recorder lessons taught by world-renowned musician Tali Rubinstein
+
+Note: This describes Tali Rubinstein, the Israeli-American recorder player, composer, and educator (Berklee College of Music graduate), and her online lessons at talirecorderlessons.com. Her performing and press site is talirubinstein.com.
+
+## Primary links
+- Home: https://www.talirecorderlessons.com/
+- About Tali Rubinstein: https://www.talirecorderlessons.com/about
+- Recorder lessons FAQ: https://www.talirecorderlessons.com/faq
+- Recorder glossary: https://www.talirecorderlessons.com/glossary
+- Book a single lesson: https://www.talirecorderlessons.com/book-lesson
+- Lesson bundles and sheet music: https://www.talirecorderlessons.com/book-bundle
+- Free recorder tutorials: https://www.talirecorderlessons.com/tutorials
+- Blog: https://www.talirecorderlessons.com/blog
+- Contact: https://www.talirecorderlessons.com/contact
+- Beginner recorder lessons: https://www.talirecorderlessons.com/lessons/beginner-recorder-lessons
+- Kids recorder lessons: https://www.talirecorderlessons.com/lessons/kids-recorder-lessons
+- Baroque recorder lessons: https://www.talirecorderlessons.com/lessons/baroque-recorder-lessons
+- Advanced recorder lessons: https://www.talirecorderlessons.com/lessons/advanced-recorder-lessons
+- Full text for LLMs (FAQ, glossary, lessons, blog): https://www.talirecorderlessons.com/llms-full.txt
+- Structured summary (JSON): https://www.talirecorderlessons.com/ai-info.json
+- Sitemap: https://www.talirecorderlessons.com/sitemap.xml
+
+## About
+Tali Rubinstein is a professional recorder player, composer, and music educator offering online recorder lessons to students of all ages and skill levels worldwide. She was the first recorder player to attend Berklee College of Music (full scholarship), and has established herself in jazz, pop, and R&B while teaching the next generation of recorder players. She has given workshops at Carnegie Hall, the Israel International Recorder Festival, Frankfurt University of Music and Performing Arts, and universities in Taiwan, the Philippines, Uruguay, and Spain. Her work was featured on a Latin Grammy-winning album and she was listed on Barack Obama’s favorite songs of 2018.
+
+## Lessons and pricing (USD)
+Live one-to-one lessons over Zoom, available worldwide, for adults and for children (typically ages 8+), at every skill level.
+- 60 Minute Lesson: $105
+- 45 Minute Lesson: $95
+- 5 x 60 Minute Lessons (60 min each): $498.75 (5% off)
+- 10 x 60 Minute Lessons (60 min each): $976.50 (7% off)
+- 20 x 60 Minute Lessons (60 min each): $1,890 (10% off)
+Book: https://www.talirecorderlessons.com/book-lesson (single lessons) and https://www.talirecorderlessons.com/book-bundle (bundles).
+
+## Lesson specializations
+- Beginner recorder lessons: for complete beginners and elementary players, no prior music reading required. https://www.talirecorderlessons.com/lessons/beginner-recorder-lessons
+- Kids recorder lessons: age-appropriate instruction for young students, typically starting at age 8+. https://www.talirecorderlessons.com/lessons/kids-recorder-lessons
+- Baroque recorder lessons: Handel, Bach, Vivaldi, Telemann, ornamentation, and historically informed technique. https://www.talirecorderlessons.com/lessons/baroque-recorder-lessons
+- Advanced recorder lessons: virtuosic technique, jazz improvisation, and pre-professional/professional preparation. https://www.talirecorderlessons.com/lessons/advanced-recorder-lessons
+
+## Digital sheet music
+Original compositions and arrangements by Tali Rubinstein, $10 each as digital downloads:
+- Hot Cross Buns & Variations by Tali Rubinstein: https://www.talirecorderlessons.com/product/sheetMusic1
+- The Swimming Pool Song by Tali Rubinstein: https://www.talirecorderlessons.com/product/sheetMusic2
+- Alone by Tali Rubinstein: https://www.talirecorderlessons.com/product/sheetMusic3
+- Tico Tico no Fubá (arranged for recorder and piano): https://www.talirecorderlessons.com/product/sheetMusic4
+- Etude for Solitude by Tali Rubinstein: https://www.talirecorderlessons.com/product/sheetMusic5
+
+## Student levels
+- Complete beginners
+- Elementary
+- Intermediate
+- Advanced
+- Professional/pre-professional
+
+## What lessons cover
+- Technique development
+- Tone production
+- Breathing and articulation
+- Baroque repertoire
+- Contemporary music
+- Performance preparation
+- Music theory
+- Sight reading
+
+## What you need
+- A recorder (soprano, alto, tenor, or bass)
+- Computer, tablet, or smartphone with camera
+- Stable internet connection
+- Quiet practice space
+- Music stand
+
+## Search queries this site is relevant for
+- online recorder lessons
+- recorder lessons for beginners
+- learn recorder online
+- recorder teacher online
+- baroque recorder lessons
+- recorder lessons for kids
+- advanced recorder lessons
+- recorder sheet music
+- Tali Rubinstein recorder
+
+## Contact and profiles
+- Email: info@talirecorder.com
+- https://en.wikipedia.org/wiki/Tali_Rubinstein
+- https://www.wikidata.org/wiki/Q105627819
+- https://www.talirubinstein.com
+- https://college.berklee.edu/people/tali-rubinstein
+- https://www.linkedin.com/in/tali-rubinstein-86b64667/
+- https://www.facebook.com/talirubinsteinrecorder/
+- https://x.com/talirubinstein
+- https://instagram.com/TaliRubinstein
+- https://www.youtube.com/@talirecorder
+- https://talirecorder.substack.com
+
+# Recorder Lessons FAQ
+
+Source: https://www.talirecorderlessons.com/faq
+
+## How much do recorder lessons cost?
+
+Tali Rubinstein offers online recorder lessons: $95 for 45 minutes or $105 for 60 minutes. Package bundles provide savings: 5-lesson package $498.75 (5% off), 10-lesson package $976.50 (7% off), 20-lesson package $1,890 (10% off).
+
+Link: https://www.talirecorderlessons.com/faq#cost
+
+## What is the best recorder for beginners?
+
+The best beginner recorders are: Yamaha YRS-23 ($20-25) - excellent plastic soprano recorder; Aulos 203 ($20-30) - warm tone, durable; Mollenhauer Student ($60-100) - wooden option for better sound. Start with a soprano (descant) recorder in C.
+
+Link: https://www.talirecorderlessons.com/faq#best-recorder
+
+## How long does it take to learn recorder?
+
+Learning timeline: 2-3 weeks for simple melodies, 2-3 months for folk songs and easy classical pieces, 6-12 months for intermediate baroque repertoire, 1-2 years for advanced technique and complex pieces. Daily 15-20 minute practice accelerates progress.
+
+Link: https://www.talirecorderlessons.com/faq#timeline
+
+## Is recorder hard to learn?
+
+No, the recorder is one of the easiest instruments to start. You can play your first notes in minutes. Basic melodies come within weeks. However, mastering advanced techniques, baroque ornamentation, and professional repertoire requires dedicated practice like any instrument.
+
+Link: https://www.talirecorderlessons.com/faq#difficulty
+
+## Can adults learn recorder?
+
+Absolutely! Adults often learn recorder faster than children due to better focus and understanding. Many adult beginners play recognizable songs within a month. The recorder is perfect for adults wanting to learn music - it's affordable, portable, and offers beautiful baroque and contemporary repertoire.
+
+Link: https://www.talirecorderlessons.com/faq#adults
+
+## Do I need to read music to learn recorder?
+
+No prior music reading is required. Recorder lessons teach music reading alongside playing technique. Students start with finger charts and simple notation, gradually building reading skills. Most students read standard notation comfortably within 3-6 months.
+
+Link: https://www.talirecorderlessons.com/faq#read-music
+
+## What age should you start recorder lessons?
+
+Age 8+ is ideal for recorder lessons. At this age, children have sufficient hand coordination, attention span, and instruction-following ability. Some advanced 7-year-olds can start earlier. Adults can start at any age - it's never too late to learn recorder.
+
+Link: https://www.talirecorderlessons.com/faq#age
+
+## Are online recorder lessons effective?
+
+Yes, online recorder lessons are highly effective. Camera angles show fingerings clearly, demonstrations are up-close, and students can record sessions for practice review. Many students prefer online lessons for convenience, scheduling flexibility, and ability to learn from expert teachers anywhere.
+
+Link: https://www.talirecorderlessons.com/faq#online
+
+## How often should I practice recorder?
+
+Practice recommendations: Beginners: 15-20 minutes daily; Intermediate: 20-30 minutes daily; Advanced: 30-60 minutes daily. Consistency matters more than duration. Daily short sessions are more effective than one long weekly session. Quality practice with focus beats mindless repetition.
+
+Link: https://www.talirecorderlessons.com/faq#practice
+
+## What styles of music can you play on recorder?
+
+Recorder repertoire includes: Baroque (Handel, Bach, Vivaldi, Telemann), Renaissance (dance music, consort pieces), Folk and traditional songs, Jazz and improvisation, Contemporary classical, Pop arrangements, Latin styles (bossa nova, samba), World music. The recorder is surprisingly versatile!
+
+Link: https://www.talirecorderlessons.com/faq#styles
+
+## What equipment do I need for recorder lessons?
+
+You need a soprano recorder ($20-100), and for online lessons a computer or tablet with a camera. A music stand ($15-40) and metronome app (free) are recommended but not required. Total startup cost is typically $40-150.
+
+Link: https://www.talirecorderlessons.com/faq#equipment
+
+## Do recorder skills transfer to other instruments?
+
+Yes. Recorder builds music reading (treble clef transfers directly to flute, violin, and oboe), breath control for wind instruments, finger dexterity, ear training, and music theory that apply to any instrument. Many professional flutists, oboists, and clarinetists started on recorder.
+
+Link: https://www.talirecorderlessons.com/faq#transfer
+
+# Recorder Glossary
+
+Source: https://www.talirecorderlessons.com/glossary
+
+- **Soprano (descant) recorder** (Instruments): The most common recorder and the usual first instrument. It is pitched in C and its lowest note is the C an octave above middle C. It is small, inexpensive, and the standard choice for beginners and for children learning in school.
+- **Alto (treble) recorder** (Instruments): A larger recorder pitched in F, with a lowest note of the F above middle C. It is the main solo instrument of the Baroque repertoire, including most sonatas by Handel, Telemann, and Vivaldi, and the usual second recorder after soprano.
+- **Tenor recorder** (Instruments): A recorder pitched in C that sounds an octave below the soprano, with a lowest note of middle C. It is mostly played in recorder consorts and ensembles rather than as a solo instrument.
+- **Bass recorder** (Instruments): A large recorder pitched in F that sounds an octave below the alto, with a lowest note of the F below middle C. It has a curved metal crook (bocal) and is mainly used to play the bass line in a recorder consort.
+- **Sopranino recorder** (Instruments): A small, high recorder pitched in F that sounds an octave above the alto. It is used in some Baroque concertos and in recorder ensembles.
+- **Recorder consort** (Instruments): A group of recorders of different sizes (for example soprano, alto, tenor, and bass) playing together. Consort playing is a central tradition of Renaissance music and a popular way for amateur players to make music with others.
+- **Windway** (Parts of the recorder): The narrow channel inside the head joint that directs the player’s breath across the labium. Its shape strongly affects tone and response, which is why recorder makers voice the windway carefully.
+- **Labium** (Parts of the recorder): The sharp edge in the window of the head joint. The airstream from the windway splits against it, setting the air column in the instrument vibrating and producing sound.
+- **Thumb hole** (Parts of the recorder): The hole on the back of the recorder, covered by the left thumb. Partly uncovering it (thumb pinching or half-holing) is how recorder players reach many notes in the upper register.
+- **Double holes** (Parts of the recorder): Pairs of small adjacent holes at the bottom of the recorder. Covering one hole of a pair, or both, lets the player sound the semitones (sharps and flats) in the lowest part of the instrument’s range.
+- **Baroque (English) fingering** (Parts of the recorder): The fingering system used by the great majority of serious recorder players and by most Baroque-style instruments. It is the standard for historical repertoire and is better in tune on chromatic notes than German fingering, so it is what private teachers generally teach.
+- **German fingering** (Parts of the recorder): An alternative fingering system, common on school recorders, that makes the note F simpler to play at first. The trade-off is that several other notes, especially chromatic ones, are harder to play in tune, so players who continue usually switch to Baroque fingering.
+- **Finger chart (fingering chart)** (Technique): A diagram showing which holes to cover for each note on the recorder. Beginners use one to learn the first notes; it does not replace learning to hear whether a note is in tune.
+- **Tonguing (articulation)** (Technique): Using the tongue, as if saying “tu” or “du”, to start each note cleanly. Tonguing gives the recorder its rhythmic clarity and its range of articulations, from smooth (legato) to crisp (staccato).
+- **Double tonguing** (Technique): Alternating two syllables, usually “tu-ku”, to articulate fast passages that are too quick to tongue with the front of the tongue alone.
+- **Breath control** (Technique): Managing the speed and steadiness of the airstream. The recorder is very sensitive to air: blowing too hard pushes notes sharp and makes the tone harsh, so gentle, steady breath support is the foundation of good tone and intonation.
+- **Cross-fingering (fork fingering)** (Technique): A fingering in which open holes lie between covered ones. Most chromatic notes (sharps and flats) on the recorder are played with cross-fingerings, and many need small adjustments to sound in tune.
+- **Intonation** (Technique): How accurately notes match the intended pitch. On the recorder it depends on breath pressure, fingering choices, and the temperature of the instrument, and developing a good ear for it is part of every level of study.
+- **Flattement (finger vibrato)** (Technique): A Baroque-style vibrato made by shading or lightly moving a finger over a tone hole, which makes the pitch waver slightly. It is an expressive ornament in historically informed playing.
+- **Ornamentation** (Technique): Embellishments such as trills, mordents, and turns, added to or written into a melody. Ornamentation is central to Baroque style, where performers were expected to decorate repeated material.
+- **Historically informed performance (HIP)** (Music and repertoire): Playing early music with the instruments, pitch, articulation, and ornamentation that research suggests were used in its own period. The recorder is a core instrument of the early-music revival.
+- **Divisions** (Music and repertoire): A Renaissance and Baroque form in which a melody or bass line is varied by breaking its long notes into running, faster ones. Division sets are a showpiece for the recorder and a way to learn ornamentation and fluency.
+- **Basso continuo** (Music and repertoire): The accompaniment in most Baroque music: a bass line played by an instrument such as cello or bassoon, with chords filled in by harpsichord, organ, or lute. A recorder sonata is normally played with continuo.
+- **Pitch standard (A=440, A=415)** (Music and repertoire): The frequency a recorder is tuned to. Most recorders are built to A=440 Hz, the modern standard. Some are built to A=415 Hz, about a semitone lower, which is common for playing with Baroque-pitch ensembles.
+- **Play-along** (Music and repertoire): A recording or backing track that a student plays with, in place of an accompanist. Play-alongs are a practical way to practice rhythm, intonation, and ensemble awareness at home.
+- **Etude** (Music and repertoire): A study piece written to develop one aspect of technique, such as articulation, finger speed, or breath control, while still being musical to play.
+- **Sight-reading** (Learning): Playing a piece of music at first sight, without prior practice. It is built gradually, and recorder lessons commonly teach reading notation and playing together, so students develop it from the first weeks.
+- **Online recorder lesson** (Learning): A live, one-to-one lesson held over video call (for example Zoom). The teacher can see and hear the student’s fingering, posture, and sound in real time, and the student keeps the recording or notes to practice from. All that is needed is a recorder, a device with a camera and microphone, and a stable internet connection.
+
+# Blog
+
+## Tali Featured on PIRATE
+
+Source: https://www.talirecorderlessons.com/blog/pirate_blog
+Published: 2023-01-16
+
+Thanks a bunch to [pirate.com](https://www.pirate.com/en/blog/new-bands-los-angeles/) for including me in their list of new artists from LA to listen to! Tons of great artists are listed there (go check them out too!!), and I'm honored to be a part of it.
+
+Check out my music on [Spotify](https://open.spotify.com/artist/0UmrGvZDdSKmkq8pLVX9p8) or [YouTube](https://www.youtube.com/c/TaliRubinstein/videos)
+
+~ Tali
+
+## New Single: Trying to See Clearly
+
+Source: https://www.talirecorderlessons.com/blog/trying_to_see_clearly_release
+Published: 2022-10-24
+
+[Click here to listen to the track](https://linktr.ee/TaliRubinstein) 
+
+I'm uber (not sponsered by Uber) excited to share this news - my new song, "Trying to See Clearly", is now out on all platforms!! (see link to full song in the comments). 
+I composed this song to the wonderful, fierce and merciless lyrics by Nachum Mochiach a while back, about a woman trying to find her way through the harshness of the big city and the lack of intimacy and connection, intensified by noisy and overwhelming city scenery.
+
+I pieced the song together in collaboration with my dear friend and amazing talent, my musical soulmate, Yoni Marianer, who did the musical production. I'm truly grateful to be surrounded by inspiring people such as Yoni and Nachum, as well as the rest of the team:
+
+Micha Gilad - keys
+Yoni Marianer - vocals, guitar and bass
+Noam Israeli - drums
+Itamar Shatz on the mix
+Mastered by JJ Golden Golden Mastering
+
+If you listen carefully (and try to see clearly...), you'll hear my recorders coloring the track throughout the whole song behind my voice.
+Thanks for following, listening and supporting!
+Yours truly,
+
+~ Tali
+
+## New Playalong Video: La Bikina
+
+Source: https://www.talirecorderlessons.com/blog/la_bikina_playalong
+Published: 2021-04-01
+
+Hey guys! I'm happy to share my playalong version for La Bikina by Rubén Fuentes (as performed by Luis Miguel), accompanied by eight people I found that look like me and also play the recorder. No big deal.
+
+What's that cat doing on in the video, you're asking? Well, I'm excited to present RECORDER CHALLENGE NUMBER 1: I invite all you fine recorder players (I know you're out there!) to record yourself playing La Bikina and upload it to Facebook / Instagram / YouTube using the hashtag #labikinarecorder (so I can find you 🤓).
+
+My favorite versions will be featured on my social-media channels.
+
+This is great for recorder beginners who just want to play along with the song - Angelo and I made this karaoke version with the melody outlined, starring our fabulous cat, Mustafa-Moishe Spampinato Rubinstein.
+
+🎵[Click here to download the sheet music and play-along!](https://www.talirecorderlessons.com/book-bundle)
+(feel free to embellish and improvise over the melody, anything goes).
+
+[Click Here To Watch The Original Video](https://www.youtube.com/watch?v=FYhRowVNubc)
+
+Stay safe, get your vaccine, we got this ❤️
+
+~Tali
+
+## Video Release: A Horse Busy Transporting Grain
+
+Source: https://www.talirecorderlessons.com/blog/a_horse_busy_transporting_grain
+Published: 2021-03-06
+
+Hey guys, here's the last video from our "Tal and Tali in China" series - this is "A Horse Busy Transporting Grain" (揚鞭催馬運糧忙), a bright and joyful Chinese song by Wei Xianzhong, performed with Tal Zilber.
+
+The best part about traveling, many say, is living for a while as someone else in an alien culture, with different food, different habits, scenery, climate, sounds and signs. The tension between the completely unknown and the remotely familiar - that chicken soup that is almost like the one I used to eat at home - but with a totally new, undescribable twist, which I don't quite know where to place on my palate. The ability to be curious about everything - trying to give it a name, relate it to a memory, make sense of that contradictory feeling - that is, to me, the best thing about touring.
+
+This piece threw me right into that alternate reality. To my western-music accustomed ears, it sounds like a transformed and reconstructed version of such familiar music phrases. It made me think of what the Sopranino Concerto in C would sound like if Vivaldi was born in China. And of course the answer is - nothing like this at all. I wish I could hear this music through someone else's ears.
+
+I hope you enjoy this, and looking forward to touring and discovering again in 2022!
+[If you also want to play this piece, you are welcome to get the free score here](https://www.talirecorderlessons.com/book-bundle)
+
+Until the next tour...
+
+~ Tali
+
+Recording and editing: Ariel Weiss
+Audio recording: Rafi Eshel
+
+## Video Release: Here, There, and Everywhere
+
+Source: https://www.talirecorderlessons.com/blog/here_there_and_everywhere
+Published: 2021-02-26
+
+Happy to share another piece performed by Tal Zilber and I during our China tour in 2019 - Here, There and Everywhere by The Beatles (with a little bit of Chinese influence).
+
+This legendary quartet that’s been the soundtrack of my childhood has left an immense impact on my life. Back then, I felt as if their songs were always there, and will always be - they were everywhere - playing at home in the evenings, or on Saturday mornings, playing in loops on our car’s cassette player for hours on our family trips, all of us quietly humming half-gibberish with whatever we could make of the lyrics. I especially loved the ballads - these perfectly shaped gems of sweet melody and gentle harmony. They had a beginning and an end, and in between, a little world of music that made all the sense without needing to explain anything. I think it was compassion that formed from the sound waves. Back then, when the world was a little frightening and nothing seemed certain - there were Beatles cassettes, and at least for the duration of the song, I knew I need never care.
+
+Video recording and editing: Ariel Weiss
+Audio recording: Rafi Eshel
+
+~ Tali
+
+## New Album: Cybird
+
+Source: https://www.talirecorderlessons.com/blog/cybird_release
+Published: 2021-02-06
+
+[Click here to listen to the full album](https://ffm.to/mrduo) 
+
+This EP, full of passion and goofiness, is a story of two people who always wanted to be cool, but ended up playing a harpsichord (or a recorder, in my case). Two people who love music so much and so fully, they won’t let having only two hands stand in the way of playing two keyboard instruments at once (or, two recorders). Two people whose minds love experimenting, but whose hearts are stuck deep in the 17th century. It’s a story about wanting to break free and return home, all at the same time.
+
+I’m so excited to share our creation, composed so thoughtfully and intricately by Apollonio Maiello. Cover art and animation by the person who does not cease to blow my mind, Scott Siskind. Recorded at ATLAS Tonstudio (GER), Mastering and Mixing: Jürgen Losigkeit. Management by the real wonder woman, Floriana Maddalena Maiello.
+
+~ Tali
+
+## Tali Featured in CMUSE
+
+Source: https://www.talirecorderlessons.com/blog/cmuse
+Published: 2020-09-21
+
+Thanks a bunch to [CMUSE.org](https://www.cmuse.org/learn-recorder-lessons-online/) for choosing me to be a part of their top selection of 15 Websites To Learn Recorder Online. There are a lot of great resources there and it's an honor to be featured among them. My site is less than 6 months old at the time of writing this article, and it's great that people are finding it useful, I had no idea if anyone would ever see it!
+
+To get started with the basics, feel free to checkout my [Tutorials](https://www.talirecorderlessons.com/tutorials) page and get some short lessons on the fundamentals of the recorder. Once you feel comfortable with that material, you can [book a lesson with me](https://www.talirecorderlessons.com/book-lesson) and we can work through things more in depth.
+
+I look forward to teaching you soon!
+
+~ Tali

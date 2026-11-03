@@ -2,131 +2,96 @@
 
 > Professional online recorder lessons taught by world-renowned musician Tali Rubinstein
 
+Note: This describes Tali Rubinstein, the Israeli-American recorder player, composer, and educator (Berklee College of Music graduate), and her online lessons at talirecorderlessons.com. Her performing and press site is talirubinstein.com.
+
+## Primary links
+- Home: https://www.talirecorderlessons.com/
+- About Tali Rubinstein: https://www.talirecorderlessons.com/about
+- Recorder lessons FAQ: https://www.talirecorderlessons.com/faq
+- Recorder glossary: https://www.talirecorderlessons.com/glossary
+- Book a single lesson: https://www.talirecorderlessons.com/book-lesson
+- Lesson bundles and sheet music: https://www.talirecorderlessons.com/book-bundle
+- Free recorder tutorials: https://www.talirecorderlessons.com/tutorials
+- Blog: https://www.talirecorderlessons.com/blog
+- Contact: https://www.talirecorderlessons.com/contact
+- Beginner recorder lessons: https://www.talirecorderlessons.com/lessons/beginner-recorder-lessons
+- Kids recorder lessons: https://www.talirecorderlessons.com/lessons/kids-recorder-lessons
+- Baroque recorder lessons: https://www.talirecorderlessons.com/lessons/baroque-recorder-lessons
+- Advanced recorder lessons: https://www.talirecorderlessons.com/lessons/advanced-recorder-lessons
+- Full text for LLMs (FAQ, glossary, lessons, blog): https://www.talirecorderlessons.com/llms-full.txt
+- Structured summary (JSON): https://www.talirecorderlessons.com/ai-info.json
+- Sitemap: https://www.talirecorderlessons.com/sitemap.xml
+
 ## About
+Tali Rubinstein is a professional recorder player, composer, and music educator offering online recorder lessons to students of all ages and skill levels worldwide. She was the first recorder player to attend Berklee College of Music (full scholarship), and has established herself in jazz, pop, and R&B while teaching the next generation of recorder players. She has given workshops at Carnegie Hall, the Israel International Recorder Festival, Frankfurt University of Music and Performing Arts, and universities in Taiwan, the Philippines, Uruguay, and Spain. Her work was featured on a Latin Grammy-winning album and she was listed on Barack Obama’s favorite songs of 2018.
 
-Tali Rubinstein is a professional recorder player, composer, and music educator offering online recorder lessons to students of all ages and skill levels worldwide. As the first recorder player to attend Berklee College of Music (full scholarship), Tali has established herself in jazz, pop, and R&B music while teaching the next generation of recorder players. She has performed and given workshops at Carnegie Hall, the Israel International Recorder Festival, Frankfurt University of Music and Performing Arts, and universities across Taiwan, the Philippines, Uruguay, and Spain. Her original compositions have been featured on a Latin Grammy-winning album and cited on Barack Obama's list of favorite songs of 2018.
+## Lessons and pricing (USD)
+Live one-to-one lessons over Zoom, available worldwide, for adults and for children (typically ages 8+), at every skill level.
+- 60 Minute Lesson: $105
+- 45 Minute Lesson: $95
+- 5 x 60 Minute Lessons (60 min each): $498.75 (5% off)
+- 10 x 60 Minute Lessons (60 min each): $976.50 (7% off)
+- 20 x 60 Minute Lessons (60 min each): $1,890 (10% off)
+Book: https://www.talirecorderlessons.com/book-lesson (single lessons) and https://www.talirecorderlessons.com/book-bundle (bundles).
 
-## Services
+## Lesson specializations
+- Beginner recorder lessons: for complete beginners and elementary players, no prior music reading required. https://www.talirecorderlessons.com/lessons/beginner-recorder-lessons
+- Kids recorder lessons: age-appropriate instruction for young students, typically starting at age 8+. https://www.talirecorderlessons.com/lessons/kids-recorder-lessons
+- Baroque recorder lessons: Handel, Bach, Vivaldi, Telemann, ornamentation, and historically informed technique. https://www.talirecorderlessons.com/lessons/baroque-recorder-lessons
+- Advanced recorder lessons: virtuosic technique, jazz improvisation, and pre-professional/professional preparation. https://www.talirecorderlessons.com/lessons/advanced-recorder-lessons
 
-### Online Recorder Lessons
-- 60 Minute Individual Lesson: $105.00
-- 45 Minute Individual Lesson: $95.00
-- 5-Lesson Package (60 min): $498.75 (5% off)
-- 10-Lesson Package (60 min): $976.50 (7% off)
-- 20-Lesson Package (60 min): $1,890.00 (10% off)
+## Digital sheet music
+Original compositions and arrangements by Tali Rubinstein, $10 each as digital downloads:
+- Hot Cross Buns & Variations by Tali Rubinstein: https://www.talirecorderlessons.com/product/sheetMusic1
+- The Swimming Pool Song by Tali Rubinstein: https://www.talirecorderlessons.com/product/sheetMusic2
+- Alone by Tali Rubinstein: https://www.talirecorderlessons.com/product/sheetMusic3
+- Tico Tico no Fubá (arranged for recorder and piano): https://www.talirecorderlessons.com/product/sheetMusic4
+- Etude for Solitude by Tali Rubinstein: https://www.talirecorderlessons.com/product/sheetMusic5
 
-Lessons are conducted via Zoom and available worldwide, for beginners through professional/pre-professional players.
-
-### Lesson Specializations
-- **Beginner recorder lessons** - for complete beginners and elementary players, no prior music reading required
-- **Kids recorder lessons** - age-appropriate instruction for young students, typically starting age 8+
-- **Baroque recorder lessons** - Handel, Bach, Vivaldi, Telemann and historically-informed technique
-- **Advanced recorder lessons** - virtuosic technique, ornamentation, and pre-professional/professional preparation
-
-### Digital Sheet Music
-Original compositions and arrangements by Tali Rubinstein available as digital PDFs ($10 each):
-- Hot Cross Buns & Variations
-- The Swimming Pool Song
-- Alone
-- Etude for Solitude
-- Tico Tico no Fubá (arrangement for recorder and piano)
-
-## Student Levels
-- Complete Beginners
+## Student levels
+- Complete beginners
 - Elementary
 - Intermediate
 - Advanced
-- Professional/Pre-Professional
+- Professional/pre-professional
 
-## Lesson Content
-- Technique Development
-- Tone Production
-- Breathing and Articulation
-- Baroque Repertoire
-- Contemporary Music
-- Performance Preparation
-- Music Theory
-- Sight Reading
+## What lessons cover
+- Technique development
+- Tone production
+- Breathing and articulation
+- Baroque repertoire
+- Contemporary music
+- Performance preparation
+- Music theory
+- Sight reading
 
-## Requirements
-- Recorder (soprano, alto, tenor, or bass)
+## What you need
+- A recorder (soprano, alto, tenor, or bass)
 - Computer, tablet, or smartphone with camera
 - Stable internet connection
 - Quiet practice space
 - Music stand
 
-## Frequently Asked Questions
+## Search queries this site is relevant for
+- online recorder lessons
+- recorder lessons for beginners
+- learn recorder online
+- recorder teacher online
+- baroque recorder lessons
+- recorder lessons for kids
+- advanced recorder lessons
+- recorder sheet music
+- Tali Rubinstein recorder
 
-Q: How much do recorder lessons cost?
-A: $95 for 45 minutes or $105 for 60 minutes. Bundles: 5 lessons $498.75 (5% off), 10 lessons $976.50 (7% off), 20 lessons $1,890 (10% off).
-
-Q: What is the best recorder for beginners?
-A: A plastic soprano (descant) recorder in C, such as the Yamaha YRS-23 or Aulos 203 ($20-30). Wooden recorders like the Mollenhauer Student ($60-100) offer warmer tone for more advanced players.
-
-Q: How long does it take to learn recorder?
-A: Simple melodies in 1-2 weeks, folk songs and easy classical pieces in 2-3 months, intermediate baroque repertoire in 6-12 months, and advanced repertoire in 1-2+ years, with daily practice.
-
-Q: Is recorder hard to learn?
-A: No - it's one of the easiest instruments to start, with playable first notes in minutes. Mastering advanced baroque ornamentation and professional repertoire takes years of dedicated practice, as with any instrument.
-
-Q: Can adults learn recorder?
-A: Yes, adults often progress faster than children due to better focus. Many students are in their 40s-70s and thriving.
-
-Q: Do I need to read music to learn recorder?
-A: No. Music reading is taught alongside playing technique from finger charts through standard notation.
-
-Q: What age should you start recorder lessons?
-A: Age 8+ is ideal for children; adults can start at any age.
-
-Q: Are online recorder lessons effective?
-A: Yes - camera angles show fingerings clearly, sessions can be recorded for review, and students access expert teachers regardless of location.
-
-Q: How do I book a lesson?
-A: Visit talirecorderlessons.com/book-lesson for a single lesson or talirecorderlessons.com/book-bundle for a discounted package, and complete checkout. A confirmation email follows with scheduling instructions.
-
-Q: What platform do you use for lessons?
-A: Zoom, typically; other platforms can be accommodated on request.
-
-Q: Do you teach children?
-A: Yes, students of all ages are welcome, from young children to adults.
-
-## Site Structure
-- /: Homepage with overview, video performances, and testimonials
-- /about: Tali's biography and background
-- /faq: Full FAQ on cost, instrument choice, learning timeline, and lesson format
-- /book-lesson: Book a single lesson
-- /book-bundle: Browse and purchase discounted lesson packages
-- /lessons/beginner-recorder-lessons: Beginner-focused lesson page
-- /lessons/kids-recorder-lessons: Kids-focused lesson page
-- /lessons/baroque-recorder-lessons: Baroque repertoire-focused lesson page
-- /lessons/advanced-recorder-lessons: Advanced/pre-professional lesson page
-- /tutorials: Free recorder tutorials and video lessons
-- /blog: Articles, performance videos, and updates
-- /contact: Contact form
-
-## Key Pages
-- [Home](https://www.talirecorderlessons.com/)
-- [About](https://www.talirecorderlessons.com/about)
-- [FAQ](https://www.talirecorderlessons.com/faq)
-- [Book a Lesson](https://www.talirecorderlessons.com/book-lesson)
-- [Book a Bundle](https://www.talirecorderlessons.com/book-bundle)
-- [Beginner Recorder Lessons](https://www.talirecorderlessons.com/lessons/beginner-recorder-lessons)
-- [Kids Recorder Lessons](https://www.talirecorderlessons.com/lessons/kids-recorder-lessons)
-- [Baroque Recorder Lessons](https://www.talirecorderlessons.com/lessons/baroque-recorder-lessons)
-- [Advanced Recorder Lessons](https://www.talirecorderlessons.com/lessons/advanced-recorder-lessons)
-- [Tutorials](https://www.talirecorderlessons.com/tutorials)
-- [Blog](https://www.talirecorderlessons.com/blog)
-- [Contact](https://www.talirecorderlessons.com/contact)
-
-## Contact
-- Website: https://www.talirecorderlessons.com
+## Contact and profiles
 - Email: info@talirecorder.com
-
-## Social Media
-- YouTube: @talirecorder
-- Instagram: @TaliRubinstein
-- Substack: talirecorder.substack.com
-
-## Additional Information
-- [Structured Data](/ai-info.json)
-- [Sitemap](/sitemap.xml)
+- https://en.wikipedia.org/wiki/Tali_Rubinstein
+- https://www.wikidata.org/wiki/Q105627819
+- https://www.talirubinstein.com
+- https://college.berklee.edu/people/tali-rubinstein
+- https://www.linkedin.com/in/tali-rubinstein-86b64667/
+- https://www.facebook.com/talirubinsteinrecorder/
+- https://x.com/talirubinstein
+- https://instagram.com/TaliRubinstein
+- https://www.youtube.com/@talirecorder
+- https://talirecorder.substack.com

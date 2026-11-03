@@ -5,6 +5,7 @@ import BlogLayout from "../components/BlogLayout";
 import BlogList from "../components/BlogList";
 import { BreadcrumbSchema } from '../components/StructuredData';
 import matter from "gray-matter";
+import { serializeJsonLd } from '../lib/jsonld';
 
 const Blog = (props) => {
   // Create blog list schema for SEO
@@ -36,7 +37,7 @@ const Blog = (props) => {
       <Head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(blogListSchema) }}
         />
       </Head>
       <NextSeo

@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { serializeJsonLd } from '../lib/jsonld';
 
 // Canonical entity IDs, reused across every schema block on the site so
 // Google/LLMs resolve "Tali Rubinstein" and "Tali Recorder Lessons" as the
@@ -13,7 +14,7 @@ export const PersonSchema = () => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'Person',
           '@id': PERSON_ID,
@@ -82,7 +83,7 @@ export const MusicSchoolSchema = () => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'EducationalOrganization',
           '@id': ORGANIZATION_ID,
@@ -125,7 +126,7 @@ export const FAQSchema = () => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
           mainEntity: [
@@ -189,7 +190,7 @@ export const ServiceSchema = () => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'Service',
           serviceType: 'Online Music Lessons',
@@ -254,7 +255,7 @@ export const CourseSchema = ({ name, description, url, educationalLevel }) => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'Course',
           name,
@@ -289,7 +290,7 @@ export const BreadcrumbSchema = ({ items }) => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: items.map((item, index) => ({
@@ -309,7 +310,7 @@ export const ProductSchema = ({ product }) => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'Product',
           name: product.name,
@@ -341,7 +342,7 @@ export const WebPageSchema = ({ title, description, url }) => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           name: title,
@@ -363,7 +364,7 @@ export const BlogPostSchema = ({ title, description, datePublished, image, url, 
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'BlogPosting',
           headline: title,
@@ -394,7 +395,7 @@ export const VideoSchema = ({ videos }) => (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'ItemList',
           itemListElement: videos.map((video, index) => ({
@@ -428,7 +429,7 @@ export const SingleVideoSchema = ({ name, description, thumbnail, youtubeId, upl
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
+        __html: serializeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'VideoObject',
           name: name,
