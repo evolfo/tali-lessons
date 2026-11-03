@@ -97,6 +97,25 @@ export default async function handler(req, res) {
         }
       }
 
+      // If a purchased file could not be attached, the customer email would say
+      // "attached" with nothing attached. Make that loud: log it and alert the admin
+      // so the file can be sent manually.
+      const attachedNames = new Set(attachments.map((a) => a.filename));
+      const missingFiles = pdfFiles.filter((f) => !attachedNames.has(f));
+      if (missingFiles.length > 0) {
+        console.error(`[fulfillment] Missing sheet music attachment(s) for session ${session.id}: ${missingFiles.join(', ')}`);
+        try {
+          await resend.emails.send({
+            from: 'Tali Recorder Lessons <hello@talirecorder.com>',
+            to: process.env.ADMIN_EMAIL || 'info@talirecorder.com',
+            subject: 'ACTION NEEDED: sheet music was not attached to an order email',
+            html: `<p>A customer (${customerEmail || 'unknown email'}) bought sheet music but these files could not be attached automatically: <strong>${missingFiles.join(', ')}</strong>.</p><p>Stripe session: ${session.id}. Please send the files to the customer manually.</p>`,
+          });
+        } catch (alertErr) {
+          console.error('[fulfillment] Failed to send missing-attachment alert:', alertErr);
+        }
+      }
+
       // Send confirmation email to customer
       if (customerEmail) {
         // Choose the appropriate email template based on purchase type
