@@ -15,15 +15,20 @@
         "@babel/preset-react"
     ],
     "plugins": [
+        "@babel/plugin-transform-class-static-block",
         "@babel/plugin-transform-runtime",
         "@babel/plugin-proposal-class-properties",
-        ["wildcard", {"exts": [
-                "js",
-                "es6",
-                "es",
-                "jsx",
-                "md"
-            ]}
+        [
+            "wildcard",
+            {
+                "exts": [
+                    "js",
+                    "es6",
+                    "es",
+                    "jsx",
+                    "md"
+                ]
+            }
         ]
     ]
 }

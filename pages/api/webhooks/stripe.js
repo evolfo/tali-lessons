@@ -2,6 +2,7 @@ import { Resend } from 'resend';
 import { buffer } from 'micro';
 import fs from 'fs';
 import path from 'path';
+import { products } from '../../../data/products';
 import { generateSheetMusicPurchaseEmail } from '../../../lib/emails/templates/sheetMusicPurchase';
 import { generateLessonPurchaseEmail } from '../../../lib/emails/templates/lessonPurchase';
 import { generateMixedPurchaseEmail } from '../../../lib/emails/templates/mixedPurchase';
@@ -67,9 +68,13 @@ export default async function handler(req, res) {
       const purchaseType = detectPurchaseType(purchasedItems);
 
       // Get PDF files from session metadata
-      const pdfFiles = fullSession.metadata?.pdf_files
+      // Only deliver files that exist in the catalog (defense in depth: a
+      // metadata value like "../../.env" must never reach the filesystem).
+      const deliverable = new Set(Object.values(products).map((p) => p.pdfFile).filter(Boolean));
+      const pdfFiles = (fullSession.metadata?.pdf_files
         ? fullSession.metadata.pdf_files.split(',').filter(Boolean)
-        : [];
+        : []
+      ).filter((f) => deliverable.has(f));
 
       // Prepare attachments for sheet music purchases
       const attachments = [];
