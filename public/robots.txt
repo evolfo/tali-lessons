@@ -82,7 +82,7 @@ User-agent: Bytespider
 Allow: /
 
 # Host
-Host: https://www.talirecorderlessons.com
+Host: x
 
 # Sitemaps
-Sitemap: https://www.talirecorderlessons.com/sitemap.xml
+Sitemap: x/sitemap.xml

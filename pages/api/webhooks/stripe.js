@@ -81,7 +81,7 @@ export default async function handler(req, res) {
       if (pdfFiles.length > 0) {
         for (const pdfFile of pdfFiles) {
           try {
-            const filePath = path.join(process.cwd(), 'public', 'sheet-music', pdfFile);
+            const filePath = path.join(process.cwd(), 'private', 'sheet-music', pdfFile);
             if (fs.existsSync(filePath)) {
               const fileContent = fs.readFileSync(filePath);
               attachments.push({
