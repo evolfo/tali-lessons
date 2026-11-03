@@ -1,9 +1,0 @@
-# Social media redirects
-/youtube            https://youtube.com/@talirecorder           301!
-/twitter            https://twitter.com/TaliRubinstein          301!
-/substack           https://talirecorder.substack.com           301!
-
-
-# Redirect non-www to www (canonical domain)
-https://talirecorderlessons.com/*    https://www.talirecorderlessons.com/:splat    301!
-http://talirecorderlessons.com/*     https://www.talirecorderlessons.com/:splat    301!

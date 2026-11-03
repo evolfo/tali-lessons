@@ -25,12 +25,12 @@ const HOST = 'www.talirecorderlessons.com';
 const SITE_URL = `https://${HOST}`;
 const SITEMAP_PATH = path.join(__dirname, '..', 'public', 'sitemap.xml');
 
-// Only submit on real production builds. Netlify sets CONTEXT to
-// 'production' for the primary branch; deploy previews/branch deploys
-// build against the same production URLs in the sitemap, so pinging for
-// those would tell IndexNow content is live before it actually is.
-const isProductionBuild = process.env.CONTEXT
-  ? process.env.CONTEXT === 'production'
+// Only submit on real production builds. Vercel sets VERCEL_ENV to
+// 'production' for the production branch; preview builds generate the same
+// production URLs in the sitemap, so pinging for those would tell IndexNow
+// content is live before it actually is.
+const isProductionBuild = process.env.VERCEL_ENV
+  ? process.env.VERCEL_ENV === 'production'
   : true; // allow manual/local runs (e.g. `node scripts/submit-indexnow.js`)
 
 function extractUrls(sitemapXml) {
@@ -74,7 +74,7 @@ function submit(urlList) {
 
 async function main() {
   if (!isProductionBuild) {
-    console.log('[indexnow] Skipping - not a production build (CONTEXT=' + process.env.CONTEXT + ')');
+    console.log('[indexnow] Skipping - not a production build (VERCEL_ENV=' + process.env.VERCEL_ENV + ')');
     return;
   }
 

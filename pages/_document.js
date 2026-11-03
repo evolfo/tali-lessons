@@ -36,9 +36,6 @@ export default class MyDocument extends Document {
             />
           </noscript>
 
-          {/* Alternate for language/locale */}
-          <link rel="alternate" hrefLang="en" href="https://www.talirecorderlessons.com" />
-
           {/* RSS Feed for blog discovery */}
           <link 
             rel="alternate" 
@@ -56,6 +53,7 @@ export default class MyDocument extends Document {
           {/* LLM and AI discovery */}
           <link rel="author" href="https://www.talirecorderlessons.com/about" />
           <link rel="alternate" type="text/plain" title="LLM Summary (llms.txt)" href="https://www.talirecorderlessons.com/llms.txt" />
+          {/* Per-page <NextSeo> only emits "index,follow"; this adds the rich-result directives. */}
           <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         </Head>
         <body>

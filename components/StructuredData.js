@@ -9,6 +9,32 @@ import { serializeJsonLd } from '../lib/jsonld';
 export const PERSON_ID = 'https://www.talirecorderlessons.com/#person';
 export const ORGANIZATION_ID = 'https://www.talirecorderlessons.com/#organization';
 
+export const WEBSITE_ID = 'https://www.talirecorderlessons.com/#website';
+
+// Sitewide WebSite node (rendered once from _app). Ties the site to the
+// Organization and Person entities so every page carries the same identity.
+export const WebSiteSchema = () => (
+  <Head>
+    <script
+      key="website-jsonld"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: serializeJsonLd({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          '@id': WEBSITE_ID,
+          url: 'https://www.talirecorderlessons.com',
+          name: 'Tali Recorder Lessons',
+          alternateName: 'Online Recorder Lessons with Tali Rubinstein',
+          inLanguage: 'en',
+          publisher: { '@id': ORGANIZATION_ID },
+          about: { '@id': PERSON_ID },
+        }),
+      }}
+    />
+  </Head>
+);
+
 export const PersonSchema = () => (
   <Head>
     <script

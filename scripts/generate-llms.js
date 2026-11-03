@@ -16,6 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 const matter = require('gray-matter');
+const Parser = require('rss-parser');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -77,6 +78,38 @@ const posts = fs
   .filter((p) => p.title)
   .sort((a, b) => b.date.localeCompare(a.date));
 
+// ---- Substack posts (best effort) ----
+// The blog also publishes from the Substack feed. Fetch it at build time so
+// llms-full.txt carries those articles as text; if the feed is unreachable
+// (offline builds, transient 403) just skip them rather than failing the build.
+const htmlToText = (html) =>
+  html
+    .replace(/<(script|style)[\s\S]*?<\/\1>/gi, '')
+    .replace(/<\/(p|div|h[1-6]|li|blockquote)>/gi, '\n\n')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&#x27;/g, "'")
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+async function fetchSubstackPosts() {
+  const feedUrl = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
+  try {
+    const parser = new Parser({ customFields: { item: ['content:encoded'] }, timeout: 10000 });
+    const feed = await parser.parseURL(feedUrl);
+    return feed.items.map((item) => ({
+      slug: 'substack-' + item.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
+      title: item.title,
+      date: item.isoDate || item.pubDate || '',
+      body: htmlToText(item['content:encoded'] || item.content || ''),
+    }));
+  } catch (err) {
+    console.warn(`[llms] Substack feed unavailable, skipping (${err.message})`);
+    return [];
+  }
+}
+
 // ---- llms.txt ----
 function buildIndex() {
   return [
@@ -128,7 +161,7 @@ function buildIndex() {
 
 // ---- llms-full.txt ----
 const demote = (md) => md.replace(/^(#{1,5}) /gm, '#$1 ');
-function buildFull() {
+function buildFull(substackPosts) {
   const parts = [buildIndex(), ''];
   parts.push('# Recorder Lessons FAQ', '', `Source: ${url('/faq')}`, '');
   for (const f of faqs) parts.push(`## ${f.question}`, '', f.answer, '', `Link: ${url('/faq#' + f.id)}`, '');
@@ -136,7 +169,7 @@ function buildFull() {
   for (const t of glossaryTerms) parts.push(`- **${t.term}** (${t.category}): ${t.definition}`);
   parts.push('');
   parts.push('# Blog', '');
-  for (const p of posts) {
+  for (const p of [...posts, ...substackPosts].sort((a, b) => String(b.date).localeCompare(String(a.date)))) {
     parts.push(`## ${p.title}`, '', `Source: ${url('/blog/' + p.slug)}`, `Published: ${p.date.slice(0, 10)}`, '', demote(p.body), '');
   }
   return parts.join('\n');
@@ -170,8 +203,16 @@ function buildJson() {
   };
 }
 
+async function main() {
+const substackPosts = await fetchSubstackPosts();
 const out = (name, text) => fs.writeFileSync(path.join(ROOT, 'public', name), text.endsWith('\n') ? text : text + '\n');
 out('llms.txt', buildIndex());
-out('llms-full.txt', buildFull());
+out('llms-full.txt', buildFull(substackPosts));
 out('ai-info.json', JSON.stringify(buildJson(), null, 2));
-console.log(`[llms] Wrote llms.txt, llms-full.txt (${faqs.length} FAQs, ${glossaryTerms.length} terms, ${posts.length} posts), ai-info.json`);
+console.log(`[llms] Wrote llms.txt, llms-full.txt (${faqs.length} FAQs, ${glossaryTerms.length} terms, ${posts.length} local + ${substackPosts.length} Substack posts), ai-info.json`);
+}
+
+main().catch((err) => {
+  console.error('[llms] ERROR:', err);
+  process.exit(1);
+});

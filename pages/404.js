@@ -7,7 +7,7 @@ const Custom404 = () => {
   return (
     <>
       <NextSeo
-        title="Page Not Found | Tali Recorder Lessons"
+        title="Page Not Found"
         description="The page you're looking for doesn't exist. Browse our recorder lessons, sheet music, and blog."
         noindex={true}
       />
@@ -29,16 +29,16 @@ const Custom404 = () => {
               <h3>You might be interested in:</h3>
               <ul>
                 <li>
-                  <Link href="/#lessons">Online Recorder Lessons</Link>
+                  <Link href="/book-lesson">Book an Online Recorder Lesson</Link>
                 </li>
                 <li>
-                  <Link href="/#sheet-music">Sheet Music</Link>
+                  <Link href="/book-bundle">Lesson Bundles &amp; Sheet Music</Link>
                 </li>
                 <li>
                   <Link href="/blog">Blog & Articles</Link>
                 </li>
                 <li>
-                  <Link href="/#contact">Contact Tali</Link>
+                  <Link href="/contact">Contact Tali</Link>
                 </li>
               </ul>
             </div>

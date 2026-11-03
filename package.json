@@ -42,7 +42,6 @@
     "@babel/preset-react": "^7.25.9",
     "@babel/register": "^7.25.9",
     "@babel/runtime": "^7.26.0",
-    "@netlify/plugin-nextjs": "^5.15.1",
     "babel-plugin-wildcard": "^7.0.0",
     "critters": "^0.0.23",
     "marked": "^15.0.3",
