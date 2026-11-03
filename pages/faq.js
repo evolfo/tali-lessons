@@ -67,10 +67,10 @@ const FAQ = () => {
           border: '2px solid #e9ecef'
         }}>
           <h2 style={{ marginTop: 0, fontSize: '1.5rem', marginBottom: '1rem' }}>Quick Navigation</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: '1rem' }}>
             <div>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Getting Started</h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
+              <ul className="faq-nav-list" style={{ listStyle: 'none', padding: 0 }}>
                 <li><a href="#cost">How much do lessons cost?</a></li>
                 <li><a href="#best-recorder">Best recorder for beginners</a></li>
                 <li><a href="#timeline">How long to learn?</a></li>
@@ -79,7 +79,7 @@ const FAQ = () => {
             </div>
             <div>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Learning Approach</h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
+              <ul className="faq-nav-list" style={{ listStyle: 'none', padding: 0 }}>
                 <li><a href="#adults">Can adults learn recorder?</a></li>
                 <li><a href="#read-music">Do I need to read music?</a></li>
                 <li><a href="#age">What age to start?</a></li>
@@ -88,7 +88,7 @@ const FAQ = () => {
             </div>
             <div>
               <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Practice & Style</h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
+              <ul className="faq-nav-list" style={{ listStyle: 'none', padding: 0 }}>
                 <li><a href="#practice">How often to practice?</a></li>
                 <li><a href="#styles">What music styles?</a></li>
                 <li><a href="#equipment">What equipment needed?</a></li>
@@ -107,16 +107,16 @@ const FAQ = () => {
               How much do recorder lessons cost?
             </h2>
             
-            <div style={{ background: '#e7f3ff', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem', border: '2px solid #667eea' }}>
+            <div style={{ background: '#e7f3ff', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem', border: '2px solid #4054c9' }}>
               <h3 style={{ marginTop: 0, fontSize: '1.5rem', color: '#2c3e50', marginBottom: '1rem' }}>
                 🎵 Tali Rubinstein's Lesson Pricing
               </h3>
-              <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '0' }}>
+              <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '0' }}>
                 <thead>
-                  <tr style={{ background: '#667eea', color: 'white' }}>
-                    <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #667eea' }}>Lesson Package</th>
-                    <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #667eea' }}>Duration</th>
-                    <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #667eea' }}>Price</th>
+                  <tr style={{ background: '#4054c9', color: 'white' }}>
+                    <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #4054c9' }}>Lesson Package</th>
+                    <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #4054c9' }}>Duration</th>
+                    <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #4054c9' }}>Price</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -146,7 +146,7 @@ const FAQ = () => {
                     <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}><strong>$1,890</strong> (10% savings)</td>
                   </tr>
                 </tbody>
-              </table>
+              </table></div>
             </div>
 
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555', marginBottom: '1rem' }}>
@@ -162,7 +162,7 @@ const FAQ = () => {
             <h2 style={{ fontSize: '2rem', color: '#2c3e50', marginBottom: '1rem' }}>
               What is the best recorder for beginners?
             </h2>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
+            <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
               <thead>
                 <tr style={{ background: '#f8f9fa' }}>
                   <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #dee2e6' }}>Recorder Model</th>
@@ -192,7 +192,7 @@ const FAQ = () => {
                   <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}>Excellent quality-to-price ratio</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <div style={{ background: '#e7f3ff', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555', margin: 0 }}>
                 <strong>🎵 Recommendation:</strong> Start with a <strong>soprano (descant) recorder in C</strong>.
@@ -207,7 +207,7 @@ const FAQ = () => {
             <h2 style={{ fontSize: '2rem', color: '#2c3e50', marginBottom: '1rem' }}>
               How long does it take to learn recorder?
             </h2>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
+            <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
               <thead>
                 <tr style={{ background: '#f8f9fa' }}>
                   <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #dee2e6' }}>Time Period</th>
@@ -236,7 +236,7 @@ const FAQ = () => {
                   <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}>Professional-level performance, virtuosic pieces, advanced ornamentation</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555' }}>
               <strong>Key factor:</strong> Consistent daily practice (15-30 minutes) dramatically accelerates progress.
               Students who practice daily advance 3-4 times faster than those practicing sporadically.
@@ -297,7 +297,7 @@ const FAQ = () => {
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555', marginBottom: '1rem' }}>
               <strong>No prior music reading required!</strong> Recorder lessons teach music reading alongside playing technique.
             </p>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem' }}>
+            <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '1rem' }}>
               <thead>
                 <tr style={{ background: '#f8f9fa' }}>
                   <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #dee2e6' }}>Timeline</th>
@@ -322,7 +322,7 @@ const FAQ = () => {
                   <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}>Fluent sight-reading, dynamics, articulation</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555', marginTop: '1rem' }}>
               Learning to read music <em>while</em> learning recorder is actually easier than learning notation separately.
               You immediately apply what you learn, making it stick faster.
@@ -334,7 +334,7 @@ const FAQ = () => {
             <h2 style={{ fontSize: '2rem', color: '#2c3e50', marginBottom: '1rem' }}>
               What age should you start recorder lessons?
             </h2>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
+            <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
               <thead>
                 <tr style={{ background: '#f8f9fa' }}>
                   <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #dee2e6' }}>Age Range</th>
@@ -364,7 +364,7 @@ const FAQ = () => {
                   <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}>Adults learn efficiently, never too late to start!</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <div style={{ background: '#e7f3ff', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555', margin: 0 }}>
                 <strong>Bottom line:</strong> Age 8+ is ideal for children. Adults can start at any age -
@@ -381,7 +381,7 @@ const FAQ = () => {
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555', marginBottom: '1rem' }}>
               <strong>Yes! Online recorder lessons are highly effective - often more so than in-person.</strong> Here's why:
             </p>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
+            <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
               <thead>
                 <tr style={{ background: '#f8f9fa' }}>
                   <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #dee2e6' }}>Advantage</th>
@@ -414,7 +414,7 @@ const FAQ = () => {
                   <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}>Easy sharing of sheet music, backing tracks, exercises</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555' }}>
               Many students actually <em>prefer</em> online lessons. The sound quality is excellent with modern microphones,
               and the visual clarity often surpasses in-person instruction.
@@ -426,7 +426,7 @@ const FAQ = () => {
             <h2 style={{ fontSize: '2rem', color: '#2c3e50', marginBottom: '1rem' }}>
               How often should I practice recorder?
             </h2>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
+            <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
               <thead>
                 <tr style={{ background: '#f8f9fa' }}>
                   <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #dee2e6' }}>Level</th>
@@ -456,7 +456,7 @@ const FAQ = () => {
                   <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}>7-14+ hours</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <div style={{ background: '#d4edda', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem', border: '1px solid #28a745' }}>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#155724', margin: 0 }}>
                 <strong>Key Principle:</strong> Consistency beats duration. Daily 15-minute sessions are FAR more effective
@@ -483,7 +483,7 @@ const FAQ = () => {
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555', marginBottom: '1rem' }}>
               The recorder is surprisingly versatile! Here's what you can play:
             </p>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
+            <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
               <thead>
                 <tr style={{ background: '#f8f9fa' }}>
                   <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #dee2e6' }}>Music Style</th>
@@ -524,7 +524,7 @@ const FAQ = () => {
                   <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}>Klezmer, flamenco, Celtic, Asian traditional</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555' }}>
               The recorder's baroque repertoire alone provides a lifetime of beautiful, challenging music.
               But modern players are expanding the instrument's range into jazz, contemporary classical, and popular music.
@@ -536,7 +536,7 @@ const FAQ = () => {
             <h2 style={{ fontSize: '2rem', color: '#2c3e50', marginBottom: '1rem' }}>
               What equipment do I need for recorder lessons?
             </h2>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
+            <div className="table-scroll"><table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '1rem' }}>
               <thead>
                 <tr style={{ background: '#f8f9fa' }}>
                   <th style={{ padding: '1rem', textAlign: 'left', border: '1px solid #dee2e6' }}>Item</th>
@@ -566,7 +566,7 @@ const FAQ = () => {
                   <td style={{ padding: '1rem', border: '1px solid #dee2e6' }}>✅ Required for online</td>
                 </tr>
               </tbody>
-            </table>
+            </table></div>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555' }}>
               <strong>Total startup cost:</strong> $40-150 for everything you need to begin.
             </p>
@@ -612,7 +612,7 @@ const FAQ = () => {
             href="/book-bundle"
             style={{
               display: 'inline-block',
-              background: '#667eea',
+              background: '#4054c9',
               color: 'white',
               padding: '1.25rem 3rem',
               borderRadius: '50px',

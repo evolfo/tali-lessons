@@ -11,6 +11,8 @@ const AccessibleEmbed = ({
   youtubeId, 
   placeholder, 
   title, 
+  sizes = '(max-width: 768px) 100vw, 50vw',
+  priority = false,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -59,6 +61,8 @@ const AccessibleEmbed = ({
         alt={title}
         width={560}
         height={315}
+        sizes={sizes}
+        priority={priority}
         style={{
           width: '100%',
           height: 'auto',

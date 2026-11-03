@@ -20,6 +20,7 @@ const CheckoutPage = () => {
   if (!options) {
     return (
       <Container style={{ marginTop: '4rem', textAlign: 'center' }}>
+        <h1 className="sr-only">Checkout</h1>
         <Loader active inline="centered">Loading checkout...</Loader>
       </Container>
     );
@@ -27,6 +28,7 @@ const CheckoutPage = () => {
 
   return (
     <Container style={{ marginTop: '2rem', marginBottom: '2rem', maxWidth: '800px' }}>
+      <h1 className="sr-only">Checkout</h1>
       <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
         <EmbeddedCheckout />
       </EmbeddedCheckoutProvider>

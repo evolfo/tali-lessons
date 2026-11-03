@@ -9,7 +9,7 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ['image/webp'],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 2592000,
     remotePatterns: [
       {
         protocol: 'https',
@@ -51,36 +51,9 @@ const nextConfig = {
       type: 'asset/source',
     })
 
-    // Production optimizations
-    if (!dev && !isServer) {
-      // Split chunks for better caching
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          cacheGroups: {
-            default: false,
-            vendors: false,
-            // Vendor chunk for node_modules
-            vendor: {
-              name: 'vendor',
-              chunks: 'all',
-              test: /node_modules/,
-              priority: 20
-            },
-            // Common chunk for shared code
-            common: {
-              name: 'common',
-              minChunks: 2,
-              chunks: 'all',
-              priority: 10,
-              reuseExistingChunk: true,
-              enforce: true
-            }
-          }
-        }
-      }
-    }
+    // (The old custom splitChunks config forced every node_module into one
+    // ~400 KB `vendor` chunk loaded by every page, ~50-80% of it unused. Next's
+    // default per-route splitting is much better, so it was removed.)
 
     return config
   },
@@ -106,8 +79,14 @@ const nextConfig = {
       },
       {
         // Images are replaced in place from time to time, so don't use "immutable".
+        // 30 days keeps repeat visits fast; to force an update, rename the file.
         source: '/img/:path*',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' }],
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=2592000, stale-while-revalidate=604800' }],
+      },
+      {
+        // Self-hosted fonts never change in place.
+        source: '/fonts/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
     ]
   },
@@ -126,7 +105,9 @@ const nextConfig = {
 
   // Experimental features for performance
   experimental: {
-    optimizeCss: true,
+    // optimizeCss (Critters) was removed: it inlined only part of each page's CSS
+    // and loaded the rest async (media="print" swap), so pages painted unstyled
+    // and then jumped when the stylesheet arrived (CLS 0.55-0.8 on lesson pages).
     optimizePackageImports: ['react-icons', 'semantic-ui-react'],
   },
 

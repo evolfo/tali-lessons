@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Menu,
   Segment,
-  Image,
-  Icon,
   Dropdown,
   DropdownMenu,
   DropdownItem,
@@ -11,115 +9,98 @@ import {
   Label,
 } from "semantic-ui-react";
 import Link from "next/link";
-import { useShoppingCart } from "use-shopping-cart";
+import SvgIcon from "../components/SvgIcon";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useShoppingCart } from '../contexts/CartContext';
 import { useCartModal } from "../contexts/CartModalContext";
 
 import LessonButton from "../components/LessonButton";
-import ShoppingCart from "../components/ShoppingCart";
+// The cart modal is only needed once someone opens the bag, so load it on demand.
+const ShoppingCart = dynamic(() => import("../components/ShoppingCart"), { ssr: false });
 
 const MainHeader = () => {
-  const [activeItem, setActiveItem] = useState("home");
   const { cartOpen, openCart, closeCart } = useCartModal();
   const { cartCount } = useShoppingCart();
+  const { asPath } = useRouter();
 
-  const handleMenuItemClick = (e, { name }) => {
-    if (name === "store") {
-      window.location.href = "https://www.talirecorderlessons.com/book-bundle";
-      setTimeout(() => {
-        window.location.reload();
-      }, 200);
-    }
-    this.setState({ activeItem: name });
-  };
-
-  const handleHeaderImgClick = (e) => {
-    setActiveItem("home");
-  };
-
-  useEffect(() => {
-    const len = document.location.href.split("/").length;
-    const item = document.location.href.split("/")[len - 1];
-    if (activeItem) {
-      setActiveItem(item);
-    } else {
-      setActiveItem("home");
-    }
-  }, []);
+  // "/about?x=1#y" -> "about"; "/" -> "home"
+  const activeItem = asPath.split(/[?#]/)[0].split("/")[1] || "home";
+  const cartLabel = cartCount > 0 ? `Open shopping bag, ${cartCount} items` : "Open shopping bag";
 
   return (
-    <Segment className="navbar" inverted>
+    <Segment as="header" className="navbar" inverted>
       <Menu inverted pointing secondary>
         <div className="hide-header">
           <Link
             href="/"
-            onClick={handleMenuItemClick}
             className={activeItem === "home" ? "active" : ""}
           >
             Home
           </Link>
           <Link
             href="/about"
-            onClick={handleMenuItemClick}
             className={activeItem === "about" ? "active" : ""}
           >
             About
           </Link>
           <Link
             href="/tutorials"
-            onClick={handleMenuItemClick}
             className={activeItem === "tutorials" ? "active" : ""}
           >
             Tutorials
           </Link>
-          <Link href="/">
+          <Link href="/" aria-label="Tali Rubinstein - Home">
             <Image
-              alt="Tali's Logo"
-              onClick={handleHeaderImgClick}
+              alt=""
               src="/img/talilogo.png"
-              centered
+              width={245}
+              height={79}
+              sizes="245px"
+              loading="lazy"
+              className="ui centered image"
             />
           </Link>
           <Link
             href="/blog"
-            onClick={handleMenuItemClick}
             className={activeItem === "blog" ? "active" : ""}
           >
             Blog
           </Link>
-          <a href="/book-bundle" onClick={handleMenuItemClick}>
+          <Link href="/book-bundle" className={activeItem === "book-bundle" ? "active" : ""}>
             Store
-          </a>
+          </Link>
           <Link
             href="/contact"
-            onClick={handleMenuItemClick}
             className={activeItem === "contact" ? "active" : ""}
           >
             Contact
           </Link>
           <div className="header-buttons">
-            <a href="/book-bundle">
-              <LessonButton />
-            </a>
-            <Button className="cart-button" onClick={openCart}>
-              <Icon name="shopping bag" />
+            <LessonButton />
+            <Button className="cart-button" onClick={openCart} aria-label={cartLabel}>
+              <SvgIcon name="shopping-bag" />
               {cartCount > 0 && <Label color="red" floating circular>{cartCount}</Label>}
             </Button>
           </div>
         </div>
-        <Link aria-label="Homepage" href="/">
+        <Link aria-label="Tali Rubinstein - Home" href="/">
           <Image
-            className="header-burger"
-            onClick={handleHeaderImgClick}
+            className="ui centered image header-burger"
             src="/img/talilogo.png"
-            centered
-            alt="header burger"
+            alt=""
+            width={245}
+            height={79}
+            sizes="(max-width: 768px) 200px, 245px"
+            priority
           />
         </Link>
         <Dropdown
           aria-label="Header burger"
           alt="Header burger"
           className="header-burger"
-          icon="bars"
+          icon={<SvgIcon name="bars" />}
         >
           <DropdownMenu>
             <Link href="/">
@@ -145,12 +126,12 @@ const MainHeader = () => {
             </a>
           </DropdownMenu>
         </Dropdown>
-        <Button className="cart-button-mobile" onClick={openCart}>
-          <Icon name="shopping bag" />
+        <Button className="cart-button-mobile" onClick={openCart} aria-label={cartLabel}>
+          <SvgIcon name="shopping-bag" />
           {cartCount > 0 && <Label color="red" floating circular>{cartCount}</Label>}
         </Button>
       </Menu>
-      <ShoppingCart open={cartOpen} onClose={closeCart} />
+      {cartOpen && <ShoppingCart open={cartOpen} onClose={closeCart} />}
     </Segment>
   );
 };

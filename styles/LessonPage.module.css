@@ -36,7 +36,7 @@
 
 /* Hero Variants */
 .lessonHero.beginner {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4054c9 0%, #764ba2 100%);
 }
 
 .lessonHero.advanced {
@@ -48,7 +48,7 @@
 }
 
 .lessonHero.kids {
-  background: linear-gradient(135deg, #FF6B9D 0%, #FFA06B 100%);
+  background: linear-gradient(135deg, #c2185b 0%, #c2410c 100%);
 }
 
 /* CTA Buttons */
@@ -65,7 +65,7 @@
 }
 
 .ctaButton.beginner {
-  color: #667eea;
+  color: #4054c9;
 }
 
 .ctaButton.advanced {
@@ -77,7 +77,7 @@
 }
 
 .ctaButton.kids {
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 .ctaButton:hover {
@@ -168,7 +168,7 @@
 }
 
 .benefitCard.beginner h3 {
-  color: #667eea;
+  color: #4054c9;
 }
 
 .benefitCard.advanced h3 {
@@ -180,7 +180,7 @@
 }
 
 .benefitCard.kids h3 {
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 /* Curriculum */
@@ -199,7 +199,7 @@
 
 .curriculumSection.beginner,
 .curriculumPhase.beginner {
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #4054c9;
 }
 
 .curriculumSection.advanced {
@@ -223,7 +223,7 @@
 
 .curriculumSection.beginner h3,
 .curriculumPhase.beginner h3 {
-  color: #667eea;
+  color: #4054c9;
 }
 
 .curriculumSection.advanced h3 {
@@ -236,7 +236,7 @@
 
 .curriculumSection.kids h3,
 .curriculumPhase.kids h3 {
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 .curriculumSection ul,
@@ -257,7 +257,7 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: #667eea;
+  color: #4054c9;
   font-weight: bold;
 }
 
@@ -282,7 +282,7 @@
   content: "★";
   position: absolute;
   left: 0;
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 /* Target Audiences */
@@ -329,7 +329,7 @@
 
 .audienceCard.beginner h3,
 .ageCard.beginner h3 {
-  color: #667eea;
+  color: #4054c9;
 }
 
 .audienceCard.advanced h3 {
@@ -343,7 +343,7 @@
 
 .audienceCard.kids h3,
 .ageCard.kids h3 {
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 /* Testimonials */
@@ -355,7 +355,7 @@
 }
 
 .testimonial.beginner {
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #4054c9;
 }
 
 .testimonial.advanced {
@@ -378,7 +378,7 @@
 }
 
 .testimonial.beginner cite {
-  color: #667eea;
+  color: #4054c9;
 }
 
 .testimonial.advanced cite {
@@ -390,7 +390,7 @@
 }
 
 .testimonial.kids cite {
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 /* Getting Started Steps */
@@ -419,7 +419,7 @@
 }
 
 .stepNumber.beginner {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4054c9 0%, #764ba2 100%);
 }
 
 .stepNumber.advanced {
@@ -431,7 +431,7 @@
 }
 
 .stepNumber.kids {
-  background: linear-gradient(135deg, #FF6B9D 0%, #FFA06B 100%);
+  background: linear-gradient(135deg, #c2185b 0%, #c2410c 100%);
 }
 
 .stepContent h3 {
@@ -458,7 +458,7 @@
 }
 
 .faqItem.beginner h3 {
-  color: #667eea;
+  color: #4054c9;
 }
 
 .faqItem.advanced h3 {
@@ -470,7 +470,7 @@
 }
 
 .faqItem.kids h3 {
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 /* CTA Section */
@@ -549,7 +549,7 @@
 .repertoireCategory.advanced h3,
 .levelCard h3,
 .songCategory.kids h3 {
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 .repertoireCategory.baroque h3 {
@@ -580,7 +580,7 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: #667eea;
+  color: #4054c9;
 }
 
 .levelCard.baroque li:before {
@@ -602,7 +602,7 @@
   content: "♪";
   position: absolute;
   left: 0;
-  color: #FF6B9D;
+  color: #c2185b;
 }
 
 /* Additional Sections */
@@ -684,5 +684,5 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: #FF6B9D;
+  color: #c2185b;
 }

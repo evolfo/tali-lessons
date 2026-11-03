@@ -1,11 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
 import Script from 'next/script'
-import loadable from '@loadable/component'
+import HomePage from '../components/HomePage'
 import { NextSeo } from 'next-seo'
 import { PersonSchema, MusicSchoolSchema, FAQSchema, ServiceSchema } from '../components/StructuredData'
-
-const HomePage = loadable(() => import('../components/HomePage'));
 
 const Home = () => {
   return (
@@ -54,9 +52,9 @@ const Home = () => {
       {/* Google Analytics - using next/script for proper loading */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=UA-162281626-1"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

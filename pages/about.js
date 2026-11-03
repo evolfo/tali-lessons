@@ -1,11 +1,17 @@
 import React from 'react'
 import { Grid, GridColumn, Image, Header, Container } from "semantic-ui-react";
 import { NextSeo } from 'next-seo';
+import Head from 'next/head';
 import { PersonSchema, BreadcrumbSchema } from '../components/StructuredData';
 
 const About = () => {
     return (
       <>
+        <Head>
+          {/* The portrait is a CSS background (the LCP element); preloading it avoids waiting for the stylesheet to reveal it */}
+          <link rel="preload" as="image" href="/img/about1-faded.jpg" media="(max-width: 1239px)" />
+          <link rel="preload" as="image" href="/img/about1.png" media="(min-width: 1240px)" />
+        </Head>
         <NextSeo
           title="About Tali Rubinstein: Recorder Player"
           description="Tali Rubinstein is a Berklee graduate and the first recorder player to attend the school. She teaches online recorder lessons to students worldwide."
@@ -30,6 +36,7 @@ const About = () => {
           { name: 'About', url: '/about' }
         ]} />
         <div id="about-wrapper">
+          <h1 className="sr-only">About Tali Rubinstein, recorder player and teacher</h1>
         <Grid centered id="about">
           <GridColumn
             stretched
@@ -100,7 +107,7 @@ const About = () => {
         </Grid>
         <div className="about-vid-wrapper">
           <Container className="about-vid">
-            <Header>Tali with her Band</Header>
+            <Header as="h2">Tali with her Band</Header>
             <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
               <iframe
                 src="https://www.youtube-nocookie.com/embed/lMFN3UKNBh8"

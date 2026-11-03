@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { Container, Grid, Header, Button, Image } from 'semantic-ui-react';
 import NextImage from 'next/image';
-import { useShoppingCart } from 'use-shopping-cart';
+import { useShoppingCart } from '../../contexts/CartContext';
 import { NextSeo } from 'next-seo';
 import { useCartModal } from '../../contexts/CartModalContext';
 import { products } from '../../data/products';
@@ -90,6 +90,11 @@ const ProductPage = ({ product, id }) => {
           .sheet-music-mobile {
             display: none;
           }
+          @media (max-width: 767px) {
+            .why-photo {
+              display: none;
+            }
+          }
           @media (max-width: 1199px) {
             .sheet-music-overlay {
               display: none !important;
@@ -112,6 +117,7 @@ const ProductPage = ({ product, id }) => {
               color: '#666',
               fontSize: '1.1rem',
               padding: '0.5rem 1rem',
+              minHeight: '44px',
               borderRadius: '8px',
               transition: 'all 0.3s ease',
             }}
@@ -182,9 +188,13 @@ const ProductPage = ({ product, id }) => {
                       padding: '12px',
                       maxWidth: '200px'
                     }}>
-                      <Image
+                      <NextImage
                         src={product.image}
                         alt={`${product.name} sheet music`}
+                        width={200}
+                        height={266}
+                        sizes="200px"
+                        loading="lazy"
                         style={{
                           width: '100%',
                           height: 'auto',
@@ -206,9 +216,13 @@ const ProductPage = ({ product, id }) => {
                         Sheet Music Preview
                       </Header>
                       <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Image
+                        <NextImage
                           src={product.image}
                           alt={`${product.name} sheet music`}
+                          width={300}
+                          height={400}
+                          sizes="300px"
+                          loading="lazy"
                           style={{
                             maxWidth: '300px',
                             width: '100%',
@@ -247,7 +261,7 @@ const ProductPage = ({ product, id }) => {
 
                 <p style={{
                   fontSize: '1.2rem',
-                  color: '#7f8c8d',
+                  color: '#5d6d6e',
                   lineHeight: '1.6',
                   marginBottom: '0'
                 }}>
@@ -325,14 +339,19 @@ const ProductPage = ({ product, id }) => {
               overflow: 'hidden',
               minHeight: '150px'
             }}>
-              <img
+              {/* Decorative backdrop: hidden on phones, where it sat behind the copy */}
+              <NextImage
+                className="why-photo"
                 src="/img/about1.jpg"
-                alt="Tali Rubinstein"
+                alt=""
+                width={450}
+                height={280}
+                sizes="450px"
                 style={{
                   position: 'absolute',
                   left: '2px',
                   top: '0',
-                  width: '450px',
+                  maxWidth: '100%',
                   height: 'auto',
                   opacity: '0.35',
                   pointerEvents: 'none'

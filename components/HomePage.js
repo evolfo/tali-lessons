@@ -1,11 +1,10 @@
 import React from "react";
 import { Grid, GridColumn, Header } from "semantic-ui-react";
 import Head from "next/head";
-import Carousel from "semantic-ui-carousel-react";
+import TestimonialCarousel from "./TestimonialCarousel";
 import elements from "../utilities/carousel-elements";
 import LessonButton from "../components/LessonButton";
 import AccessibleEmbed from "../components/AccessibleEmbed";
-import Link from "next/link";
 import { PERSON_ID } from "./StructuredData";
 import { serializeJsonLd } from "../lib/jsonld";
 
@@ -76,9 +75,7 @@ const HomePage = () => {
             The answer is – yes. California based Award-winning recorder player
             Tali Rubinstein will teach you&nbsp;how.
           </p>
-          <Link href="/book-bundle" aria-label="Book online recorder lessons with Tali Rubinstein">
-            <LessonButton />
-          </Link>
+          <LessonButton />
         </GridColumn>
       </Grid>
       <Grid id="tutorial-videos">
@@ -91,6 +88,7 @@ const HomePage = () => {
               youtubeId="AUeUZdfiuJ0"
               placeholder="/img/placeholder-nick.jpg"
               title="Tali Rubinstein performing recorder on Nickelodeon"
+              priority
             />
           </div>
         </GridColumn>
@@ -110,13 +108,7 @@ const HomePage = () => {
             Testimonials
           </Header>
           <GridColumn className="testimonials-text" computer={12} tablet={16}>
-            <Carousel
-              elements={elements}
-              duration={9000}
-              animation="bounce"
-              showNextPrev={false}
-              showIndicators={true}
-            />
+            <TestimonialCarousel elements={elements} duration={9000} />
           </GridColumn>
         </div>
       </Grid>

@@ -11,8 +11,9 @@
 .backButton {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 0.5rem;
-  color: #667eea;
+  color: #4054c9;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9375rem;
@@ -25,10 +26,10 @@
 }
 
 .backButton:hover {
-  background: #667eea;
+  background: #4054c9;
   color: white;
   transform: translateX(-4px);
-  border-color: #667eea;
+  border-color: #4054c9;
 }
 
 .backButton svg {
@@ -45,7 +46,7 @@
 
 .blogPostMeta time {
   font-size: 0.9375rem;
-  color: #667eea;
+  color: #4054c9;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -73,7 +74,7 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #4054c9 0%, #764ba2 100%);
 }
 
 .blogPostHero img {
@@ -108,14 +109,14 @@
 }
 
 .blogPostContent :global(a) {
-  color: #667eea;
+  color: #4054c9;
   text-decoration: none;
   border-bottom: 2px solid rgba(102, 126, 234, 0.3);
   transition: all 0.2s ease;
 }
 
 .blogPostContent :global(a:hover) {
-  border-bottom-color: #667eea;
+  border-bottom-color: #4054c9;
 }
 
 .blogPostContent :global(ul),
@@ -129,7 +130,7 @@
 }
 
 .blogPostContent :global(blockquote) {
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #4054c9;
   padding-left: 1.5rem;
   margin: 2rem 0;
   font-style: italic;

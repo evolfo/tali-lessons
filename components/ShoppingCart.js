@@ -1,6 +1,7 @@
 import React from "react";
-import { Modal, Button, List, Icon, Header, Input } from 'semantic-ui-react';
-import { useShoppingCart } from 'use-shopping-cart';
+import { Modal, Button, List, Header, Input } from 'semantic-ui-react';
+import SvgIcon from './SvgIcon';
+import { useShoppingCart } from '../contexts/CartContext';
 
 const ShoppingCart = ({ open, onClose }) => {
   const { cartCount, cartDetails, removeItem, totalPrice, setItemQuantity } = useShoppingCart();
@@ -54,7 +55,9 @@ const ShoppingCart = ({ open, onClose }) => {
     <Modal open={open} onClose={onClose} size="small">
       <Modal.Header>
         Shopping Bag
-        <Icon name="close" style={{ float: 'right', cursor: 'pointer' }} onClick={onClose} />
+        <button type="button" className="cart-close" aria-label="Close shopping bag" onClick={onClose}>
+          <SvgIcon name="times" />
+        </button>
       </Modal.Header>
       <Modal.Content>
         {cartCount === 0 ? (
@@ -65,8 +68,8 @@ const ShoppingCart = ({ open, onClose }) => {
               {Object.values(cartDetails).map((item) => (
                 <List.Item key={item.id}>
                   <List.Content floated="right">
-                    <Button icon size="mini" onClick={() => removeItem(item.id)}>
-                      <Icon name="trash" />
+                    <Button icon size="mini" aria-label={`Remove ${item.name}`} onClick={() => removeItem(item.id)}>
+                      <SvgIcon name="trash" />
                     </Button>
                   </List.Content>
                   <List.Content>
