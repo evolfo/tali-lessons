@@ -10,7 +10,8 @@
     "prebuild": "node scripts/generate-llms.js",
     "build": "next build --webpack",
     "postbuild": "next-sitemap && node scripts/submit-indexnow.js",
-    "start": "next start"
+    "start": "next start",
+    "test:webhook": "node tests/webhook.test.js"
   },
   "dependencies": {
     "@loadable/component": "^5.16.4",
