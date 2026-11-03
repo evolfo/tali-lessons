@@ -113,7 +113,7 @@ export const glossaryTerms = [
     category: 'Technique',
     definition:
       'A diagram showing which holes to cover for each note on the recorder. Beginners use one to learn the first notes; it does not replace learning to hear whether a note is in tune.',
-    learnMore: { href: '/lessons/beginner-recorder-lessons', label: 'Beginner recorder lessons' },
+    learnMore: { href: '/recorder-fingering-chart', label: 'Free recorder fingering chart' },
   },
   {
     slug: 'tonguing',

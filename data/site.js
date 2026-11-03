@@ -38,6 +38,7 @@ export const SITE = {
     { path: '/about', name: 'About Tali Rubinstein' },
     { path: '/faq', name: 'Recorder lessons FAQ' },
     { path: '/glossary', name: 'Recorder glossary' },
+    { path: '/recorder-fingering-chart', name: 'Recorder fingering chart (free)' },
     { path: '/book-lesson', name: 'Book a single lesson' },
     { path: '/book-bundle', name: 'Lesson bundles and sheet music' },
     { path: '/tutorials', name: 'Free recorder tutorials' },
