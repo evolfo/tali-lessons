@@ -6,6 +6,7 @@ import elements from "../utilities/carousel-elements";
 import LessonButton from "../components/LessonButton";
 import AccessibleEmbed from "../components/AccessibleEmbed";
 import { PERSON_ID } from "./StructuredData";
+import LessonPaths from "./LessonPaths";
 import { serializeJsonLd } from "../lib/jsonld";
 
 const HomePage = () => {
@@ -102,6 +103,7 @@ const HomePage = () => {
           </div>
         </GridColumn>
       </Grid>
+      <LessonPaths variant="home" />
       <Grid centered id="testimonials">
         <div className="testimonial-background-color">
           <Header as="h2" className="main-about-text testimonials-header">

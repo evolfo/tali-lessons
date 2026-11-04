@@ -4,17 +4,18 @@ import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 import Head from 'next/head'
 import { NextSeo } from 'next-seo'
-import { Embed } from 'semantic-ui-react'
+import AccessibleEmbed from '../../components/AccessibleEmbed'
 import Parser from 'rss-parser'
 const glob = require('glob')
 
 import BlogLayout from '../../components/BlogLayout'
 import SocialShare from '../../components/SocialShare'
+import LessonPaths from '../../components/LessonPaths'
 import { BreadcrumbSchema, PERSON_ID, ORGANIZATION_ID } from '../../components/StructuredData'
 import styles from '../../styles/BlogPost.module.css'
 import { serializeJsonLd } from '../../lib/jsonld'
 
-export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isSubstack }) {
+export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isSubstack, slug }) {
   const contentRef = React.useRef(null)
 
   // Remove first image from Substack content to avoid duplication with hero image
@@ -129,7 +130,10 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
 
   if (!frontmatter) return <></>
 
-  const fullUrl = "https://www.talirecorderlessons.com/blog/" + (frontmatter.slug || frontmatter.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-'))
+  // The real route slug comes from getStaticProps. (This used to be built from
+  // the post TITLE, which does not match the actual URL, so every post's
+  // canonical, og:url, breadcrumb and JSON-LD url pointed at a page that 404s.)
+  const fullUrl = "https://www.talirecorderlessons.com/blog/" + slug
   const imageUrl = frontmatter.hero_image?.startsWith('http')
     ? frontmatter.hero_image
     : `https://www.talirecorderlessons.com${frontmatter.hero_image}`
@@ -158,7 +162,7 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
       <BreadcrumbSchema items={[
         { name: 'Home', url: '/' },
         { name: 'Blog', url: '/blog' },
-        { name: frontmatter.title, url: `/blog/${frontmatter.slug || ''}` }
+        { name: frontmatter.title, url: `/blog/${slug}` }
       ]} />
 
       <NextSeo
@@ -261,15 +265,11 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
 
           <figure className={styles.blogPostHero}>
             {frontmatter.video_link ?
-              <Embed
-                  width="560"
-                  height="315"
+              <AccessibleEmbed
+                  youtubeId={frontmatter.video_link}
                   placeholder={frontmatter.video_image}
-                  id={frontmatter.video_link}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  source="youtube"
+                  title={frontmatter.title}
+                  sizes="(max-width: 768px) 100vw, 800px"
                 /> :
               <Image
                 src={frontmatter.hero_image}
@@ -295,6 +295,8 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
             title={frontmatter.title}
             description={frontmatter.description || frontmatter.excerpt}
           />
+
+          <LessonPaths />
         </article>
       </BlogLayout>
     </>
@@ -379,6 +381,7 @@ export async function getStaticProps({ ...ctx }) {
           },
           markdownBody: fullContent,
           isSubstack: true,
+          slug,
         },
       };
     } catch (error) {
@@ -402,6 +405,7 @@ export async function getStaticProps({ ...ctx }) {
         frontmatter: data.data,
         markdownBody: data.content,
         isSubstack: false,
+        slug,
       },
     }
   } catch (error) {
