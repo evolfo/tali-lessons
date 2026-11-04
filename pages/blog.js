@@ -6,6 +6,7 @@ import BlogList from "../components/BlogList";
 import { BreadcrumbSchema } from '../components/StructuredData';
 import matter from "gray-matter";
 import { serializeJsonLd } from '../lib/jsonld';
+import { titleToSlug, fetchOlderPosts } from '../lib/substack';
 
 const Blog = (props) => {
   // Create blog list schema for SEO
@@ -133,7 +134,7 @@ export async function getStaticProps() {
     // Force HTTPS and ensure correct URL format
     let SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
     // Ensure HTTPS
-    SUBSTACK_URL = SUBSTACK_URL.replace('http://', 'https://');
+    SUBSTACK_URL = SUBSTACK_URL.replace(/^http:\/\/(?!localhost)/, 'https://');
     
     console.log('[Blog Build] Fetching Substack RSS from:', SUBSTACK_URL);
     console.log('[Blog Build] Environment:', process.env.NODE_ENV);
@@ -186,6 +187,13 @@ export async function getStaticProps() {
     }
     
     console.log('[Blog Build] Parsed', items.length, 'Substack posts');
+
+    // The feed only carries ~20 posts; add older ones from Substack's archive.
+    const older = await fetchOlderPosts(items.map((i) => titleToSlug(i.title)));
+    console.log('[Blog Build] Added', older.length, 'older posts from the archive');
+    for (const o of older) {
+      items.push({ title: o.title, link: o.link, pubDate: o.pubDate, content: o.content, enclosureUrl: o.enclosureUrl });
+    }
 
     substackPosts = items.map((item) => {
       // Create a URL-safe slug from the title
