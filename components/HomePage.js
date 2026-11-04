@@ -8,6 +8,7 @@ import AccessibleEmbed from "../components/AccessibleEmbed";
 import { PERSON_ID, ORGANIZATION_ID } from "./StructuredData";
 import { testimonials } from "../data/testimonials";
 import LessonPaths from "./LessonPaths";
+import LessonPricing from "./LessonPricing";
 import { serializeJsonLd } from "../lib/jsonld";
 
 const HomePage = () => {
@@ -123,6 +124,7 @@ const HomePage = () => {
         </GridColumn>
       </Grid>
       <LessonPaths variant="home" />
+      <LessonPricing />
       <Grid centered id="testimonials">
         <div className="testimonial-background-color">
           <Header as="h2" className="main-about-text testimonials-header">

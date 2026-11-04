@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { PersonSchema, ServiceSchema, CourseSchema } from '../../components/StructuredData'
 import styles from '../../styles/LessonPage.module.css'
 import LessonPaths from '../../components/LessonPaths'
+import LessonPricing from '../../components/LessonPricing'
 
 const BaroqueRecorderLessons = () => {
   return (
@@ -206,6 +207,7 @@ const BaroqueRecorderLessons = () => {
             </div>
           </section>
         </div>
+      <LessonPricing />
       <LessonPaths current="/lessons/baroque-recorder-lessons" />
       </>
     )
