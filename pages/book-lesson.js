@@ -40,6 +40,7 @@ class BookLesson extends React.Component {
         { name: 'Home', url: '/' },
         { name: 'Book a Lesson', url: '/book-lesson' }
       ]} />
+      <h1 className="sr-only">Book a recorder lesson</h1>
       <Grid id="book-lesson">
         <GridRow columns={2}>
           <div className="booking-container">
@@ -53,6 +54,7 @@ class BookLesson extends React.Component {
                     src="/img/recorders.jpg" 
                     alt="Book a single recorder lesson with Tali Rubinstein"
                     fill
+                    priority
                     style={{ objectFit: 'cover' }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />

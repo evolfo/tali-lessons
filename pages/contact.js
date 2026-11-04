@@ -23,11 +23,14 @@ class Contact extends React.Component {
               { name: 'Contact', url: '/contact' }
             ]} />
             <Container id="contact-wrapper">
+              <h1 className="sr-only">Contact Tali Rubinstein</h1>
               <Grid>
                 <GridRow>
                   <GridColumn mobile={20} tablet={12} computer={12}>
                     <div className="responsive-iframe">
                       <iframe
+                        title="Contact form"
+                        loading="lazy"
                         src="https://docs.google.com/forms/d/e/1FAIpQLScxhYHXfEXjIkT0uO3VhZcGjNhOtQBUgvT_x0Pg-L4L2zk_2A/viewform?embedded=true"
                         frameBorder="0"
                         marginHeight="0"

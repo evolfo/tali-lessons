@@ -48,7 +48,7 @@ class BookBundleLesson extends React.Component {
           { name: 'Schedule Lesson', url: '/book-bundle-lesson' }
         ]} />
         <Container id="book-bundle-lesson-container" className="bundle-container">
-        <Header>Book a lesson!</Header>
+        <Header as="h1">Book a lesson!</Header>
         {/* <Button
           data-appointlet-organization="tali-recorder-lessons"
           data-appointlet-service="376666"

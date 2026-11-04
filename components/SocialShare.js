@@ -148,7 +148,7 @@ const SocialShare = ({ url, title, description }) => {
         }
 
         .social-share__button--email {
-          background: #667eea;
+          background: #4054c9;
         }
 
         .social-share__button--email:hover {

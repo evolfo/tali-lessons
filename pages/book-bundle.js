@@ -1,9 +1,7 @@
 import React from "react"
 import { NextSeo } from 'next-seo';
-import loadable from '@loadable/component'
+import StoreContent from '../components/StoreContent'
 import { ServiceSchema, BreadcrumbSchema } from '../components/StructuredData';
-
-const StoreContent = loadable(() => import('../components/StoreContent'));
 
 // This class is for the Ecwid bundles
 class BookBundle extends React.Component {

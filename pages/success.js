@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Container, Header, Icon, Message } from 'semantic-ui-react';
-import { useShoppingCart } from 'use-shopping-cart';
+import { Container, Header, Message } from 'semantic-ui-react';
+import SvgIcon from '../components/SvgIcon';
+import { useShoppingCart } from '../contexts/CartContext';
 import Link from 'next/link';
 
 const Success = () => {
@@ -26,13 +27,13 @@ const Success = () => {
 
   return (
     <Container style={{ marginTop: '4rem', textAlign: 'center' }}>
-      <Icon name="check circle" size="massive" color="green" />
+      <SvgIcon name="check-circle" style={{ fontSize: '8em', color: '#21ba45' }} />
       <Header as="h1">Payment Successful!</Header>
       <Message positive>
         <Message.Header>Thank you for your purchase!</Message.Header>
         <p>You will receive a confirmation email shortly.</p>
       </Message>
-      <Link href="/">Return to Home</Link>
+      <Link href="/" style={{ display: 'inline-block', padding: '0.75rem 1rem' }}>Return to Home</Link>
     </Container>
   );
 };
