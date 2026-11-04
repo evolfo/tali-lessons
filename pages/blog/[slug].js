@@ -303,6 +303,21 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
   )
 }
 
+// One shared, short-lived cache of the Substack feed per server instance, so a
+// burst of requests (or bots probing made-up /blog/substack-... URLs) triggers
+// at most one upstream fetch every few minutes.
+let feedCache = { at: 0, feed: null }
+async function fetchSubstackFeed() {
+  if (feedCache.feed && Date.now() - feedCache.at < 5 * 60 * 1000) return feedCache.feed
+  const parser = new Parser({
+    customFields: { item: ['content:encoded', 'content'] },
+    timeout: 10000,
+  })
+  const feed = await parser.parseURL(process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed')
+  feedCache = { at: Date.now(), feed }
+  return feed
+}
+
 export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params
   const config = await import(`../../data/config.json`)
@@ -310,13 +325,7 @@ export async function getStaticProps({ ...ctx }) {
   // Check if this is a Substack post
   if (slug.startsWith('substack-')) {
     try {
-      const parser = new Parser({
-        customFields: {
-          item: ['content:encoded', 'content']
-        }
-      });
-      const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
-      const feed = await parser.parseURL(SUBSTACK_URL);
+      const feed = await fetchSubstackFeed();
 
       // Find the matching post by slug
       const post = feed.items.find(item => {
@@ -330,7 +339,9 @@ export async function getStaticProps({ ...ctx }) {
       });
 
       if (!post) {
-        return { notFound: true };
+        // Unknown slug (typo, bot probe, or a post that has aged out of the RSS window).
+        // Short revalidate so a just-published post isn't stuck as a cached 404.
+        return { notFound: true, revalidate: 120 };
       }
 
       // Extract and generate metadata for Substack post
@@ -385,8 +396,10 @@ export async function getStaticProps({ ...ctx }) {
         },
       };
     } catch (error) {
+      // Rethrow: a transient Substack outage must not be cached as a 404 (and during
+      // ISR, a thrown error keeps serving the last good copy of the page).
       console.error('Error fetching Substack post:', error);
-      return { notFound: true };
+      throw error;
     }
   }
 
@@ -409,7 +422,7 @@ export async function getStaticProps({ ...ctx }) {
       },
     }
   } catch (error) {
-    return { notFound: true };
+    return { notFound: true, revalidate: 3600 };
   }
 }
 
@@ -429,13 +442,7 @@ export async function getStaticPaths() {
   // Fetch Substack posts to generate paths
   let substackSlugs = [];
   try {
-    const parser = new Parser({
-      customFields: {
-        item: ['content:encoded', 'content']
-      }
-    });
-    const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
-    const feed = await parser.parseURL(SUBSTACK_URL);
+    const feed = await fetchSubstackFeed();
 
     substackSlugs = feed.items.map(item => {
       return 'substack-' + item.title
@@ -459,6 +466,9 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false, // Changed to false to avoid SSR issues on Netlify
+    // 'blocking': a post published on Substack after the last deploy is rendered on
+    // its first request instead of 404ing until the next deploy (the /blog list
+    // already refreshes hourly and links to it). Pages stay cached afterwards.
+    fallback: 'blocking',
   }
 }

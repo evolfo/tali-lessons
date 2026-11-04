@@ -33,6 +33,7 @@ const { SITE } = loadData('site.js');
 const { products } = loadData('products.js');
 const { faqs } = loadData('faq.js');
 const { glossaryTerms } = loadData('glossary.js');
+const { testimonials } = loadData('testimonials.js');
 
 const money = (cents) => {
   const v = cents / 100;
@@ -167,6 +168,9 @@ function buildFull(substackPosts) {
   for (const f of faqs) parts.push(`## ${f.question}`, '', f.answer, '', `Link: ${url('/faq#' + f.id)}`, '');
   parts.push('# Recorder Glossary', '', `Source: ${url('/glossary')}`, '');
   for (const t of glossaryTerms) parts.push(`- **${t.term}** (${t.category}): ${t.definition}`);
+  parts.push('');
+  parts.push('# What students say', '', `Source: ${url('/')}`, '');
+  for (const t of testimonials) parts.push(`- "${t.quote}" - ${t.author} (${t.country})`);
   parts.push('');
   parts.push('# Blog', '');
   for (const p of [...posts, ...substackPosts].sort((a, b) => String(b.date).localeCompare(String(a.date)))) {

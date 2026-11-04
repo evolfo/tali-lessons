@@ -41,7 +41,7 @@ const Footer = () => {
               </a>
             </List.Item>
             <List.Item>
-              <a aria-label="YouTube" href="https://www.youtube.com/user/TaliRubin" target="_blank" rel="noopener noreferrer">
+              <a aria-label="YouTube" href="https://www.youtube.com/@talirecorder" target="_blank" rel="noopener noreferrer">
                 <SvgIcon circular name="youtube" />
               </a>
             </List.Item>
