@@ -41,7 +41,6 @@
     "@babel/register": "^7.25.9",
     "@babel/runtime": "^7.26.0",
     "babel-plugin-wildcard": "^7.0.0",
-    "critters": "^0.0.23",
     "marked": "^15.0.3",
     "next-sitemap": "^4.2.3",
     "sass": "^1.81.0"

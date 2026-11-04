@@ -26,6 +26,7 @@ import 'semantic-ui-css/components/modal.min.css'
 import 'semantic-ui-css/components/segment.min.css'
 import 'semantic-ui-css/components/transition.min.css'
 
+import Script from 'next/script'
 import { DefaultSeo } from "next-seo"
 import nextSeoConfig from '../next-seo.config'
 import { CartProvider } from '../contexts/CartContext'
@@ -35,8 +36,27 @@ import { WebSiteSchema } from '../components/StructuredData'
 import MainHeader from '../templates/MainHeader'
 import Footer from '../templates/Footer'
 
+// Google Analytics 4. Set NEXT_PUBLIC_GA_MEASUREMENT_ID (e.g. G-ABC123XYZ4) in the
+// hosting environment to enable it; with no ID nothing is loaded. GA4's enhanced
+// measurement records client-side route changes automatically. See docs/analytics.md.
+const GA_ID = /^G-[A-Z0-9]{6,}$/.test(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '')
+  ? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  : null
+
 export default function App({ Component, pageProps }) {
    return (
+     <>
+     {GA_ID && (
+       <>
+         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="lazyOnload" />
+         <Script id="ga4-init" strategy="lazyOnload">
+           {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`}
+         </Script>
+       </>
+     )}
      <CartProvider>
        <CartModalProvider>
          <div id="app">
@@ -50,5 +70,6 @@ export default function App({ Component, pageProps }) {
          </div>
        </CartModalProvider>
      </CartProvider>
+     </>
    )
 }
