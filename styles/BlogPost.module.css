@@ -197,7 +197,10 @@
   max-width: 100%;
 }
 
-.substackContent :global(a) {
+/* Text links stay inline. Only links that wrap an image, or Substack
+   call-to-action buttons, are laid out as centred blocks. (A blanket
+   `a { display: block }` used to break every inline link onto its own line.) */
+.substackContent :global(a:has(img)) {
   display: block;
   max-width: 600px;
   margin: 0 auto;
@@ -206,6 +209,42 @@
 .substackContent :global(a img) {
   width: auto !important;
   max-width: 600px !important;
+}
+
+.substackContent :global(p.button-wrapper) {
+  text-align: center;
+  margin: 1.75rem 0;
+}
+
+.substackContent :global(a.button),
+.substackContent :global(p.button-wrapper a) {
+  display: inline-block;
+  background: #4054c9;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 1.5rem;
+  border: 0;
+  border-radius: 6px;
+  max-width: 100%;
+}
+
+.substackContent :global(a.button:hover),
+.substackContent :global(p.button-wrapper a:hover) {
+  background: #3042a8;
+  color: #fff;
+}
+
+/* Substack wraps list items in <p>; don't double the spacing. */
+.substackContent :global(li > p) {
+  margin-bottom: 0;
+}
+
+.substackContent :global(hr) {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 2.5rem 0;
 }
 
 .substackContent :global(.image-link-expand),
