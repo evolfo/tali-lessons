@@ -9,7 +9,8 @@ import React, { useId } from 'react';
 // bevelled tone holes.
 //
 // `holes` is 8 characters: thumb, then holes 1-7 (see data/fingerings.js).
-//   '#' covered   '.' open   '/' half covered (one hole of a double pair)
+//   '#' covered   '.' open   '/' half covered (one hole of a double pair, or
+//   the pinched thumb hole used in the second octave)
 // Holes 6 and 7 are the double holes on a real recorder, drawn as two small
 // holes side by side.
 
@@ -36,13 +37,15 @@ const RecorderDiagram = ({ holes, label, width = 84 }) => {
   const uid = useId().replace(/:/g, '');
   const id = (n) => `${n}-${uid}`;
   const [thumb, ...fronts] = holes.split('');
+  const stateOf = (c) => (c === '#' ? 'closed' : c === '/' ? 'half' : 'open');
 
-  // A tone hole: bevelled rim, empty ring when open, solid pad when covered.
-  const hole = (key, cx, cy, r, closed) => (
+  // A tone hole: bevelled rim, empty ring when open, solid pad when covered,
+  // left half filled when half covered (the pinched thumb).
+  const hole = (key, cx, cy, r, state) => (
     <g key={key}>
       {/* soft shadow around the rim so the hole sits in the wood */}
       <circle cx={cx} cy={cy} r={r + 1.6} fill="#5b3b1c" opacity="0.28" />
-      {closed ? (
+      {state === 'closed' ? (
         <>
           <circle cx={cx} cy={cy} r={r} fill={INK} stroke="#1b2733" strokeWidth="1.2" />
           <ellipse cx={cx - r * 0.3} cy={cy - r * 0.35} rx={r * 0.38} ry={r * 0.26} fill="#fff" opacity="0.22" />
@@ -50,7 +53,11 @@ const RecorderDiagram = ({ holes, label, width = 84 }) => {
       ) : (
         <>
           <circle cx={cx} cy={cy} r={r} fill={`url(#${id('bore')})`} stroke={INK} strokeWidth="1.6" />
-          <path d={`M ${cx - r + 1} ${cy - 0.4} A ${r - 1} ${r - 1} 0 0 1 ${cx + r - 1} ${cy - 0.4}`} fill="none" stroke="#5b3b1c" strokeOpacity="0.35" strokeWidth="1.1" strokeLinecap="round" />
+          {state === 'half' ? (
+            <path d={`M ${cx} ${cy - r} A ${r} ${r} 0 0 0 ${cx} ${cy + r} Z`} fill={INK} />
+          ) : (
+            <path d={`M ${cx - r + 1} ${cy - 0.4} A ${r - 1} ${r - 1} 0 0 1 ${cx + r - 1} ${cy - 0.4}`} fill="none" stroke="#5b3b1c" strokeOpacity="0.35" strokeWidth="1.1" strokeLinecap="round" />
+          )}
         </>
       )}
     </g>
@@ -167,7 +174,7 @@ const RecorderDiagram = ({ holes, label, width = 84 }) => {
 
       {/* Thumb hole (back of the instrument), with a short pointer to the body */}
       <line x1={THUMB.x + 6} y1={THUMB.y} x2="34" y2={THUMB.y} stroke={INK} strokeWidth="1.2" strokeDasharray="2 2" opacity="0.55" />
-      {hole('thumb', THUMB.x, THUMB.y, 5.6, thumb === '#')}
+      {hole('thumb', THUMB.x, THUMB.y, 5.6, stateOf(thumb))}
       <text x={THUMB.x} y={THUMB.y - 9} fontSize="9" fontWeight="700" textAnchor="middle" fill={INK} opacity="0.75">
         T
       </text>
@@ -176,14 +183,14 @@ const RecorderDiagram = ({ holes, label, width = 84 }) => {
       {fronts.map((c, i) => {
         const n = i + 1;
         const y = HOLE_Y[i];
-        if (n <= 5) return hole(n, CX, y, R_SINGLE, c === '#');
+        if (n <= 5) return hole(n, CX, y, R_SINGLE, stateOf(c));
         // '/' covers only one hole of the pair
-        const leftClosed = c === '#' || c === '/';
-        const rightClosed = c === '#';
+        const left = c === '#' || c === '/' ? 'closed' : 'open';
+        const right = c === '#' ? 'closed' : 'open';
         return (
           <g key={n}>
-            {hole(`${n}l`, CX - DOUBLE_OFFSET, y, R_DOUBLE, leftClosed)}
-            {hole(`${n}r`, CX + DOUBLE_OFFSET, y, R_DOUBLE, rightClosed)}
+            {hole(`${n}l`, CX - DOUBLE_OFFSET, y, R_DOUBLE, left)}
+            {hole(`${n}r`, CX + DOUBLE_OFFSET, y, R_DOUBLE, right)}
           </g>
         );
       })}
