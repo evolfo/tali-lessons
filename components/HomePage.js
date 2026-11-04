@@ -5,7 +5,8 @@ import TestimonialCarousel from "./TestimonialCarousel";
 import elements from "../utilities/carousel-elements";
 import LessonButton from "../components/LessonButton";
 import AccessibleEmbed from "../components/AccessibleEmbed";
-import { PERSON_ID } from "./StructuredData";
+import { PERSON_ID, ORGANIZATION_ID } from "./StructuredData";
+import { testimonials } from "../data/testimonials";
 import LessonPaths from "./LessonPaths";
 import { serializeJsonLd } from "../lib/jsonld";
 
@@ -59,6 +60,24 @@ const HomePage = () => {
                   },
                 },
               ],
+            }),
+          }}
+        />
+      </Head>
+      {/* Student testimonials as Review markup. Real, named and visible in the carousel.
+          Deliberately no reviewRating/AggregateRating: no third-party review source exists yet. */}
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd({
+              '@context': 'https://schema.org',
+              '@graph': testimonials.map((t) => ({
+                '@type': 'Review',
+                reviewBody: t.quote,
+                author: { '@type': 'Person', name: t.author },
+                itemReviewed: { '@id': ORGANIZATION_ID },
+              })),
             }),
           }}
         />
