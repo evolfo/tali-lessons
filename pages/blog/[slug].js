@@ -14,6 +14,7 @@ import LessonPaths from '../../components/LessonPaths'
 import { BreadcrumbSchema, PERSON_ID, ORGANIZATION_ID } from '../../components/StructuredData'
 import styles from '../../styles/BlogPost.module.css'
 import { serializeJsonLd } from '../../lib/jsonld'
+import { titleToSlug, findOlderPost, fetchArchiveIndex } from '../../lib/substack'
 
 export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isSubstack, slug }) {
   const contentRef = React.useRef(null)
@@ -328,15 +329,20 @@ export async function getStaticProps({ ...ctx }) {
       const feed = await fetchSubstackFeed();
 
       // Find the matching post by slug
-      const post = feed.items.find(item => {
-        const itemSlug = 'substack-' + item.title
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, '')
-          .replace(/\s+/g, '-')
-          .replace(/-+/g, '-')
-          .trim();
-        return itemSlug === slug;
-      });
+      let post = feed.items.find(item => titleToSlug(item.title) === slug);
+
+      // Not in the ~20-post RSS window: look it up in Substack's archive.
+      if (!post) {
+        const older = await findOlderPost(slug);
+        if (older) {
+          post = {
+            title: older.title,
+            pubDate: older.pubDate,
+            'content:encoded': older.content,
+            enclosure: older.enclosureUrl ? { url: older.enclosureUrl } : undefined,
+          };
+        }
+      }
 
       if (!post) {
         // Unknown slug (typo, bot probe, or a post that has aged out of the RSS window).
@@ -444,14 +450,10 @@ export async function getStaticPaths() {
   try {
     const feed = await fetchSubstackFeed();
 
-    substackSlugs = feed.items.map(item => {
-      return 'substack-' + item.title
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim();
-    });
+    substackSlugs = feed.items.map(item => titleToSlug(item.title));
+    // Older posts that have dropped out of the RSS window.
+    const archive = await fetchArchiveIndex();
+    substackSlugs = [...new Set([...substackSlugs, ...archive.map(e => e.slug)])];
   } catch (error) {
     console.warn('Could not fetch Substack posts for paths:', error.message);
   }

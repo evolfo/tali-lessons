@@ -17,6 +17,7 @@ const path = require('path');
 const vm = require('vm');
 const matter = require('gray-matter');
 const Parser = require('rss-parser');
+const { titleToSlug, fetchOlderPosts } = require('../lib/substack');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -99,12 +100,18 @@ async function fetchSubstackPosts() {
   try {
     const parser = new Parser({ customFields: { item: ['content:encoded'] }, timeout: 10000 });
     const feed = await parser.parseURL(feedUrl);
-    return feed.items.map((item) => ({
-      slug: 'substack-' + item.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
+    const items = feed.items.map((item) => ({
+      slug: titleToSlug(item.title),
       title: item.title,
       date: item.isoDate || item.pubDate || '',
       body: htmlToText(item['content:encoded'] || item.content || ''),
     }));
+    // Older posts that no longer appear in the ~20-post feed (best effort).
+    const older = await fetchOlderPosts(items.map((i) => i.slug));
+    for (const o of older) {
+      items.push({ slug: titleToSlug(o.title), title: o.title, date: o.isoDate || o.pubDate || '', body: htmlToText(o.content || '') });
+    }
+    return items;
   } catch (err) {
     console.warn(`[llms] Substack feed unavailable, skipping (${err.message})`);
     return [];
