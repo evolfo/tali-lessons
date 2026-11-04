@@ -41,7 +41,11 @@ html, body {
     flex-direction: column;
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
+    // `clip`, not `hidden`: still trims the 1rem negative margins Semantic's
+    // .ui.grid bleeds past the edges, but doesn't make #app a scroll container,
+    // so position: sticky inside the page works. (body keeps overflow-x: hidden
+    // from semantic-site.css as the fallback for browsers without `clip`.)
+    overflow-x: clip;
     padding-bottom: 0;
 
     .main-about-text {

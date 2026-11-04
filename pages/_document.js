@@ -8,11 +8,9 @@ export default class MyDocument extends Document {
       <Html lang='en'>
         <Head>
           {/* Preconnect to external domains for performance */}
-          <link rel="preconnect" href="https://www.googletagmanager.com" />
           <link rel="preconnect" href="https://www.youtube-nocookie.com" />
 
           {/* DNS Prefetch for third-party resources */}
-          <link rel="dns-prefetch" href="https://www.google-analytics.com" />
           <link rel="dns-prefetch" href="https://i.ytimg.com" />
 
           {/* Self-hosted Lato: preload the two weights used above the fold */}
