@@ -7,7 +7,7 @@ import { serializeJsonLd } from '../lib/jsonld'
 
 const SITE = 'https://www.talirecorderlessons.com'
 const PAGE_URL = `${SITE}/which-recorder-to-buy`
-const TITLE = 'Soprano vs Alto: Which Recorder to Buy'
+const TITLE = 'Soprano vs Alto: Which Recorder?'
 const DESCRIPTION =
   'Which recorder should you buy? Soprano vs alto, plastic vs wood, Baroque vs German fingering, and what a beginner really needs, explained for beginners and returning players.'
 const PUBLISHED = '2026-11-04'
