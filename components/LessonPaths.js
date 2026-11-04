@@ -14,6 +14,7 @@ export const LESSON_PATHS = [
 
 const RESOURCES = [
   { href: '/faq', title: 'Recorder lessons FAQ', text: 'Costs, which recorder to buy, and how long it takes to learn.' },
+  { href: '/which-recorder-to-buy', title: 'Which recorder to buy', text: 'Soprano vs alto, plastic vs wood, and what a beginner needs.' },
   { href: '/glossary', title: 'Recorder glossary', text: 'Recorder terms and techniques in plain English.' },
   { href: '/tutorials', title: 'Free tutorials', text: 'Short video lessons on the fundamentals.' },
 ]
