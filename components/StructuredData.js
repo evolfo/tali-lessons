@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { serializeJsonLd } from '../lib/jsonld';
+import { singleLessons, lessonPackages } from '../lib/pricing';
 
 // Canonical entity IDs, reused across every schema block on the site so
 // Google/LLMs resolve "Tali Rubinstein" and "Tali Recorder Lessons" as the
@@ -233,36 +234,28 @@ export const ServiceSchema = () => (
             '@type': 'OfferCatalog',
             name: 'Recorder Lessons',
             itemListElement: [
-              {
+              ...singleLessons.map((l) => ({
                 '@type': 'Offer',
                 itemOffered: {
                   '@type': 'Service',
-                  name: '60 Minute Recorder Lesson',
+                  name: `${l.minutes} Minute Recorder Lesson`,
                   description: 'One-on-one online recorder instruction',
                 },
-                price: '105.00',
+                price: (l.price / 100).toFixed(2),
                 priceCurrency: 'USD',
-              },
-              {
+                url: 'https://www.talirecorderlessons.com/book-lesson',
+              })),
+              ...lessonPackages.map((p) => ({
                 '@type': 'Offer',
                 itemOffered: {
                   '@type': 'Service',
-                  name: '5 x 60 Minute Lessons Package',
-                  description: 'Package of 5 recorder lessons (5% discount)',
+                  name: `${p.count} x 60 Minute Lessons Package`,
+                  description: `Package of ${p.count} one-on-one online recorder lessons (${p.discountPercent}% discount)`,
                 },
-                price: '498.75',
+                price: (p.price / 100).toFixed(2),
                 priceCurrency: 'USD',
-              },
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: '45 Minute Recorder Lesson',
-                  description: 'One-on-one online recorder instruction',
-                },
-                price: '95.00',
-                priceCurrency: 'USD',
-              },
+                url: 'https://www.talirecorderlessons.com/book-bundle',
+              })),
             ],
           },
         }),
