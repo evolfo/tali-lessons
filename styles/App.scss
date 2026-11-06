@@ -41,7 +41,11 @@ html, body {
     flex-direction: column;
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
+    // `clip`, not `hidden`: still trims the 1rem negative margins Semantic's
+    // .ui.grid bleeds past the edges, but doesn't make #app a scroll container,
+    // so position: sticky inside the page works. (body keeps overflow-x: hidden
+    // from semantic-site.css as the fallback for browsers without `clip`.)
+    overflow-x: clip;
     padding-bottom: 0;
 
     .main-about-text {
@@ -68,6 +72,7 @@ html, body {
     z-index: 10;
 
     img {
+        height: auto; // width/height attrs reserve space; keep the aspect ratio when max-width shrinks it
         max-width: 400px;
         margin-left: -2.5rem;
         margin-right: -2.5rem;
@@ -214,7 +219,8 @@ html, body {
             };
         }
 
-        i.icon {
+        .svg-icon {
+            color: #fff;
             font-size: 2rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
@@ -238,30 +244,22 @@ html, body {
         .header-buttons {
             position: absolute;
             right: 2%;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 31%;
             display: flex;
             gap: 10px;
             align-items: center;
 
-            // Explicit button basics so the header CTA and cart button look the same
-            // even before Semantic UI's stylesheet has applied.
-            button {
+            // White pills with dark-blue text/icons: >= 7:1, vs ~2.6:1 for the old
+            // white-on-light-blue gradient.
+            button, a.lesson-button {
                 position: static;
                 padding: 1rem;
                 font-size: 1.1rem;
-                font-family: inherit;
-                font-weight: 700;
-                line-height: 1;
-                color: #fff;
-                border: 0;
-                border-radius: 0.28571429rem;
-                cursor: pointer;
-                background: linear-gradient(90deg, #50a5f9 0%, #6e8fae 100%);
+                color: #1f4f80;
+                background: #fff;
 
-                i {
-                    margin: 0;
-                    color: white
+                .svg-icon {
+                    color: #1f4f80;
                 }
 
                 .label {
@@ -269,8 +267,9 @@ html, body {
                 }
             }
 
-            button:hover {
-                background: linear-gradient(270deg, #8fc4f9 0%, #72aee6 100%);
+            button:hover, a.lesson-button:hover {
+                background: #dbeafb;
+                color: #153a60;
                 transition: .2s;
             }
 
@@ -295,14 +294,15 @@ html, body {
         right: 2rem;
         z-index: 100;
         padding: 1.5rem;
-        background: linear-gradient(90deg, #50a5f9 0%, #6e8fae 100%);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        background: #1f4f80;
+        border: 2px solid #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         display: none;
 
-        i {
-            margin: 0;
+        .svg-icon {
             color: white;
             font-size: 1.5rem;
+            vertical-align: middle;
         }
 
         .label {
@@ -311,7 +311,7 @@ html, body {
         }
 
         &:hover {
-            background: linear-gradient(270deg, #8fc4f9 0%, #72aee6 100%);
+            background: #2b77c4;
             transition: .2s;
         }
 
@@ -345,8 +345,8 @@ html, body {
         flex-direction: column;
         gap: 0.4rem;
 
-        h4 {
-            color: rgba(255, 255, 255, 0.6);
+        .footer-heading {
+            color: rgba(255, 255, 255, 0.75);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -360,6 +360,7 @@ html, body {
             text-decoration: none;
             transition: color 0.2s ease;
             padding: 0;
+            display: inline-block;
 
             &:hover {
                 color: #fff;
@@ -377,7 +378,7 @@ html, body {
                 display: inline-block;
                 transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-                i.icon.circular {
+                svg.svg-icon--circular {
                     font-size: 1.5rem;
                     transition: all 0.3s ease;
                 }
@@ -385,27 +386,22 @@ html, body {
                 &:hover {
                     transform: translateY(-3px);
 
-                    i.icon {
+                    svg.svg-icon {
                         color: #8fc4f9;
                     }
                 }
             }
 
-            &:nth-child(1) a:hover i.icon { color: #1877f2; }
-            &:nth-child(2) a:hover i.icon {
-                background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-            &:nth-child(3) a:hover i.icon { color: #ff0000; }
-            &:nth-child(4) a:hover i.icon { color: #1da1f2; }
+            &:nth-child(1) a:hover svg.svg-icon { color: #1877f2; }
+            &:nth-child(2) a:hover svg.svg-icon { color: #e4405f; }
+            &:nth-child(3) a:hover svg.svg-icon { color: #ff0000; }
+            &:nth-child(4) a:hover svg.svg-icon { color: #1da1f2; }
         }
     }
 
     .footer-copyright {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.9rem;
         margin: 0;
     }
 
@@ -417,11 +413,15 @@ html, body {
         }
 
         .footer-column {
-            h4 {
-                font-size: 0.75rem;
+            .footer-heading {
+                font-size: 0.9rem;
             }
             a {
-                font-size: 0.8rem;
+                font-size: 0.95rem;
+                display: inline-flex;
+                align-items: center;
+                min-height: 44px;
+                padding: 0;
             }
         }
     }
@@ -439,13 +439,18 @@ html, body {
 
         .footer-column {
             min-width: unset;
+            gap: 0;
 
-            h4 {
-                font-size: 0.6rem;
+            .footer-heading {
+                font-size: 0.9rem;
                 margin-bottom: 0.2rem;
             }
             a {
-                font-size: 0.7rem;
+                font-size: 0.9rem;
+                display: inline-flex;
+                align-items: center;
+                min-height: 44px;
+                padding: 0;
             }
 
             &:last-child {
@@ -459,12 +464,17 @@ html, body {
             }
         }
 
-        .social-icons .item a i.icon.circular {
+        .social-icons .item a {
+            // icon is ~34px wide; side padding brings the tap target to >= 44px
+            padding: 0 0.4rem;
+        }
+
+        .social-icons .item a svg.svg-icon--circular {
             font-size: 1.2rem;
         }
 
         .footer-copyright {
-            font-size: 0.65rem;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
     }
@@ -543,8 +553,9 @@ html, body {
         font-weight: 900;
     }
 
-    button {
+    button, a.lesson-button {
         background: linear-gradient(180deg, #2b77c4 0%, #2a5a8a 100%);
+        color: #fff;
         font-size: 1.3rem;
 
         @include breakpoint(formobile) {
@@ -552,7 +563,7 @@ html, body {
         }
     }
 
-    button:hover {
+    button:hover, a.lesson-button:hover {
         background: linear-gradient(270deg, #8fc4f9 0%, #72aee6 100%);
         transition: .2s;
     }
@@ -635,13 +646,54 @@ html, body {
         color: white;
     }
 
-    .carousel-indicators a {
-        padding-right: 1rem;
+    .carousel-slide {
+        animation: carousel-fade 0.6s ease;
     }
 
-    .ui.empty.circular.label {
-        width: 1.5rem;
-        height: 1.5rem;
+    .carousel-indicators {
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    // 2.4rem hit area (3.2rem on phones = 44px+), 1.5rem visible dot
+    .carousel-dot {
+        position: relative;
+        width: 2.4rem;
+        height: 2.4rem;
+
+        @include breakpoint(smallest) {
+            width: 3.2rem;
+            height: 3.2rem;
+        }
+
+        padding: 0;
+        margin: 0 0.1rem;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1.5rem;
+            height: 1.5rem;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        &.is-active::after {
+            background: #2e528a;
+        }
+
+        &:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: -2px;
+            border-radius: 50%;
+        }
     }
 
     .testimonial-background-color {
@@ -657,13 +709,15 @@ html, body {
         }
     }
 
-    .ui.grey.label {
-        background-color: white !important;
-    }
+}
 
-    .ui.black.label {
-        background-color: #2e528a !important;
-    }
+@keyframes carousel-fade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #testimonials .carousel-slide { animation: none; }
 }
 
 /////////////////////
@@ -794,7 +848,10 @@ html, body {
         background-size: cover;
     }
     @include breakpoint(smallest) {
-        padding: 3rem;
+        padding: 2rem 1.5rem;
+        // Lift the photo further back so body copy stays readable over it
+        background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("/img/about1-faded.jpg");
+        background-size: contain;
     }
 
     .column.about-img {
@@ -932,7 +989,11 @@ html, body {
             font-size: 1.3rem;
         }
     }
-    h3 {
+    // (was an <h3>, which skipped a heading level after the page's <h1>)
+    .tutorials-intro {
+        font-size: 1.28571429rem;
+        line-height: 1.28571429em;
+        margin: 0 0 1rem;
         padding-bottom: 4rem;
         font-weight: 400;
 
@@ -1148,4 +1209,85 @@ html, body {
         transform: translateY(-4px);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
     }
+}
+
+// FAQ quick-navigation links: comfortable tap targets on touch screens
+.faq-nav-list a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+// Wide tables scroll inside their own box instead of being clipped by the page
+.table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+// 44px-tall Semantic buttons on phones (mini/icon buttons keep their size)
+@media (max-width: 767px) {
+    body .ui.button:not(.mini):not(.tiny):not(.icon):not(.cart-button-mobile) {
+        padding-top: 1.1em;
+        padding-bottom: 1.1em;
+    }
+}
+
+
+// Semantic UI's default primary blue (#2185d0) is 3.9:1 against white text.
+// Slightly darker shades meet WCAG AA (4.5:1).
+// (`body` prefix: App.scss is loaded before Semantic's own CSS, so equal
+// specificity would lose.)
+body .ui.primary.button,
+body .ui.primary.buttons .button {
+    background-color: #1b6ab0;
+
+    &:hover { background-color: #155d9c; }
+    &:focus { background-color: #14568f; }
+    &:active { background-color: #114d80; }
+}
+
+
+// Inline SVG icons (see components/SvgIcon.js). Sized by font-size like the old
+// icon font; `--circular` matches Semantic's 2em circle with an inset ring.
+.svg-icon {
+    display: inline-block;
+    flex: none;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    fill: currentColor;
+}
+
+.svg-icon--circular {
+    box-sizing: content-box;
+    padding: 0.5em;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+}
+
+// Cart modal close button (was a bare icon with an onClick)
+.cart-close {
+    float: right;
+    padding: 0.25rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
+// Visually hidden but available to screen readers / document outline
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }

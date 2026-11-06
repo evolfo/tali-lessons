@@ -2,10 +2,10 @@ import React from "react";
 import Link from 'next/link';
 import NextImage from 'next/image';
 import { Card, Button } from 'semantic-ui-react';
-import { useShoppingCart } from 'use-shopping-cart';
+import { useShoppingCart } from '../contexts/CartContext';
 import { useCartModal } from '../contexts/CartModalContext';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, priority = false }) => {
   const { addItem, cartDetails, incrementItem } = useShoppingCart();
   const { openCart } = useCartModal();
 
@@ -38,8 +38,7 @@ const ProductCard = ({ product }) => {
   })();
 
   return (
-    <Link href={`/product/${product.id}`} legacyBehavior>
-        <Card raised className="product-card">
+    <Card as={Link} href={`/product/${product.id}`} raised className="product-card">
           <div style={{ 
             position: 'relative', 
             width: '100%', 
@@ -50,6 +49,7 @@ const ProductCard = ({ product }) => {
               src={product.image} 
               alt={product.name}
               fill
+              priority={priority}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 300px"
               style={{ objectFit: 'cover' }}
             />
@@ -58,7 +58,7 @@ const ProductCard = ({ product }) => {
             <Card.Header>{product.name}</Card.Header>
             <Card.Meta>
               {originalPrice && (
-                <span style={{ textDecoration: 'line-through', color: '#999', marginRight: '8px' }}>
+                <span style={{ textDecoration: 'line-through', color: '#6b6b6b', marginRight: '8px' }}>
                   ${(originalPrice / 100).toFixed(2)}
                 </span>
               )}
@@ -73,8 +73,7 @@ const ProductCard = ({ product }) => {
               Add to Cart
             </Button>
           </Card.Content>
-        </Card>
-    </Link>
+    </Card>
   );
 };
 

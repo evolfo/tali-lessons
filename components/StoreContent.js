@@ -9,7 +9,7 @@ const StoreGrid = () => {
 
   return (
     <Container id="lesson-bundles" className="bundle-container">
-      <Header>Lessons and Sheet Music</Header>
+      <Header as="h1">Lessons and Sheet Music</Header>
       <p>
         Get 5% off 5 lessons, 7% off 10 lessons, or 10% off 20 lessons by choosing one of the options below.
         <br />
@@ -18,8 +18,8 @@ const StoreGrid = () => {
 
       <Header as="h2">Lessons</Header>
       <Card.Group itemsPerRow={3} stackable>
-        {lessonBundles.map(product => (
-          <ProductCard key={product.id} product={product} />
+        {lessonBundles.map((product, i) => (
+          <ProductCard key={product.id} product={product} priority={i === 0} />
         ))}
       </Card.Group>
 

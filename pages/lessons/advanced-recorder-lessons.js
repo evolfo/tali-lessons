@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { PersonSchema, ServiceSchema, CourseSchema } from '../../components/StructuredData'
 import { serializeJsonLd } from '../../lib/jsonld'
 import styles from '../../styles/LessonPage.module.css'
+import LessonPaths from '../../components/LessonPaths'
+import LessonPricing from '../../components/LessonPricing'
 
 const AdvancedRecorderLessons = () => {
   const faqSchema = {
@@ -313,6 +315,8 @@ const AdvancedRecorderLessons = () => {
             </div>
           </section>
         </div>
+      <LessonPricing />
+      <LessonPaths current="/lessons/advanced-recorder-lessons" />
       </>
   )
 }

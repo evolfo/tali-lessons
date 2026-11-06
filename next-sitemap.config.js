@@ -24,7 +24,7 @@ module.exports = {
     loc,
     lastmod: postDates[loc],
   }),
-  exclude: ['/api/*', '/success', '/checkout'],
+  exclude: ['/api/*', '/success', '/checkout', '/book-bundle-lesson'],
   robotsTxtOptions: {
     policies: [
       {

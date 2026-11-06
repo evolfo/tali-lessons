@@ -4,17 +4,19 @@ import ReactMarkdown from 'react-markdown'
 import Image from 'next/image'
 import Head from 'next/head'
 import { NextSeo } from 'next-seo'
-import { Embed } from 'semantic-ui-react'
+import AccessibleEmbed from '../../components/AccessibleEmbed'
 import Parser from 'rss-parser'
 const glob = require('glob')
 
 import BlogLayout from '../../components/BlogLayout'
 import SocialShare from '../../components/SocialShare'
+import LessonPaths from '../../components/LessonPaths'
 import { BreadcrumbSchema, PERSON_ID, ORGANIZATION_ID } from '../../components/StructuredData'
 import styles from '../../styles/BlogPost.module.css'
 import { serializeJsonLd } from '../../lib/jsonld'
+import { titleToSlug, findOlderPost, fetchArchiveIndex } from '../../lib/substack'
 
-export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isSubstack }) {
+export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isSubstack, slug }) {
   const contentRef = React.useRef(null)
 
   // Remove first image from Substack content to avoid duplication with hero image
@@ -129,7 +131,10 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
 
   if (!frontmatter) return <></>
 
-  const fullUrl = "https://www.talirecorderlessons.com/blog/" + (frontmatter.slug || frontmatter.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-'))
+  // The real route slug comes from getStaticProps. (This used to be built from
+  // the post TITLE, which does not match the actual URL, so every post's
+  // canonical, og:url, breadcrumb and JSON-LD url pointed at a page that 404s.)
+  const fullUrl = "https://www.talirecorderlessons.com/blog/" + slug
   const imageUrl = frontmatter.hero_image?.startsWith('http')
     ? frontmatter.hero_image
     : `https://www.talirecorderlessons.com${frontmatter.hero_image}`
@@ -158,7 +163,7 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
       <BreadcrumbSchema items={[
         { name: 'Home', url: '/' },
         { name: 'Blog', url: '/blog' },
-        { name: frontmatter.title, url: `/blog/${frontmatter.slug || ''}` }
+        { name: frontmatter.title, url: `/blog/${slug}` }
       ]} />
 
       <NextSeo
@@ -261,15 +266,11 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
 
           <figure className={styles.blogPostHero}>
             {frontmatter.video_link ?
-              <Embed
-                  width="560"
-                  height="315"
+              <AccessibleEmbed
+                  youtubeId={frontmatter.video_link}
                   placeholder={frontmatter.video_image}
-                  id={frontmatter.video_link}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  source="youtube"
+                  title={frontmatter.title}
+                  sizes="(max-width: 768px) 100vw, 800px"
                 /> :
               <Image
                 src={frontmatter.hero_image}
@@ -295,10 +296,27 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle, isS
             title={frontmatter.title}
             description={frontmatter.description || frontmatter.excerpt}
           />
+
+          <LessonPaths />
         </article>
       </BlogLayout>
     </>
   )
+}
+
+// One shared, short-lived cache of the Substack feed per server instance, so a
+// burst of requests (or bots probing made-up /blog/substack-... URLs) triggers
+// at most one upstream fetch every few minutes.
+let feedCache = { at: 0, feed: null }
+async function fetchSubstackFeed() {
+  if (feedCache.feed && Date.now() - feedCache.at < 5 * 60 * 1000) return feedCache.feed
+  const parser = new Parser({
+    customFields: { item: ['content:encoded', 'content'] },
+    timeout: 10000,
+  })
+  const feed = await parser.parseURL(process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed')
+  feedCache = { at: Date.now(), feed }
+  return feed
 }
 
 export async function getStaticProps({ ...ctx }) {
@@ -308,27 +326,28 @@ export async function getStaticProps({ ...ctx }) {
   // Check if this is a Substack post
   if (slug.startsWith('substack-')) {
     try {
-      const parser = new Parser({
-        customFields: {
-          item: ['content:encoded', 'content']
-        }
-      });
-      const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
-      const feed = await parser.parseURL(SUBSTACK_URL);
+      const feed = await fetchSubstackFeed();
 
       // Find the matching post by slug
-      const post = feed.items.find(item => {
-        const itemSlug = 'substack-' + item.title
-          .toLowerCase()
-          .replace(/[^\w\s-]/g, '')
-          .replace(/\s+/g, '-')
-          .replace(/-+/g, '-')
-          .trim();
-        return itemSlug === slug;
-      });
+      let post = feed.items.find(item => titleToSlug(item.title) === slug);
+
+      // Not in the ~20-post RSS window: look it up in Substack's archive.
+      if (!post) {
+        const older = await findOlderPost(slug);
+        if (older) {
+          post = {
+            title: older.title,
+            pubDate: older.pubDate,
+            'content:encoded': older.content,
+            enclosure: older.enclosureUrl ? { url: older.enclosureUrl } : undefined,
+          };
+        }
+      }
 
       if (!post) {
-        return { notFound: true };
+        // Unknown slug (typo, bot probe, or a post that has aged out of the RSS window).
+        // Short revalidate so a just-published post isn't stuck as a cached 404.
+        return { notFound: true, revalidate: 120 };
       }
 
       // Extract and generate metadata for Substack post
@@ -379,11 +398,14 @@ export async function getStaticProps({ ...ctx }) {
           },
           markdownBody: fullContent,
           isSubstack: true,
+          slug,
         },
       };
     } catch (error) {
+      // Rethrow: a transient Substack outage must not be cached as a 404 (and during
+      // ISR, a thrown error keeps serving the last good copy of the page).
       console.error('Error fetching Substack post:', error);
-      return { notFound: true };
+      throw error;
     }
   }
 
@@ -402,10 +424,11 @@ export async function getStaticProps({ ...ctx }) {
         frontmatter: data.data,
         markdownBody: data.content,
         isSubstack: false,
+        slug,
       },
     }
   } catch (error) {
-    return { notFound: true };
+    return { notFound: true, revalidate: 3600 };
   }
 }
 
@@ -425,22 +448,12 @@ export async function getStaticPaths() {
   // Fetch Substack posts to generate paths
   let substackSlugs = [];
   try {
-    const parser = new Parser({
-      customFields: {
-        item: ['content:encoded', 'content']
-      }
-    });
-    const SUBSTACK_URL = process.env.SUBSTACK_RSS_URL || 'https://talirecorder.substack.com/feed';
-    const feed = await parser.parseURL(SUBSTACK_URL);
+    const feed = await fetchSubstackFeed();
 
-    substackSlugs = feed.items.map(item => {
-      return 'substack-' + item.title
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, '')
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .trim();
-    });
+    substackSlugs = feed.items.map(item => titleToSlug(item.title));
+    // Older posts that have dropped out of the RSS window.
+    const archive = await fetchArchiveIndex();
+    substackSlugs = [...new Set([...substackSlugs, ...archive.map(e => e.slug)])];
   } catch (error) {
     console.warn('Could not fetch Substack posts for paths:', error.message);
   }
@@ -455,6 +468,9 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false, // Changed to false to avoid SSR issues on Netlify
+    // 'blocking': a post published on Substack after the last deploy is rendered on
+    // its first request instead of 404ing until the next deploy (the /blog list
+    // already refreshes hourly and links to it). Pages stay cached afterwards.
+    fallback: 'blocking',
   }
 }

@@ -4,9 +4,15 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 
 const BlogList = ({ allBlogs }) => {
-  const [displayedPosts, setDisplayedPosts] = useState([])
-  const [page, setPage] = useState(1)
   const POSTS_PER_PAGE = 9
+  // Seed with the first page so posts are in the server-rendered HTML
+  // (crawlers, no layout shift) instead of appearing after hydration.
+  const [displayedPosts, setDisplayedPosts] = useState(() =>
+    [...allBlogs]
+      .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+      .slice(0, POSTS_PER_PAGE)
+  )
+  const [page, setPage] = useState(1)
 
   function truncateSummary(content) {
     // Strip HTML tags and get plain text
@@ -52,7 +58,7 @@ const BlogList = ({ allBlogs }) => {
 
       <div className="blog-grid">
         {displayedPosts.length > 0 &&
-          displayedPosts.map((post) => {
+          displayedPosts.map((post, index) => {
             const card = (
               <div className="blog-card">
                 <div className="blog-card__image">
@@ -61,7 +67,8 @@ const BlogList = ({ allBlogs }) => {
                     alt={post.frontmatter.title}
                     width={400}
                     height={250}
-                    loading="lazy"
+                    priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                     style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
                     onError={(e) => {
                       e.target.src = '/img/blog-img/blog1.jpg'
@@ -173,7 +180,7 @@ const BlogList = ({ allBlogs }) => {
           width: 100%;
           height: 240px;
           overflow: hidden;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #4054c9 0%, #764ba2 100%);
         }
 
         .blog-card__image img {
@@ -197,7 +204,7 @@ const BlogList = ({ allBlogs }) => {
           border-radius: 6px;
           font-size: 0.75rem;
           font-weight: 600;
-          color: #667eea;
+          color: #4054c9;
           display: flex;
           align-items: center;
           gap: 0.4rem;
@@ -217,7 +224,7 @@ const BlogList = ({ allBlogs }) => {
 
         .blog-card__meta time {
           font-size: 0.875rem;
-          color: #667eea;
+          color: #4054c9;
           font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 0.05em;
@@ -251,7 +258,7 @@ const BlogList = ({ allBlogs }) => {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          color: #667eea;
+          color: #4054c9;
           font-weight: 600;
           font-size: 0.9375rem;
           transition: gap 0.3s ease;
@@ -280,7 +287,7 @@ const BlogList = ({ allBlogs }) => {
           height: 40px;
           margin: 0 auto 1rem;
           border: 3px solid #f3f3f3;
-          border-top: 3px solid #667eea;
+          border-top: 3px solid #4054c9;
           border-radius: 50%;
           animation: spin 1s linear infinite;
         }

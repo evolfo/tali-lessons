@@ -17,6 +17,7 @@ const path = require('path');
 const vm = require('vm');
 const matter = require('gray-matter');
 const Parser = require('rss-parser');
+const { titleToSlug, fetchOlderPosts } = require('../lib/substack');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -33,6 +34,7 @@ const { SITE } = loadData('site.js');
 const { products } = loadData('products.js');
 const { faqs } = loadData('faq.js');
 const { glossaryTerms } = loadData('glossary.js');
+const { testimonials } = loadData('testimonials.js');
 
 const money = (cents) => {
   const v = cents / 100;
@@ -98,12 +100,18 @@ async function fetchSubstackPosts() {
   try {
     const parser = new Parser({ customFields: { item: ['content:encoded'] }, timeout: 10000 });
     const feed = await parser.parseURL(feedUrl);
-    return feed.items.map((item) => ({
-      slug: 'substack-' + item.title.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
+    const items = feed.items.map((item) => ({
+      slug: titleToSlug(item.title),
       title: item.title,
       date: item.isoDate || item.pubDate || '',
       body: htmlToText(item['content:encoded'] || item.content || ''),
     }));
+    // Older posts that no longer appear in the ~20-post feed (best effort).
+    const older = await fetchOlderPosts(items.map((i) => i.slug));
+    for (const o of older) {
+      items.push({ slug: titleToSlug(o.title), title: o.title, date: o.isoDate || o.pubDate || '', body: htmlToText(o.content || '') });
+    }
+    return items;
   } catch (err) {
     console.warn(`[llms] Substack feed unavailable, skipping (${err.message})`);
     return [];
@@ -167,6 +175,9 @@ function buildFull(substackPosts) {
   for (const f of faqs) parts.push(`## ${f.question}`, '', f.answer, '', `Link: ${url('/faq#' + f.id)}`, '');
   parts.push('# Recorder Glossary', '', `Source: ${url('/glossary')}`, '');
   for (const t of glossaryTerms) parts.push(`- **${t.term}** (${t.category}): ${t.definition}`);
+  parts.push('');
+  parts.push('# What students say', '', `Source: ${url('/')}`, '');
+  for (const t of testimonials) parts.push(`- "${t.quote}" - ${t.author} (${t.country})`);
   parts.push('');
   parts.push('# Blog', '');
   for (const p of [...posts, ...substackPosts].sort((a, b) => String(b.date).localeCompare(String(a.date)))) {

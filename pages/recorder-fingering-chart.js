@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { NextSeo } from 'next-seo'
-import { Container, Button, Icon } from 'semantic-ui-react'
+import { Container, Button } from 'semantic-ui-react'
 import { BreadcrumbSchema, PERSON_ID } from '../components/StructuredData'
 import RecorderDiagram from '../components/RecorderDiagram'
 import { serializeJsonLd } from '../lib/jsonld'
@@ -182,8 +182,7 @@ const FingeringChart = () => {
         </section>
 
         <div className="no-print" style={{ textAlign: 'right', marginBottom: '.75rem' }}>
-          <Button type="button" basic size="small" className="fc-btn" icon labelPosition="left" onClick={() => window.print()}>
-            <Icon name="print" />
+          <Button type="button" basic size="small" className="fc-btn" onClick={() => window.print()}>
             Print this chart
           </Button>
         </div>

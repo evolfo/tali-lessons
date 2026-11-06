@@ -27,6 +27,7 @@ class BookBundleLesson extends React.Component {
           title="Schedule a Recorder Lesson"
           description="Schedule your online recorder lesson with Tali Rubinstein. Choose from 45 or 60 minute sessions. Expert instruction for all skill levels."
           canonical="https://www.talirecorderlessons.com/book-bundle-lesson"
+          noindex={true}
           openGraph={{
             url: 'https://www.talirecorderlessons.com/book-bundle-lesson',
             title: 'Book a Recorder Lesson',
@@ -48,7 +49,7 @@ class BookBundleLesson extends React.Component {
           { name: 'Schedule Lesson', url: '/book-bundle-lesson' }
         ]} />
         <Container id="book-bundle-lesson-container" className="bundle-container">
-        <Header>Book a lesson!</Header>
+        <Header as="h1">Book a lesson!</Header>
         {/* <Button
           data-appointlet-organization="tali-recorder-lessons"
           data-appointlet-service="376666"
