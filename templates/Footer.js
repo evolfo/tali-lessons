@@ -19,6 +19,7 @@ const Footer = () => {
           <Link href="/tutorials">Tutorials</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/faq">FAQ</Link>
+          <Link href="/recorder-fingering-chart">Fingering Chart</Link>
           <Link href="/glossary">Glossary</Link>
           <Link href="/about">About</Link>
         </div>
