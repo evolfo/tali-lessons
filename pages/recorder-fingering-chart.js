@@ -61,7 +61,7 @@ const FingeringChart = () => {
     isAccessibleForFree: true,
     learningResourceType: 'Chart',
     educationalLevel: 'Beginner',
-    teaches: 'Baroque (English) fingering for soprano and alto recorder, two octaves from low C to high C',
+    teaches: 'Baroque (English) fingering for soprano and alto recorder, from low C up to the highest D',
     author: { '@id': PERSON_ID, '@type': 'Person', name: 'Tali Rubinstein' },
   }
 
@@ -116,7 +116,7 @@ const FingeringChart = () => {
       <Container style={{ marginTop: '6rem', marginBottom: '4rem', maxWidth: '1000px' }}>
         <h1 style={{ fontSize: '3rem', marginBottom: '1rem', textAlign: 'center' }}>Recorder Fingering Chart</h1>
         <p style={{ fontSize: '1.2rem', textAlign: 'center', color: '#666', marginBottom: '2rem' }}>
-          Baroque (English) fingering for soprano and alto recorder, two octaves from low C to high C. Click any note to enlarge it.
+          Baroque (English) fingering for soprano and alto recorder, from low C up to the highest D. Click any note to enlarge it.
         </p>
 
         <div className="no-print" style={{ textAlign: 'center', marginBottom: '2rem' }} role="group" aria-label="Choose your recorder">
@@ -226,7 +226,7 @@ const FingeringChart = () => {
 
           <h2 style={{ fontSize: '2rem', color: '#2c3e50', marginTop: '2rem' }}>Low octave and high octave</h2>
           <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#555' }}>
-            The low octave runs from the all-holes-covered C up to B. The high octave starts at the next C and plays the same note names an octave higher, with different fingerings:
+            The low octave runs from the all-holes-covered C up to B. The high octave starts at the next C and climbs to the highest D, with different fingerings:
             the thumb hole is covered for the first high C, open for the next few notes, and pinched half open from E upward. Use the octave buttons above to switch between them.
           </p>
 

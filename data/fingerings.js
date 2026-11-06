@@ -13,8 +13,8 @@
 //          For the thumb: "pinched", i.e. the thumbnail slid into the hole so it
 //          is about half covered (used for the second octave from E).
 //
-// Two octaves: the low octave (C to B) and the high octave (C to C, which takes
-// the player up to the top C). Enharmonic pairs are always written sharp first
+// Two octaves: the low octave (C to B) and the high octave (C up to the highest
+// D, 14 notes). Enharmonic pairs are always written sharp first
 // (C♯ / D♭), on every instrument.
 //
 // Sources: the low octave and most of the high octave are standard Baroque
@@ -28,7 +28,7 @@ const hi = (id, name, alt, holes, check) => ({ id: `h-${id}`, name, alt, octave:
 
 export const OCTAVES = [
   { id: 'low', label: 'Low octave', range: 'C to B' },
-  { id: 'high', label: 'High octave', range: 'C to C' },
+  { id: 'high', label: 'High octave', range: 'C to D' },
 ];
 
 export const FINGERINGS = [
@@ -41,9 +41,9 @@ export const FINGERINGS = [
   lo('f',  'F',  null, '#####.##'),
   lo('fs', 'F♯', 'G♭', '####.##.', true),
   lo('g',  'G',  null, '####....'),
-  lo('gs', 'G♯', 'A♭', '###.###.', true),
+  lo('gs', 'G♯', 'A♭', '###.##/.', true),
   lo('a',  'A',  null, '###.....'),
-  lo('as', 'A♯', 'B♭', '##.##...', true),
+  lo('as', 'A♯', 'B♭', '##.##.#.', true),
   lo('b',  'B',  null, '##......'),
 
   // High octave (thumb open or pinched)
@@ -57,9 +57,10 @@ export const FINGERINGS = [
   hi('g',  'G',  null, '/###....', true),
   hi('gs', 'G♯', 'A♭', '/##.#...', true),
   hi('a',  'A',  null, '/##.....', true),
-  hi('as', 'A♯', 'B♭', '/###.##.', true),
+  hi('as', 'A♯', 'B♭', '/##.###.', true),
   hi('b',  'B',  null, '/##.##..', true),
   hi('c2', 'C',  null, '/#..##..', true),
+  hi('d2', 'D',  null, '/#.##.##', true),
 ];
 
 // Note names when the same fingering is played on an alto (F instrument).
